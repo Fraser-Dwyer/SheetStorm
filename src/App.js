@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import sheetStormLogo from "../src/Images/sheetStormLogo3.png";
+import Header from "./Components/Header";
+import Login from "./Components/Login";
+import { useState } from "react";
 
 function App() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      {false && <Header></Header>}
+      <div className="logo">
+        <img src={sheetStormLogo} alt="SheetStormLogo"></img>
+      </div>
+      <Login
+        username={username}
+        password={password}
+        setUsername={setUsername}
+        setPassword={setPassword}
+      ></Login>
+    </main>
   );
 }
 
