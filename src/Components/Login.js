@@ -1,4 +1,5 @@
 import "../Styles/Login.css";
+import sheetStormLogo from "../Images/sheetStormLogo4.png";
 
 export default function Login({
   username,
@@ -8,6 +9,9 @@ export default function Login({
 }) {
   return (
     <div className="main">
+      <div className="logo">
+        <img src={sheetStormLogo} alt="SheetStormLogo"></img>
+      </div>
       <div className="loginContainer">
         <div className="inputTitle">
           <h1>Login</h1>
@@ -35,7 +39,7 @@ export default function Login({
         </div>
       </div>
       <div className="signupMessage">
-        Don't have an account? <span>Click here</span>
+        Don't have an account? <a href="/signup">Click here</a>
       </div>
     </div>
   );
