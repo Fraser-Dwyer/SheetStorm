@@ -1,13 +1,12 @@
 import "../Styles/Login.css";
 import sheetStormLogo from "../Images/sheetStormLogo4.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-export default function Login({
-  username,
-  password,
-  setUsername,
-  setPassword,
-}) {
+export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="main">
       <div className="logo">

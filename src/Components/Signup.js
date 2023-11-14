@@ -1,17 +1,23 @@
 import "../Styles/Signup.css";
 import sheetStormLogo from "../Images/sheetStormLogo4.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-export default function Signup({
-  username,
-  password,
-  setUsername,
-  setPassword,
-  name,
-  setName,
-  repeatPassword,
-  setRepeatPassword,
-}) {
+export default function Signup() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+
+  async function handleSignup(e) {
+    e.preventDefault();
+    await fetch("http://localhost:4000/signup", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      headers: { "Content-Type": "applicatuib/json" },
+    });
+  }
+
   return (
     <div className="main">
       <div className="logo">
@@ -56,7 +62,7 @@ export default function Signup({
           </div>
         </form>
         <div className="buttonContainer">
-          <button>Submit</button>
+          <button onClick={handleSignup}>Submit</button>
         </div>
       </div>
       <div className="signupMessage">
