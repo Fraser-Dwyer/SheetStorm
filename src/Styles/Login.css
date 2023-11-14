@@ -1,0 +1,68 @@
+.logo img {
+    width: 60%;
+    max-height: 30%;
+    display: block;
+    margin: 8% auto;
+  }
+  
+  .loginContainer {
+    width: 80%;
+    top: 40%;
+    left: 10%;
+    border: 4px solid black;
+    border-radius: 25px;
+    margin: auto;
+  }
+  
+  .loginContainer .inputTitle {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .loginContainer form div {
+    margin-left: 5%;
+  }
+  
+  .loginContainer form div:first-child {
+    margin-bottom: 3%;
+  }
+  
+  .loginContainer form input {
+    width: 90%;
+  }
+  
+  .loginContainer div h1 {
+    font-size: 7vw;
+    margin: 3%;
+  }
+  
+  .loginContainer div label {
+    font-size: 4vw;
+    display: block;
+  }
+  
+  .buttonContainer {
+    text-align: end;
+    margin: 4% 7%;
+  }
+  
+  .buttonContainer button {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    font-size: 3.5vw;
+  }
+  
+  .buttonContainer button:active {
+    background-color: #ffdb0055
+  }
+  
+  .signupMessage {
+    text-align: center;
+    font-size: 4vw;
+    width: 100%;
+    margin-top: 1%;
+  }
+  
+  .signupMessage span {
+    text-decoration: underline;
+  }
