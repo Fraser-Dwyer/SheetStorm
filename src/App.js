@@ -21,7 +21,7 @@ function App() {
         }
       />
       <Route
-        path={"/login"}
+        path="/login"
         element={
           <Login
             username={username}
@@ -32,7 +32,7 @@ function App() {
         }
       />
       <Route
-        path={"/signup"}
+        path="/signup"
         element={
           <Signup
             username={username}

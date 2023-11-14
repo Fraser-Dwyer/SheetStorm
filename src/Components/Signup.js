@@ -1,5 +1,6 @@
 import "../Styles/Signup.css";
 import sheetStormLogo from "../Images/sheetStormLogo4.png";
+import { Link } from "react-router-dom";
 
 export default function Signup({
   username,
@@ -59,7 +60,7 @@ export default function Signup({
         </div>
       </div>
       <div className="signupMessage">
-        Already have an account? <a href="/login">Click here</a>
+        Already have an account? <Link to="/login">Click here</Link>
       </div>
     </div>
   );
