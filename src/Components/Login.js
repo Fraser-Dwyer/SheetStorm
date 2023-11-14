@@ -7,6 +7,15 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  async function handleLogin(e) {
+    e.preventDefault();
+    await fetch("http://localhost:4000/login", {
+      method: "POST",
+      body: JSON.stringify({ username, password }),
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   return (
     <div className="main">
       <div className="logo">
@@ -35,7 +44,7 @@ export default function Login() {
           </div>
         </form>
         <div className="buttonContainer">
-          <button>Submit</button>
+          <button onClick={handleLogin}>Submit</button>
         </div>
       </div>
       <div className="signupMessage">
