@@ -4,6 +4,7 @@ import Signup from "../src/Components/Signup.js";
 import { Route, Routes } from "react-router-dom";
 import { UserContextProvider } from "./UserContext.js";
 import Layout from "./Components/Layout.js";
+import EnterScore from "./Components/EnterScore.js";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/post-score" element={<EnterScore />} />
         </Route>
       </Routes>
     </UserContextProvider>

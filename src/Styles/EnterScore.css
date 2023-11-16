@@ -1,0 +1,30 @@
+h3 {
+    padding: 3vw;
+    font-size: 5.5vw;
+}
+
+p {
+    padding: 0vw 3vw 3vw 3vw;
+    font-size: 4.5vw;
+}
+
+.scoreForm {
+    padding: 0vw 3vw 3vw 3vw;
+    width: 94vw;
+}
+
+.scoreForm div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.scoreForm div select {
+    height: 2rem;
+    flex-grow: 1;
+    margin-right: 2vw;
+    font-size: 4vw;
+}
+
+.scoreForm div button {
+    font-size: 4vw;
+}

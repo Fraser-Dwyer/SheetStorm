@@ -1,9 +1,11 @@
 import "../Styles/Home.css";
 import { useContext } from "react";
 import { UserContext } from "../UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const { userInfo } = useContext(UserContext);
+  const navigate = useNavigate();
 
   return (
     <div className="homeContainer">
@@ -32,7 +34,9 @@ export default function Home() {
         </tr>
       </table>
       <div className="menuButtonContainer">
-        <button>Enter Today's Score</button>
+        <button onClick={() => navigate("/post-score")}>
+          Enter Today's Score
+        </button>
         <button>My Games</button>
         <div className="sideButtonDiv">
           <button>
