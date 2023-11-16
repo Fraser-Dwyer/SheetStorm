@@ -1,0 +1,93 @@
+.homeContainer {
+    width: 1fr;
+}
+
+h2 {
+    margin: 3vw;
+    font-size: 7vw;
+}
+
+.menuButtonContainer {
+    margin: 4vw auto;
+    text-align: center;
+}
+
+button {
+    border-radius: 10px;
+}
+
+.menuButtonContainer button {
+    display:block;
+    width: 94vw;
+    height: 15vh;
+    margin: 3vw auto;
+    font-size: 8vw;
+    border: 3px solid black;
+}
+
+.menuButtonContainer div {
+    width: 94vw;
+    display: inline-flex;
+    justify-content: space-between; 
+}
+
+.menuButtonContainer div button {
+    display: inline-flex;
+    justify-content: center;
+    width: 50vw;
+    align-items: center;
+}
+
+.sideButtonDiv :last-child{
+    margin: 0 0 0 1.5vw;
+}
+
+.sideButtonDiv :first-child {
+    margin: 0 1.5vw 0 0;
+}
+
+table, th, td {
+    border: 1px solid;
+    border-color: black;
+  }
+
+table {
+    margin: 3vw;
+    /*border-collapse: collapse;*/
+    font-size: 5vw;
+    text-align: center;
+    border-radius: 10px;
+}
+
+th, td {
+    padding: 1vw;
+}
+
+th {
+    text-align: left;
+    width: 16vw;
+}
+
+.scores td {
+    color: darkgrey;
+}
+
+.scores :first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.days :last-child {
+    border-top-right-radius: 10px;
+}
+
+.days :first-child {
+    border-top-left-radius: 10px;
+}
+
+.scores :last-child {
+    border-bottom-right-radius: 10px;
+}
+
+td {
+    width: 8vw;
+}

@@ -2,7 +2,18 @@ header {
     background-color: white;
     font-size: 5vw;
     text-decoration: none;
-    padding: 4vw 2vw 0vw 2vw;
+    padding: 3vw 3vw 0vw 3vw;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header h1 {
+    font-style: italic;
+    margin-right: 2vw;
+  }
+
+  header img {
+    width: 10vw;
   }
 
   header nav {
@@ -13,4 +24,8 @@ header {
     text-decoration: none;
     color: black;
     padding: 0% 2%;
+  }
+
+  .leftHeaderDiv {
+    display: flex;
   }

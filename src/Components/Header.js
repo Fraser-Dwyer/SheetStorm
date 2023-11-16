@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Styles/Header.css";
+import bolt from "../Images/bolt.png";
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
@@ -27,9 +28,14 @@ export default function Header() {
   const username = userInfo?.username;
   return (
     <header>
+      <div className="leftHeaderDiv">
+        {userInfo && <h1>SHEET STORM</h1>}
+        <img src={bolt} alt="lightening bolt"></img>
+      </div>
+
       <nav>
         {userInfo && <a onClick={handleLogout}>Logout</a>}
-        {!userInfo && (
+        {false && !userInfo && (
           <>
             <Link to="/login">Log In</Link>
             <Link to="/signup">Sign Up</Link>
