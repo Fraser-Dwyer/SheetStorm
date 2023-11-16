@@ -68,9 +68,16 @@ th {
     width: 16vw;
 }
 
-.scores td {
+.scores td{
     color: darkgrey;
 }
+
+@supports (-webkit-text-stroke: 3px black) {
+    .scores td {
+      -webkit-text-fill-color: yellow;
+      -webkit-text-stroke: 1px black;
+    }
+  }
 
 .scores :first-child {
     border-bottom-left-radius: 10px;
@@ -90,4 +97,5 @@ th {
 
 td {
     width: 8vw;
+    min-width: 8vw;
 }

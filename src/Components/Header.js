@@ -29,8 +29,12 @@ export default function Header() {
   return (
     <header>
       <div className="leftHeaderDiv">
-        {userInfo && <h1>SHEET STORM</h1>}
-        <img src={bolt} alt="lightening bolt"></img>
+        {userInfo && (
+          <>
+            <h1>SHEET STORM</h1>
+            <img src={bolt} alt="lightening bolt"></img>
+          </>
+        )}
       </div>
 
       <nav>

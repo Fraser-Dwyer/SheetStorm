@@ -1,9 +1,14 @@
 import "../Styles/Home.css";
+import { useContext } from "react";
+import { UserContext } from "../UserContext";
 
 export default function Home() {
+  const { userInfo } = useContext(UserContext);
+
   return (
     <div className="homeContainer">
-      <h2>Welcome name!</h2>
+      {userInfo && <h2>Welcome {userInfo.name}!</h2>}
+      {!userInfo && <h2>Welcome back!</h2>}
       <table>
         <tr className="days">
           <th>Date</th>
