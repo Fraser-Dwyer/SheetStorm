@@ -1,11 +1,15 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../Styles/Header.css";
 import bolt from "../Images/bolt.png";
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  const path = location.pathname;
 
   useEffect(() => {
     fetch("http://localhost:4000/profile", {
@@ -17,28 +21,27 @@ export default function Header() {
     });
   }, []);
 
-  function handleLogout() {
-    const response = fetch("http://localhost:4000/logout", {
+  async function handleLogout(e) {
+    e.preventDefault();
+    const response = await fetch("http://localhost:4000/logout", {
       credentials: "include",
       method: "POST",
     });
-    setUserInfo(null);
+    if (response.ok) {
+      setUserInfo(null);
+      navigate("/login");
+    }
   }
 
   const username = userInfo?.username;
   return (
     <header>
-      <div className="leftHeaderDiv">
-        {userInfo && (
-          <>
-            <h1>SHEET STORM</h1>
-            <img src={bolt} alt="lightening bolt"></img>
-          </>
-        )}
-      </div>
-
       <nav>
-        {userInfo && <a onClick={handleLogout}>Logout</a>}
+        <div className="navButtonContainer">
+          {path === "/post-score" && <a onClick={() => navigate("/")}>Back</a>}
+          {path === "/" && <a onClick={() => navigate("/")}></a>}
+          {userInfo && <a onClick={(e) => handleLogout(e)}>Logout</a>}
+        </div>
         {false && !userInfo && (
           <>
             <Link to="/login">Log In</Link>
@@ -46,6 +49,16 @@ export default function Header() {
           </>
         )}
       </nav>
+
+      <div className="leftHeaderDiv">
+        {userInfo && (
+          <>
+            <img src={bolt} alt="lightening bolt"></img>
+            <h1>SHEET STORM</h1>
+            <img src={bolt} alt="lightening bolt"></img>
+          </>
+        )}
+      </div>
     </header>
   );
 }

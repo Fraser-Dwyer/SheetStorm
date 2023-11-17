@@ -2,24 +2,20 @@ header {
     background-color: white;
     font-size: 5vw;
     text-decoration: none;
-    padding: 3vw 3vw 0vw 3vw;
-    display: flex;
+    padding: 2vw 2vw 0vw 2vw;
     justify-content: space-between;
   }
 
   header h1 {
     font-style: italic;
-    margin-right: 2vw;
+    margin: 0vw 3vw 0vw 0vw;
+    text-decoration: underline;
   }
 
   header img {
     width: 10vw;
   }
 
-  header nav {
-    display: flex;
-    justify-content: end;
-  }
   header a {
     text-decoration: none;
     color: black;
@@ -28,4 +24,11 @@ header {
 
   .leftHeaderDiv {
     display: flex;
+    justify-content: center;
+    margin-top: 5vw;
+  }
+
+  .navButtonContainer {
+    display: flex;
+    justify-content: space-between;
   }

@@ -1,14 +1,14 @@
 import "../Styles/Login.css";
 import sheetStormLogo from "../Images/sheetStormLogo4.png";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
   const { setUserInfo } = useContext(UserContext);
+  const navigate = useNavigate();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -20,17 +20,12 @@ export default function Login() {
     });
     if (response.ok) {
       response.json().then((userInfo) => {
-        console.log(userInfo);
         setUserInfo(userInfo);
-        setRedirect(true);
+        navigate("/");
       });
     } else {
       alert("Invalid login credentials");
     }
-  }
-
-  if (redirect) {
-    return <Navigate to={"/"} />;
   }
 
   return (

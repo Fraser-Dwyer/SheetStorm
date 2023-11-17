@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "../Styles/EnterScore.css";
+import { UserContext } from "../UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function EnterScore() {
   const [score, setScore] = useState("");
+  const { userInfo } = useContext(UserContext);
+  const username = userInfo.username;
+  const navigate = useNavigate();
 
   const DATE_OPTIONS = {
     weekday: "long",
@@ -12,6 +17,22 @@ export default function EnterScore() {
   };
   const today = new Date().toLocaleDateString("en-US", DATE_OPTIONS);
 
+  async function handleEnterScore(e) {
+    e.preventDefault();
+    const response = await fetch("http://localhost:4000/post-score", {
+      method: "POST",
+      body: JSON.stringify({ username, date: today, score }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      response.json().then(() => {
+        navigate("/");
+      });
+    } else {
+      alert("Score was not submitted successfully");
+    }
+  }
+
   return (
     <div>
       <h3>{today}</h3>
@@ -19,14 +40,13 @@ export default function EnterScore() {
       <form className="scoreForm">
         <div>
           <select
-            placeholder="Score"
             value={score}
             onChange={(e) => {
               setScore(e.target.value);
             }}
           >
-            <option value="n/a">
-              N/A - Didn't correctly guess today's word
+            <option value="" disabled selected>
+              Select score
             </option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -34,8 +54,11 @@ export default function EnterScore() {
             <option value="4">4</option>
             <option value="5">5</option>
             <option value="6">6</option>
+            <option value="n/a">
+              N/A - Didn't correctly guess today's word
+            </option>
           </select>
-          <button>Submit</button>
+          <button onClick={(e) => handleEnterScore(e)}>Submit</button>
         </div>
       </form>
     </div>
