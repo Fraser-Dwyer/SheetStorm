@@ -16,18 +16,25 @@ export default function EnterScore() {
     day: "numeric",
   };
   const today = new Date().toLocaleDateString("en-US", DATE_OPTIONS);
+  var todayDay = new Date().toLocaleDateString("en-US", { weekday: "short" });
   var weekStart = new Date();
   weekStart.setDate(
     weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
   );
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
-  const scoreObj = { day: today, sc: score };
+
+  todayDay = "Fri";
 
   async function handleEnterScore(e) {
     e.preventDefault();
     const response = await fetch("http://localhost:4000/post-score", {
       method: "POST",
-      body: JSON.stringify({ username, weekStart, today, scoreObj }),
+      body: JSON.stringify({
+        username,
+        weekStart,
+        score,
+        todayDay,
+      }),
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
