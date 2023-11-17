@@ -1,11 +1,24 @@
 import "../Styles/Home.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
+  const [scores, setScores] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/get-scores").then((response) => {
+      response.json().then((score) => {
+        setScores(score);
+        console.log(score[0].Tue);
+      });
+    });
+  }, []);
+
+  var todayDay = new Date().toLocaleDateString("en-US", { weekday: "short" });
+  var fail = "-";
 
   return (
     <div className="homeContainer">
@@ -24,13 +37,30 @@ export default function Home() {
         </tr>
         <tr className="scores">
           <th>Score</th>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
-          <td>1</td>
+          {scores && (
+            <>
+              {scores[0].Mon && <td>{scores[0].Mon}</td>}
+              {!scores[0].Mon && <td>{fail}</td>}
+
+              {scores[0].Tue && <td>{scores[0].Tue}</td>}
+              {!scores[0].Tue && <td>{fail}</td>}
+
+              {scores[0].Wed && <td>{scores[0].Wed}</td>}
+              {!scores[0].Wed && <td>{fail}</td>}
+
+              {scores[0].Thu && <td>{scores[0].Thu}</td>}
+              {!scores[0].Thu && <td>{fail}</td>}
+
+              {scores[0].Fri && <td>{scores[0].Fri}</td>}
+              {!scores[0].Fri && <td>{fail}</td>}
+
+              {scores[0].Sat && <td>{scores[0].Sat}</td>}
+              {!scores[0].Sat && <td>{fail}</td>}
+
+              {scores[0].Sun && <td>{scores[0].Sun}</td>}
+              {!scores[0].Sun && <td>{fail}</td>}
+            </>
+          )}
         </tr>
       </table>
       <div className="menuButtonContainer">
