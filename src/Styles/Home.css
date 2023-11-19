@@ -2,6 +2,14 @@
     width: 1fr;
 }
 
+.homeContainer h3 {
+    font-size: 5vw;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
 h2 {
     margin: 3vw;
     font-size: 7vw;
@@ -52,7 +60,7 @@ table, th, td {
   }
 
 table {
-    margin: 3vw;
+    margin: 2vw 3vw 3vw 3vw;
     width: 94vw;
     /*border-collapse: collapse;*/
     font-size: 5vw;
@@ -96,7 +104,6 @@ th {
     border-bottom-right-radius: 10px;
 }
 
-td {
-    width: 8vw;
-    min-width: 8vw;
+table tr td {
+    min-width: calc(8vw + 2vw);
 }

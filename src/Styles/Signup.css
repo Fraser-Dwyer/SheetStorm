@@ -86,7 +86,7 @@
     margin-right: 5%;
     width: 90%;
     background-color: lightcoral;
-    padding: 0vw 1vw;
+    padding: 1vw 1vw;
     font-size: 4vw;
     border: 2px solid black;
     border-radius: 5px;
@@ -100,5 +100,6 @@
   }
 
   .closeDiv img {
-    width: 2.8vw;
+    width: 3vw;
+    padding-right: 0.5vw;
   }

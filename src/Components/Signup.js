@@ -19,10 +19,21 @@ export default function Signup() {
 
   const navigate = useNavigate();
 
+  const DATE_OPTIONS = {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  var weekStart = new Date();
+  weekStart.setDate(
+    weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
+  );
+  weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
+
   useEffect(() => {
     fetch("http://localhost:4000/check-user").then((response) => {
       response.json().then((users) => {
-        console.log(users);
         setAllUsers(users);
       });
     });
@@ -38,12 +49,14 @@ export default function Signup() {
 
   async function handleSignup(e) {
     e.preventDefault();
-    /*
+
+    // Reset error divs
     setNameDiv("notErrorDiv");
     setUserNameDiv("notErrorDiv");
     setPasswordDiv("notErrorDiv");
     setRepeatPasswordDiv("notErrorDiv");
 
+    // Check no fields are empty
     if (
       name.length === 0 ||
       username.length === 0 ||
@@ -64,7 +77,22 @@ export default function Signup() {
       }
       setErrorMsg("Please fill in all fields");
       return;
-    }*/
+    }
+
+    // Check length of name
+    if (name.length < 2) {
+      setNameDiv("errorDiv");
+      setErrorMsg("Name cannot be singular character");
+      return;
+    }
+
+    // Check passwords match
+    if (password !== repeatPassword) {
+      setPasswordDiv("errorDiv");
+      setRepeatPasswordDiv("errorDiv");
+      setErrorMsg("Passwords do not match");
+      return;
+    }
 
     // Check username not already taken
     if (allUsers && allUsers.length > 0) {
@@ -77,14 +105,23 @@ export default function Signup() {
       }
     }
 
+    const pascalName = name.charAt(0).toUpperCase() + name.slice(1);
+
     // If made it here, then make new user
     const response = await fetch("http://localhost:4000/signup", {
       method: "POST",
-      body: JSON.stringify({ name, username, password }),
+      body: JSON.stringify({ name: pascalName, username, password }),
       headers: { "Content-Type": "application/json" },
     });
 
     if (response.ok) {
+      // Make an entry for the user's scores
+      const secondResponse = await fetch("http://localhost:4000/make-scores", {
+        method: "POST",
+        body: JSON.stringify({ username, weekStart }),
+        headers: { "Content-Type": "application/json" },
+      });
+
       navigate("/login");
     } else {
       console.log(response);
