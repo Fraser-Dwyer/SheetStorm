@@ -1,8 +1,8 @@
 .logo img {
-    width: 60%;
-    max-height: 30%;
+    width: 55%;
+    max-height: 25%;
     display: block;
-    margin: 8% auto;
+    margin: 0% auto 8% auto;
   }
   
   .signupContainer {
@@ -21,11 +21,17 @@
   
   .signupContainer form div {
     margin-left: 5%;
+    margin-right: 5%;
     margin-bottom: 3%;
   }
   
   .signupContainer form input {
-    width: 90%;
+    width: 100%;
+    font-size: 4vw;
+  }
+
+  .signupContainer form {
+    margin-bottom: 0;
   }
   
   .signupContainer div h1 {
@@ -40,13 +46,13 @@
   
   .buttonContainer {
     text-align: end;
-    margin: 4% 7%;
+    margin: 4% 5%;
   }
   
   .buttonContainer button {
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
-    font-size: 3.5vw;
+    font-size: 4vw;
   }
   
   .buttonContainer button:active {
@@ -58,8 +64,41 @@
     font-size: 4vw;
     width: 100%;
     margin-top: 1%;
+    margin-bottom: 5%;
   }
   
   .signupMessage span {
     text-decoration: underline;
+  }
+
+  .errorDiv {
+    border: 1px solid red;
+    border-radius: 5px;
+  }
+
+  .notErrorDiv {
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
+  .errorContainer {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    background-color: lightcoral;
+    padding: 0vw 1vw;
+    font-size: 4vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .closeDiv {
+    align-items: center;
+  }
+
+  .closeDiv img {
+    width: 2.8vw;
   }

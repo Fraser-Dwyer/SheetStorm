@@ -2,7 +2,7 @@
     width: 60%;
     max-height: 30%;
     display: block;
-    margin: 8% auto;
+    margin: 0% auto 8% auto;
   }
   
   .loginContainer {
@@ -21,6 +21,7 @@
   
   .loginContainer form div {
     margin-left: 5%;
+    margin-right: 5%;
   }
   
   .loginContainer form div:first-child {
@@ -28,7 +29,8 @@
   }
   
   .loginContainer form input {
-    width: 90%;
+    width: 100%;
+    font-size: 4vw;
   }
   
   .loginContainer div h1 {
@@ -43,13 +45,13 @@
   
   .buttonContainer {
     text-align: end;
-    margin: 4% 7%;
+    margin: 4% 5%;
   }
   
   .buttonContainer button {
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
-    font-size: 3.5vw;
+    font-size: 4vw;
   }
   
   .buttonContainer button:active {
@@ -61,6 +63,7 @@
     font-size: 4vw;
     width: 100%;
     margin-top: 1%;
+    margin-bottom: 5%;
   }
   
   .signupMessage span {

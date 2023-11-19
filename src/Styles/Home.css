@@ -53,6 +53,7 @@ table, th, td {
 
 table {
     margin: 3vw;
+    width: 94vw;
     /*border-collapse: collapse;*/
     font-size: 5vw;
     text-align: center;

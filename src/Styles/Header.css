@@ -32,3 +32,8 @@ header {
     display: flex;
     justify-content: space-between;
   }
+
+  .logRegButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+  }
