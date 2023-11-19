@@ -31,6 +31,7 @@ export default function Home() {
             (score) => score.username === userInfo.username
           );
           setScores(userScores);
+          console.log(userScores);
         }
       });
     });
@@ -59,26 +60,26 @@ export default function Home() {
           <th>Score</th>
           {scores && (
             <>
-              {scores.Mon && <td>{scores.Mon}</td>}
-              {!scores.Mon && <td>{fail}</td>}
+              {scores[0].Mon && <td>{scores[0].Mon}</td>}
+              {!scores[0].Mon && <td>{fail}</td>}
 
-              {scores.Tue && <td>{scores.Tue}</td>}
-              {!scores.Tue && <td>{fail}</td>}
+              {scores[0].Tue && <td>{scores[0].Tue}</td>}
+              {!scores[0].Tue && <td>{fail}</td>}
 
-              {scores.Wed && <td>{scores.Wed}</td>}
-              {!scores.Wed && <td>{fail}</td>}
+              {scores[0].Wed && <td>{scores[0].Wed}</td>}
+              {!scores[0].Wed && <td>{fail}</td>}
 
-              {scores.Thu && <td>{scores.Thu}</td>}
-              {!scores.Thu && <td>{fail}</td>}
+              {scores[0].Thu && <td>{scores[0].Thu}</td>}
+              {!scores[0].Thu && <td>{fail}</td>}
 
-              {scores.Fri && <td>{scores.Fri}</td>}
-              {!scores.Fri && <td>{fail}</td>}
+              {scores[0].Fri && <td>{scores[0].Fri}</td>}
+              {!scores[0].Fri && <td>{fail}</td>}
 
-              {scores.Sat && <td>{scores.Sat}</td>}
-              {!scores.Sat && <td>{fail}</td>}
+              {scores[0].Sat && <td>{scores[0].Sat}</td>}
+              {!scores[0].Sat && <td>{fail}</td>}
 
-              {scores.Sun && <td>{scores.Sun}</td>}
-              {!scores.Sun && <td>{fail}</td>}
+              {scores[0].Sun && <td>{scores[0].Sun}</td>}
+              {!scores[0].Sun && <td>{fail}</td>}
             </>
           )}
         </tr>

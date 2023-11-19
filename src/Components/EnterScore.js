@@ -23,7 +23,7 @@ export default function EnterScore() {
   );
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
-  todayDay = "Wed";
+  todayDay = "Fri";
 
   async function handleEnterScore(e) {
     e.preventDefault();
