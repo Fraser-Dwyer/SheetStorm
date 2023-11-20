@@ -1,0 +1,50 @@
+.labelCreateGame {
+    padding: 0vw 3vw 2vw 3vw;
+    font-size: 4.5vw;
+}
+
+.createGameForm {
+    padding: 0vw 3vw 3vw 3vw;
+    width: 100%;
+}
+
+.createGameForm div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.createGameForm div input {
+    flex-grow: 1;
+    margin-right: 2vw;
+    font-size: 4vw;
+    padding: 1vw;
+}
+
+.createGameForm div button {
+    font-size: 4vw;
+    padding: 1vw;
+}
+
+.notErrorLobbyDiv {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.errorLobbyDiv {
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+.errorContainerInGame {
+    margin-left: 3vw;
+    margin-right: 3vw;
+    width: 94vw;
+    background-color: lightcoral;
+    padding: 1vw 1vw;
+    font-size: 4vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}

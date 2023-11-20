@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { UserContextProvider } from "./UserContext.js";
 import Layout from "./Components/Layout.js";
 import EnterScore from "./Components/EnterScore.js";
+import CreateGame from "./Components/CreateGame.js";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/post-score" element={<EnterScore />} />
+          <Route path="/create-game" element={<CreateGame />} />
         </Route>
       </Routes>
     </UserContextProvider>

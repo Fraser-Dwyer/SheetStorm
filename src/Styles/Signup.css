@@ -20,8 +20,8 @@
   }
   
   .signupContainer form div {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 4vw;
+    margin-right: 4vw;
     margin-bottom: 3%;
   }
   
@@ -36,7 +36,7 @@
   
   .signupContainer div h1 {
     font-size: 7vw;
-    margin: 3%;
+    margin: 2vw;
   }
   
   .signupContainer div label {
@@ -46,7 +46,7 @@
   
   .buttonContainer {
     text-align: end;
-    margin: 4% 5%;
+    margin: 3vw 4vw;
   }
   
   .buttonContainer button {
@@ -63,8 +63,8 @@
     text-align: center;
     font-size: 4vw;
     width: 100%;
-    margin-top: 1%;
-    margin-bottom: 5%;
+    margin-top: 1vw;
+    margin-bottom: 4vw;
   }
   
   .signupMessage span {
@@ -82,8 +82,8 @@
   }
 
   .errorContainer {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 4vw;
+    margin-right: 4vw;
     width: 90%;
     background-color: lightcoral;
     padding: 1vw 1vw;

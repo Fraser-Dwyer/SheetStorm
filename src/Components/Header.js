@@ -38,7 +38,9 @@ export default function Header() {
     <header>
       <nav>
         <div className="navButtonContainer">
-          {path === "/post-score" && <a onClick={() => navigate("/")}>Back</a>}
+          {(path === "/post-score" || path === "/create-game") && (
+            <a onClick={() => navigate("/")}>Back</a>
+          )}
           {path === "/" && <a onClick={() => navigate("/")}></a>}
           {userInfo && <a onClick={(e) => handleLogout(e)}>Logout</a>}
         </div>

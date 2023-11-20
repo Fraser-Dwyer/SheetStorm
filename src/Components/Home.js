@@ -2,7 +2,6 @@ import "../Styles/Home.css";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router-dom";
-import { format } from "date-fns";
 
 export default function Home() {
   const { userInfo } = useContext(UserContext);
@@ -31,7 +30,6 @@ export default function Home() {
             (score) => score.username === userInfo.username
           );
           setScores(userScores);
-          console.log(userScores);
         }
       });
     });
@@ -90,7 +88,7 @@ export default function Home() {
         </button>
         <button>My Games</button>
         <div className="sideButtonDiv">
-          <button>
+          <button onClick={() => navigate("/create-game")}>
             Create<br></br>Game
           </button>
           <button>
