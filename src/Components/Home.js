@@ -86,7 +86,8 @@ export default function Home() {
         <button onClick={() => navigate("/post-score")}>
           Enter {dayToday}'s Score
         </button>
-        <button>My Games</button>
+        <button onClick={() => navigate("/my-games")}>My Games</button>
+        <button onClick={() => navigate("/manage-games")}>Manage Games</button>
         <div className="sideButtonDiv">
           <button onClick={() => navigate("/create-game")}>
             Create<br></br>Game

@@ -1,20 +1,41 @@
 import "../Styles/CreateGame.css";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import cross from "../Images/close.png";
 import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateGame() {
   const [lobbyName, setLobbyName] = useState("");
-  const [errorMsg, setErrorMsg] = useState("Lobby name already exists.");
+  const [errorMsg, setErrorMsg] = useState(null);
   const [lobbyDiv, setLobbyDiv] = useState("notErrorLobbyDiv");
+  const [allLobbies, setAllLobies] = useState(null);
   const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("http://localhost:4000/check-lobby").then((response) => {
+      response.json().then((lobbies) => {
+        setAllLobies(lobbies);
+        console.log(lobbies);
+      });
+    });
+  }, []);
 
   async function handleCreateLobby(e) {
     e.preventDefault();
     const password = makeid(5);
     const username = userInfo.username;
+
+    // Check if lobby name already exists
+    if (allLobbies && allLobbies.length > 0) {
+      for (let i = 0; i < allLobbies.length; i++) {
+        if (allLobbies[i].lobbyName.toLowerCase() === lobbyName.toLowerCase()) {
+          setErrorMsg("Lobby already exists");
+          setLobbyDiv("errorLobbyDiv");
+          return;
+        }
+      }
+    }
 
     const response = await fetch("http://localhost:4000/create-lobby", {
       method: "POST",
@@ -36,6 +57,7 @@ export default function CreateGame() {
 
   const handleCloseClick = () => {
     setErrorMsg(null);
+    setLobbyName("");
     setLobbyDiv("notErrorLobbyDiv");
   };
 

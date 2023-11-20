@@ -38,7 +38,10 @@ export default function Header() {
     <header>
       <nav>
         <div className="navButtonContainer">
-          {(path === "/post-score" || path === "/create-game") && (
+          {(path === "/post-score" ||
+            path === "/create-game" ||
+            path === "/my-games" ||
+            path === "/manage-games") && (
             <a onClick={() => navigate("/")}>Back</a>
           )}
           {path === "/" && <a onClick={() => navigate("/")}></a>}

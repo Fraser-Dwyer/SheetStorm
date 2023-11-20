@@ -27,9 +27,9 @@ button {
 .menuButtonContainer button {
     display:block;
     width: 94vw;
-    height: 15vh;
-    margin: 3vw auto;
-    font-size: 8vw;
+    height: 10vh;
+    margin: 2vw auto;
+    font-size: 6vw;
     border: 3px solid black;
 }
 
