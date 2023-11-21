@@ -1,0 +1,64 @@
+table, th, td {
+    border: 1px solid;
+    border-color: black;
+  }
+
+table {
+    margin: 2vw 3vw 3vw 3vw;
+    width: calc(88vw - 0px);
+    /*border-collapse: collapse;*/
+    font-size: 4.5vw;
+    text-align: center;
+    border-radius: 10px;
+}
+
+table tr {
+    display: block;
+}
+
+th, td {
+    padding: 1vw 0.5vw;
+}
+
+table tr td {
+    min-width: 8vw;
+    width: 8vw;
+}
+
+table tr td:last-child {
+    min-width: 14vw;
+    width: 14vw;
+}
+
+th {
+    text-align: left;
+    width: 18vw;
+    max-width: 18vw;
+}
+
+.scores td{
+    color: darkgrey;
+}
+
+@supports (-webkit-text-stroke: 3px black) {
+    .scores td {
+      -webkit-text-fill-color: yellow;
+      -webkit-text-stroke: 1px black;
+    }
+  }
+
+.scores :first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.days :last-child {
+    border-top-right-radius: 10px;
+}
+
+.days :first-child {
+    border-top-left-radius: 10px;
+}
+
+.scores :last-child {
+    border-bottom-right-radius: 10px;
+}
