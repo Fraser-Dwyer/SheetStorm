@@ -14,7 +14,6 @@ export default function ManageLobby(props) {
     fetch("http://localhost:4000/check-lobby").then((response) => {
       response.json().then((lobbies) => {
         setAllLobies(lobbies);
-        console.log(lobbies);
         var userMadeLobbies = [];
         if (lobbies.length > 0) {
           for (let i = 0; i < lobbies.length; i++) {
@@ -27,6 +26,8 @@ export default function ManageLobby(props) {
       });
     });
   }, []);
+
+  const listPlayers = ["Fraser", "George", "Michael"];
 
   return (
     <div>
@@ -46,6 +47,10 @@ export default function ManageLobby(props) {
                 <div className="infoContainer">
                   <p>Password:</p>
                   <p>{lobby.password}</p>
+                </div>
+                <div className="infoContainer">
+                  <p>Players:</p>
+                  <p>{lobby.players.length}</p>
                 </div>
               </div>
               <div className="rightContent">

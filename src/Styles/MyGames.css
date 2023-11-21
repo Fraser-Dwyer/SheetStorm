@@ -1,0 +1,36 @@
+.outerContainer {
+    display: block;
+    width: 94vw;
+    margin-left: 3vw;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 3vw;
+}
+
+.myGamesContainer {
+    
+    display: flex;
+    align-items: center;
+}
+
+.myGamesContainer img {
+    width: 4vw;
+    height: 5vw;
+    margin-left: 2vw;
+    margin-right: 1vw;
+}
+
+.rotatedImg {
+    transform: rotate(0deg);
+    transition-duration: 2s;
+    
+}
+
+.rotatedImg2 {
+    transform: rotate(90deg);
+    transition-duration: 5s;
+}
+
+.myGamesContainer p {
+    padding: 2vw;
+}

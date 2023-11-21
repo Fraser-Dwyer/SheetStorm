@@ -1,18 +1,17 @@
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../UserContext";
-import manageLobby from "../Components/ManageLobby";
-import ManageLobby from "../Components/ManageLobby";
+import "../Styles/MyGames.css";
+
+import SingleGame from "./SingleGame";
 
 export default function MyGames() {
   const { userInfo } = useContext(UserContext);
   const username = userInfo.username;
-  const [allLobbies, setAllLobies] = useState([]);
   const [inLobbies, setInLobbies] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:4000/check-lobby").then((response) => {
       response.json().then((lobbies) => {
-        setAllLobies(lobbies);
         var userInLobbies = [];
         if (lobbies.length > 0) {
           for (let i = 0; i < lobbies.length; i++) {
@@ -34,9 +33,7 @@ export default function MyGames() {
         <>
           <h3>My Games</h3>
           {inLobbies.map((lobby) => (
-            <>
-              <p>{lobby.lobbyName}</p>
-            </>
+            <SingleGame lobby={lobby} />
           ))}
         </>
       )}
