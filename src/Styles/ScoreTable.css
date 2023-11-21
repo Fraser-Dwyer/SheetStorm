@@ -4,41 +4,53 @@ table, th, td {
   }
 
 table {
-    margin: 2vw 3vw 3vw 3vw;
-    width: calc(88vw - 0px);
     /*border-collapse: collapse;*/
+    margin: 2vw auto;
     font-size: 4.5vw;
     text-align: center;
     border-radius: 10px;
+    border-spacing: 0.5vw;
 }
 
 table tr {
     display: block;
 }
 
-th, td {
-    padding: 1vw 0.5vw;
-}
 
-table tr td {
-    min-width: 8vw;
-    width: 8vw;
-}
-
-table tr td:last-child {
-    min-width: 14vw;
-    width: 14vw;
-}
-
-th {
+.days th {
+    width: 19vw;
+    min-width: 19vw;
     text-align: left;
-    width: 18vw;
-    max-width: 18vw;
+    padding-left: 1vw;
 }
 
-.scores td{
-    color: darkgrey;
+.scores div th {
+    width: 19vw;
+    min-width: 19vw;
+    text-align: left;
+    padding-left: 1vw;
 }
+
+.days td {
+    width: 7vw;
+    min-width: 7vw;
+}
+
+.scores div td {
+    width: 7vw;
+    min-width: 7vw;
+}
+
+.days td:last-child {
+    width: 14vw;
+    min-width: 14vw;
+}
+
+.scores div td:last-child {
+    width: 14vw;
+    min-width: 14vw;
+}
+
 
 @supports (-webkit-text-stroke: 3px black) {
     .scores td {
@@ -47,18 +59,29 @@ th {
     }
   }
 
-.scores :first-child {
-    border-bottom-left-radius: 10px;
-}
-
-.days :last-child {
-    border-top-right-radius: 10px;
-}
-
-.days :first-child {
+  table tr:first-child th:first-child {
     border-top-left-radius: 10px;
+  }
+
+  table tr:first-child td:last-child {
+    border-top-right-radius: 10px;
+  }
+
+  table tr:last-child div:last-child th:first-child {
+    border-bottom-left-radius: 10px;
+  }
+
+  table tr:last-child div:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+  }
+
+h4 {
+    margin-left: 3vw;
+    font-size: 4vw;
 }
 
-.scores :last-child {
-    border-bottom-right-radius: 10px;
+.tableContainer {
+    width: 88vw;
+    margin-left: calc(3vw - 2px);
+    margin-right: calc(3vw - 2px);
 }

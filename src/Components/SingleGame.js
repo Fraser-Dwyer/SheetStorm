@@ -56,7 +56,6 @@ export default function SingleGame({ lobbyName, allScores, players }) {
       </div>
       {expanded && (
         <>
-          <p>Hello world</p>
           <ScoreTable weekStart={weekStart} scores={filteredScores} />
         </>
       )}

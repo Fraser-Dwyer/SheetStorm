@@ -7,8 +7,8 @@ import SingleGame from "./SingleGame";
 export default function MyGames() {
   const { userInfo } = useContext(UserContext);
   const username = userInfo.username;
-  const [inLobbies, setInLobbies] = useState([]);
-  const [allScores, setAllScores] = useState([]);
+  const [inLobbies, setInLobbies] = useState(null);
+  const [allScores, setAllScores] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:4000/check-lobby").then((response) => {
@@ -36,16 +36,17 @@ export default function MyGames() {
 
   return (
     <div>
-      {inLobbies.length > 0 && (
+      {inLobbies?.length > 0 && (
         <>
           <h3>My Games</h3>
-          {inLobbies.map((lobby) => (
-            <SingleGame
-              lobbyName={lobby.lobbyName}
-              allScores={allScores}
-              players={lobby.players}
-            />
-          ))}
+          {allScores &&
+            inLobbies.map((lobby) => (
+              <SingleGame
+                lobbyName={lobby.lobbyName}
+                allScores={allScores}
+                players={lobby.players}
+              />
+            ))}
         </>
       )}
     </div>
