@@ -1,8 +1,7 @@
 import "../Styles/ScoreTable.css";
 
-export default function ScoreTable({ weekStart, scores }) {
+export default function ScoreTable({ weekStart, scores, name }) {
   var fail = "-";
-  console.log(scores, "scores");
 
   return (
     <>
@@ -23,10 +22,13 @@ export default function ScoreTable({ weekStart, scores }) {
           <tr className="scores">
             {scores?.map((score) => (
               <div className="oneResult">
-                <th>
-                  {score.username.slice(0, 1).toUpperCase()}
-                  {score.username.slice(1).toLowerCase()}
-                </th>
+                {name === false && <th>Score</th>}
+                {name === true && (
+                  <th>
+                    {score.username.slice(0, 1).toUpperCase()}
+                    {score.username.slice(1).toLowerCase()}
+                  </th>
+                )}
                 {score.Mon && <td>{score.Mon}</td>}
                 {!score.Mon && <td>{fail}</td>}
 
@@ -48,7 +50,7 @@ export default function ScoreTable({ weekStart, scores }) {
                 {score.Sun && <td>{score.Sun}</td>}
                 {!score.Sun && <td>{fail}</td>}
 
-                <td>4</td>
+                <td>{score.total}</td>
               </div>
             ))}
           </tr>

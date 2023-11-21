@@ -41,8 +41,6 @@ export default function SingleGame({ lobbyName, allScores, players }) {
     setFilteredScores(newScores);
   }, []);
 
-  console.log(filteredScores, "scores here");
-
   return (
     <div className="outerContainer">
       <div className="myGamesContainer">
@@ -52,11 +50,18 @@ export default function SingleGame({ lobbyName, allScores, players }) {
           style={{ transform: rotate, transition: "all 0.2s linear" }}
           onClick={handleImgClick}
         />
-        <p>{lobbyName}</p>
+        <p>
+          {lobbyName.slice(0, 1).toUpperCase()}
+          {lobbyName.slice(1)}
+        </p>
       </div>
       {expanded && (
         <>
-          <ScoreTable weekStart={weekStart} scores={filteredScores} />
+          <ScoreTable
+            weekStart={weekStart}
+            scores={filteredScores}
+            name={true}
+          />
         </>
       )}
     </div>

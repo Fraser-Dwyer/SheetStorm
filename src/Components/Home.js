@@ -15,7 +15,6 @@ export default function Home() {
     month: "short",
     day: "numeric",
   };
-  const today = new Date().toLocaleDateString("en-US", DATE_OPTIONS);
   var dayToday = new Date().toLocaleDateString("en-US", { weekday: "long" });
   var weekStart = new Date();
   weekStart.setDate(
@@ -28,10 +27,38 @@ export default function Home() {
       response.json().then((score) => {
         if (score.length > 0) {
           const userScores = score.filter(
-            (score) => score.username === userInfo.username
+            (score) =>
+              score.username === userInfo.username &&
+              score.weekStart === weekStart
           );
           userScores.sort((a, b) => (a.weekStart < b.weekStart ? 1 : -1));
-          setScores(userScores);
+
+          let tempArr = userScores.map((item) => {
+            var total = 0;
+            if (item.Mon && item.Mon !== "-") {
+              total = total + 7 - item.Mon;
+            }
+            if (item.Tue && item.Tue !== "-") {
+              total = total + 7 - item.Tue;
+            }
+            if (item.Wed && item.Wed !== "-") {
+              total = total + 7 - item.Wed;
+            }
+            if (item.Thu && item.Thu !== "-") {
+              total = total + 7 - item.Thu;
+            }
+            if (item.Fri && item.Fri !== "-") {
+              total = total + 7 - item.Fri;
+            }
+            if (item.Sat && item.Sat !== "-") {
+              total = total + 7 - item.Sat;
+            }
+            if (item.Sun && item.Sun !== "-") {
+              total = total + 7 - item.Sun;
+            }
+            return { ...item, total: total };
+          });
+          setScores(tempArr);
         }
       });
     });
@@ -43,7 +70,9 @@ export default function Home() {
     <div className="homeContainer">
       {userInfo && <h2>Welcome {userInfo.name}!</h2>}
       {!userInfo && <h2>Welcome back!</h2>}
-      <ScoreTable weekStart={weekStart} scores={scores} />
+      <div className="myScoreContainer">
+        <ScoreTable weekStart={weekStart} scores={scores} name={false} />
+      </div>
       <div className="menuButtonContainer">
         <button onClick={() => navigate("/post-score")}>
           Enter {dayToday}'s Score

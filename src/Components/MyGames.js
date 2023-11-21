@@ -29,7 +29,32 @@ export default function MyGames() {
 
     fetch("http://localhost:4000/get-scores").then((response) => {
       response.json().then((allScores) => {
-        setAllScores(allScores);
+        let tempArr = allScores.map((item) => {
+          var total = 0;
+          if (item.Mon && item.Mon !== "-") {
+            total = total + 7 - item.Mon;
+          }
+          if (item.Tue && item.Tue !== "-") {
+            total = total + 7 - item.Tue;
+          }
+          if (item.Wed && item.Wed !== "-") {
+            total = total + 7 - item.Wed;
+          }
+          if (item.Thu && item.Thu !== "-") {
+            total = total + 7 - item.Thu;
+          }
+          if (item.Fri && item.Fri !== "-") {
+            total = total + 7 - item.Fri;
+          }
+          if (item.Sat && item.Sat !== "-") {
+            total = total + 7 - item.Sat;
+          }
+          if (item.Sun && item.Sun !== "-") {
+            total = total + 7 - item.Sun;
+          }
+          return { ...item, total: total };
+        });
+        setAllScores(tempArr);
       });
     });
   }, []);
