@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../UserContext";
 import "../Styles/MyGames.css";
 
-import SingleGame from "./SingleGame";
+import SingleGame from "../Components/SingleGame";
 
 export default function MyGames() {
   const { userInfo } = useContext(UserContext);

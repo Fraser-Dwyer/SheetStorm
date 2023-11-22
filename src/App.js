@@ -1,13 +1,13 @@
-import Home from "../src/Components/Home.js";
-import Login from "../src/Components/Login.js";
-import Signup from "../src/Components/Signup.js";
+import Home from "./Pages/Home.js";
+import Login from "./Pages/Login.js";
+import Signup from "./Pages/Signup.js";
 import { Route, Routes } from "react-router-dom";
 import { UserContextProvider } from "./UserContext.js";
 import Layout from "./Components/Layout.js";
-import EnterScore from "./Components/EnterScore.js";
-import CreateGame from "./Components/CreateGame.js";
-import MyGames from "./Components/MyGames.js";
-import ManageLobby from "./Components/ManageLobby.js";
+import EnterScore from "./Pages/EnterScore.js";
+import CreateGame from "./Pages/CreateGame.js";
+import MyGames from "./Pages/MyGames.js";
+import ManageLobby from "./Pages/ManageLobby.js";
 
 function App() {
   return (

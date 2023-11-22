@@ -3,12 +3,15 @@ import sheetStormLogo from "../Images/sheetStormLogo4.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
+import Error from "../Components/Error";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { setUserInfo } = useContext(UserContext);
   const navigate = useNavigate();
+  const [loginClass, setLoginClass] = useState("notErrorDiv");
+  const [errorMsg, setErrorMsg] = useState(null);
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -24,9 +27,15 @@ export default function Login() {
         navigate("/");
       });
     } else {
-      alert("Invalid login credentials");
+      setLoginClass("errorDiv");
+      setErrorMsg("Invalid login credentials");
     }
   }
+
+  const handleCloseClick = () => {
+    setErrorMsg(null);
+    setLoginClass("notErrorDiv");
+  };
 
   return (
     <div className="main">
@@ -41,6 +50,7 @@ export default function Login() {
           <div>
             <label for="username">Username</label>
             <input
+              className={loginClass}
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -49,14 +59,18 @@ export default function Login() {
           <div>
             <label for="password">Password</label>
             <input
+              className={loginClass}
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
         </form>
+
+        <Error errorMsg={errorMsg} handleCloseClick={handleCloseClick} />
+
         <div className="buttonContainer">
-          <button onClick={handleLogin}>Submit</button>
+          <button onClick={(e) => handleLogin(e)}>Submit</button>
         </div>
       </div>
       <div className="signupMessage">

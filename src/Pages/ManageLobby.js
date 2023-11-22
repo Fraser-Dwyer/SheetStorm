@@ -42,7 +42,10 @@ export default function ManageLobby(props) {
               <div className="leftContent">
                 <div className="infoContainer">
                   <p>Lobby:</p>
-                  <p>{lobby.lobbyName}</p>
+                  <p>
+                    {lobby.lobbyName.slice(0, 1).toUpperCase()}
+                    {lobby.lobbyName.slice(1)}
+                  </p>
                 </div>
                 <div className="infoContainer">
                   <p>Password:</p>

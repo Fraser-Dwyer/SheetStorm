@@ -22,6 +22,7 @@
   .loginContainer form div {
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 4%;
   }
   
   .loginContainer form div:first-child {

@@ -1,6 +1,6 @@
 import "../Styles/Signup.css";
 import sheetStormLogo from "../Images/sheetStormLogo4.png";
-import cross from "../Images/close.png";
+import Error from "../Components/Error";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -176,14 +176,7 @@ export default function Signup() {
           </div>
         </form>
 
-        {errorMsg && (
-          <div className="errorContainer">
-            {errorMsg}
-            <div className="closeDiv">
-              <img src={cross} alt="closeImg" onClick={handleCloseClick}></img>
-            </div>
-          </div>
-        )}
+        <Error errorMsg={errorMsg} handleCloseClick={handleCloseClick} />
 
         <div className="buttonContainer">
           <button onClick={handleSignup}>Submit</button>

@@ -2,7 +2,7 @@ import "../Styles/Home.css";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router-dom";
-import ScoreTable from "./ScoreTable";
+import ScoreTable from "../Components/ScoreTable";
 
 export default function Home() {
   const { userInfo } = useContext(UserContext);

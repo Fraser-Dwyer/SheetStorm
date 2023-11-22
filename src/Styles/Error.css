@@ -1,0 +1,22 @@
+.errorContainer {
+    margin-left: 4vw;
+    margin-right: 4vw;
+    width: 90%;
+    background-color: lightcoral;
+    padding: 1vw 1vw;
+    font-size: 4vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .closeDiv {
+    align-items: center;
+  }
+
+  .closeDiv img {
+    width: 3vw;
+    padding-right: 0.5vw;
+  }
