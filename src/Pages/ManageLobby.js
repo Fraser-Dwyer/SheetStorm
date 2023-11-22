@@ -1,14 +1,14 @@
 import "../Styles/ManageLobby.css";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../UserContext";
-import { useNavigate } from "react-router-dom";
 
 export default function ManageLobby(props) {
   const [allLobbies, setAllLobies] = useState(null);
   const [userCreatedLobbies, setUserCreatedLobbies] = useState([]);
   const { userInfo } = useContext(UserContext);
-  const navigate = useNavigate();
   const username = userInfo.username;
+  const [deleting, setDeleting] = useState(true);
+  const [sure, setSure] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:4000/check-lobby").then((response) => {
@@ -25,9 +25,31 @@ export default function ManageLobby(props) {
         setUserCreatedLobbies(userMadeLobbies);
       });
     });
-  }, []);
+  }, [deleting]);
 
-  const listPlayers = ["Fraser", "George", "Michael"];
+  function handleConfirmDeleteLobby(e, lobbyName) {
+    e.preventDefault();
+    setSure(lobbyName);
+  }
+
+  async function handleDeleteLobby(e, lobbyName) {
+    e.preventDefault();
+    const response = await fetch("http://localhost:4000/delete-lobby", {
+      method: "POST",
+      body: JSON.stringify({
+        lobbyName,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      response.json().then(() => {
+        console.log("Deleted successfully");
+        setDeleting(!deleting);
+      });
+    } else {
+      console.log("Failed to delete lobby");
+    }
+  }
 
   return (
     <div>
@@ -39,27 +61,51 @@ export default function ManageLobby(props) {
         userCreatedLobbies.map((lobby) => (
           <>
             <div className="manageLobbyContainer">
-              <div className="leftContent">
-                <div className="infoContainer">
-                  <p>Lobby:</p>
-                  <p>
-                    {lobby.lobbyName.slice(0, 1).toUpperCase()}
-                    {lobby.lobbyName.slice(1)}
-                  </p>
+              <div className="flexLobbyContainer">
+                <div className="leftContent">
+                  <div className="infoContainer">
+                    <p>Lobby:</p>
+                    <p>
+                      {lobby.lobbyName.slice(0, 1).toUpperCase()}
+                      {lobby.lobbyName.slice(1)}
+                    </p>
+                  </div>
+                  <div className="infoContainer">
+                    <p>Password:</p>
+                    <p>{lobby.password}</p>
+                  </div>
+                  <div className="infoContainer">
+                    <p>Players:</p>
+                    <p>{lobby.players.length}</p>
+                  </div>
                 </div>
-                <div className="infoContainer">
-                  <p>Password:</p>
-                  <p>{lobby.password}</p>
+                <div className="rightContent">
+                  <button
+                    onClick={(e) => {
+                      handleConfirmDeleteLobby(e, lobby.lobbyName);
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
-                <div className="infoContainer">
-                  <p>Players:</p>
-                  <p>{lobby.players.length}</p>
-                </div>
-              </div>
-              <div className="rightContent">
-                <button>Delete</button>
               </div>
             </div>
+            {sure && sure === lobby.lobbyName && (
+              <div className="areYouSure">
+                <p>
+                  Delete {lobby.lobbyName.slice(0, 1).toUpperCase()}
+                  {lobby.lobbyName.slice(1).toLowerCase()}?
+                </p>
+                <div>
+                  <button
+                    onClick={(e) => handleDeleteLobby(e, lobby.lobbyName)}
+                  >
+                    Delete
+                  </button>
+                  <button onClick={() => setSure(null)}>Cancel</button>
+                </div>
+              </div>
+            )}
           </>
         ))}
     </div>
