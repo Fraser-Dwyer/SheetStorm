@@ -68,7 +68,12 @@ export default function Home() {
 
   return (
     <div className="homeContainer">
-      {userInfo && <h2>Welcome {userInfo.name}!</h2>}
+      {userInfo && (
+        <h2>
+          Welcome {userInfo.name.slice(0, 1).toUpperCase()}
+          {userInfo.name.slice(1).toLowerCase()}!
+        </h2>
+      )}
       {!userInfo && <h2>Welcome back!</h2>}
       <div className="myScoreContainer">
         <ScoreTable weekStart={weekStart} scores={scores} name={false} />

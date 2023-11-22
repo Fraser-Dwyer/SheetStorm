@@ -47,8 +47,14 @@ export default function Header() {
           {path === "/" && <a onClick={() => navigate("/")}></a>}
           {userInfo && <a onClick={(e) => handleLogout(e)}>Logout</a>}
         </div>
-        {!userInfo && (
-          <div className="logRegButtonContainer">
+        {!userInfo && path === "/login" && (
+          <div className="logRegButtonContainerLog">
+            <Link to="/login">Log In</Link>
+            <Link to="/signup">Sign Up</Link>
+          </div>
+        )}
+        {!userInfo && path === "/signup" && (
+          <div className="logRegButtonContainerReg">
             <Link to="/login">Log In</Link>
             <Link to="/signup">Sign Up</Link>
           </div>

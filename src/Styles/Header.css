@@ -33,7 +33,22 @@ header {
     justify-content: space-between;
   }
 
-  .logRegButtonContainer {
+  .logRegButtonContainerLog {
     display: flex;
     justify-content: flex-end;
   }
+
+  .logRegButtonContainerReg {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .logRegButtonContainerLog a:first-child {
+    text-decoration: underline;
+  }
+
+  .logRegButtonContainerReg a:last-child {
+    
+    text-decoration: underline;
+  }
+
