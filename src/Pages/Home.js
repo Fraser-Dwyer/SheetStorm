@@ -88,7 +88,7 @@ export default function Home() {
           <button onClick={() => navigate("/create-game")}>
             Create<br></br>Game
           </button>
-          <button>
+          <button onClick={() => navigate("/join-game")}>
             Join<br></br>Game
           </button>
         </div>

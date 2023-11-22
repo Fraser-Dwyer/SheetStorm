@@ -27,4 +27,6 @@ p {
 
 .scoreForm div button {
     font-size: 4vw;
+    border: 1px solid black;
+    border-radius: 5px;
 }

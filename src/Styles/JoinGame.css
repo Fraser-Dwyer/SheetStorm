@@ -1,0 +1,59 @@
+.lobbyInputContainer {
+    width: 94vw;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    padding: 3vw;
+    
+}
+
+.lobbyInputContainer form div label {
+    width: 100%;
+    display: block;
+}
+
+.lobbyInputContainer form div {
+    margin-bottom: 2vw;
+    font-size: 4vw;
+}
+
+.lobbyInputContainer form div input {
+    font-size: 4vw;
+    width: 100%;
+    border-radius: 5px;
+}
+
+
+.lobbyInputContainer div button {
+    font-size: 4vw;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.lobbyInputButtonContainer {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+.notErrorDivJoin {
+    border: 1px solid black;
+}
+
+.errorDivJoin {
+    border: 1px solid red;
+}
+
+.errorContainerJoin {
+    width: calc(88vw - 4px);
+    background-color: lightcoral;
+    padding: 1vw;
+    font-size: 4vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 3vw 0vw 3vw 0vw;
+}

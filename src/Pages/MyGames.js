@@ -22,7 +22,6 @@ export default function MyGames() {
               }
             }
           }
-          console.log(userInLobbies, "users in lobbies");
           setInLobbies(userInLobbies);
         }
       });

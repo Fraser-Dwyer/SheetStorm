@@ -41,9 +41,8 @@ export default function Header() {
           {(path === "/post-score" ||
             path === "/create-game" ||
             path === "/my-games" ||
-            path === "/manage-games") && (
-            <a onClick={() => navigate("/")}>Back</a>
-          )}
+            path === "/manage-games" ||
+            path === "/join-game") && <a onClick={() => navigate("/")}>Back</a>}
           {path === "/" && <a onClick={() => navigate("/")}></a>}
           {userInfo && <a onClick={(e) => handleLogout(e)}>Logout</a>}
         </div>

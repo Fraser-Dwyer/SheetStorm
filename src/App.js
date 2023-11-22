@@ -8,6 +8,7 @@ import EnterScore from "./Pages/EnterScore.js";
 import CreateGame from "./Pages/CreateGame.js";
 import MyGames from "./Pages/MyGames.js";
 import ManageLobby from "./Pages/ManageLobby.js";
+import JoinGame from "./Pages/JoinGame.js";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/create-game" element={<CreateGame />} />
           <Route path="/my-games" element={<MyGames />} />
           <Route path="/manage-games" element={<ManageLobby />} />
+          <Route path="/join-game" element={<JoinGame />} />
         </Route>
       </Routes>
     </UserContextProvider>
