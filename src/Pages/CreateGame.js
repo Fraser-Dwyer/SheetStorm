@@ -2,15 +2,14 @@ import "../Styles/CreateGame.css";
 import { useContext, useState, useEffect } from "react";
 import cross from "../Images/close.png";
 import { UserContext } from "../UserContext";
-import { useNavigate } from "react-router-dom";
 
 export default function CreateGame() {
   const [lobbyName, setLobbyName] = useState("");
   const [errorMsg, setErrorMsg] = useState(null);
+  const [successMsg, setSuccessMsg] = useState(null);
   const [lobbyDiv, setLobbyDiv] = useState("notErrorLobbyDiv");
   const [allLobbies, setAllLobies] = useState(null);
   const { userInfo } = useContext(UserContext);
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:4000/check-lobby").then((response) => {
@@ -48,10 +47,13 @@ export default function CreateGame() {
     });
     if (response.ok) {
       response.json().then(() => {
-        navigate("/");
+        var msg =
+          lobbyName.slice(0, 1).toUpperCase() +
+          lobbyName.slice(1).toLowerCase() +
+          " created successfully!";
+        setSuccessMsg(msg);
+        setLobbyName("");
       });
-    } else {
-      alert("Score was not submitted successfully");
     }
   }
 
@@ -59,6 +61,10 @@ export default function CreateGame() {
     setErrorMsg(null);
     setLobbyName("");
     setLobbyDiv("notErrorLobbyDiv");
+  };
+
+  const handleCloseClickSuccess = () => {
+    setSuccessMsg(null);
   };
 
   function makeid(length) {
@@ -77,25 +83,39 @@ export default function CreateGame() {
   return (
     <div>
       <h3>Create Game</h3>
-      <p className="labelCreateGame">Name of the lobby:</p>
-      <form className="createGameForm">
-        <div>
-          <input
-            className={lobbyDiv}
-            value={lobbyName}
-            onChange={(e) => setLobbyName(e.target.value)}
-          ></input>
-          <button onClick={(e) => handleCreateLobby(e)}>Create</button>
-        </div>
-      </form>
-      {errorMsg && (
-        <div className="errorContainerInGame">
-          {errorMsg}
-          <div className="closeDiv">
-            <img src={cross} alt="closeImg" onClick={handleCloseClick}></img>
+      <div className="createGameContainer">
+        <p className="labelCreateGame">Name of the lobby:</p>
+        <form className="createGameForm">
+          <div>
+            <input
+              className={lobbyDiv}
+              value={lobbyName}
+              onChange={(e) => setLobbyName(e.target.value)}
+            ></input>
+            <button onClick={(e) => handleCreateLobby(e)}>Create</button>
           </div>
-        </div>
-      )}
+        </form>
+        {errorMsg && (
+          <div className="errorContainerInGame">
+            {errorMsg}
+            <div className="closeDiv">
+              <img src={cross} alt="closeImg" onClick={handleCloseClick}></img>
+            </div>
+          </div>
+        )}
+        {successMsg && (
+          <div className="successContainerCreate">
+            {successMsg}
+            <div className="closeDiv">
+              <img
+                src={cross}
+                alt="closeImg"
+                onClick={handleCloseClickSuccess}
+              ></img>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

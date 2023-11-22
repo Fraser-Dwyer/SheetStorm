@@ -1,10 +1,10 @@
 .labelCreateGame {
-    padding: 0vw 3vw 2vw 3vw;
+    padding: 0vw 0vw 1vw 0vw;
     font-size: 4.5vw;
 }
 
 .createGameForm {
-    padding: 0vw 3vw 3vw 3vw;
+    padding: 0vw;
     width: 100%;
 }
 
@@ -16,12 +16,12 @@
 .createGameForm div input {
     flex-grow: 1;
     margin-right: 2vw;
-    font-size: 4vw;
+    font-size: 4.5vw;
     padding: 1vw;
 }
 
 .createGameForm div button {
-    font-size: 4vw;
+    font-size: 4.5vw;
     padding: 1vw;
     border: 1px solid black;
     border-radius: 5px;
@@ -38,15 +38,36 @@
 }
 
 .errorContainerInGame {
-    margin-left: 3vw;
-    margin-right: 3vw;
-    width: 94vw;
+    margin-top: 3vw;
+    width: 88vw;
     background-color: lightcoral;
     padding: 1vw 1vw;
-    font-size: 4vw;
+    font-size: 4.5vw;
     border: 2px solid black;
     border-radius: 5px;
     color: black;
     display: flex;
     justify-content: space-between;
+}
+
+.createGameContainer {
+    width: 94vw;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    padding: 3vw;
+}
+
+.successContainerCreate {
+    width: calc(88vw - 4px);
+    background-color: lightgreen;
+    padding: 1vw;
+    font-size: 4.5vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 3vw 0vw 0vw 0vw;
 }

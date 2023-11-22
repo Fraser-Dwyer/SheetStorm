@@ -14,21 +14,23 @@
 }
 
 .lobbyInputContainer form div {
-    margin-bottom: 2vw;
-    font-size: 4vw;
+    margin-bottom: 3vw;
+    font-size: 4.5vw;
 }
 
 .lobbyInputContainer form div input {
-    font-size: 4vw;
+    font-size: 4.5vw;
     width: 100%;
     border-radius: 5px;
+    padding: 1vw;
 }
 
 
 .lobbyInputContainer div button {
-    font-size: 4vw;
+    font-size: 4.5vw;
     border: 1px solid black;
     border-radius: 5px;
+    padding: 1vw;
 }
 
 .lobbyInputButtonContainer {
@@ -49,7 +51,7 @@
     width: calc(88vw - 4px);
     background-color: lightcoral;
     padding: 1vw;
-    font-size: 4vw;
+    font-size: 4.5vw;
     border: 2px solid black;
     border-radius: 5px;
     color: black;
@@ -62,7 +64,7 @@
     width: calc(88vw - 4px);
     background-color: lightgreen;
     padding: 1vw;
-    font-size: 4vw;
+    font-size: 4.5vw;
     border: 2px solid black;
     border-radius: 5px;
     color: black;
