@@ -57,3 +57,16 @@
     justify-content: space-between;
     margin: 3vw 0vw 3vw 0vw;
 }
+
+.successContainerJoin {
+    width: calc(88vw - 4px);
+    background-color: lightgreen;
+    padding: 1vw;
+    font-size: 4vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 3vw 0vw 3vw 0vw;
+}

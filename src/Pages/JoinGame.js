@@ -1,17 +1,50 @@
 import "../Styles/JoinGame.css";
 import cross from "../Images/close.png";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../UserContext";
 
 export default function JoinGame() {
   const [lobbyName, setLobbyName] = useState("");
   const [lobbyPassword, setLobbyPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState(null);
+  const [successMsg, setSuccessMsg] = useState(null);
   const [inputClass, setInputClass] = useState("notErrorDivJoin");
+  const { userInfo } = useContext(UserContext);
 
   const handleCloseClick = () => {
     setErrorMsg(null);
     setInputClass("notErrorDivJoin");
   };
+
+  const handleCloseClickSuccess = () => {
+    setSuccessMsg(null);
+  };
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const response = await fetch("http://localhost:4000/join-lobby", {
+      method: "POST",
+      body: JSON.stringify({
+        username: userInfo.username,
+        lobbyName,
+        lobbyPassword,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      response.json().then(() => {
+        var msg =
+          lobbyName.slice(0, 1).toUpperCase() +
+          lobbyName.slice(1).toLowerCase() +
+          " joined successfully";
+        setSuccessMsg(msg);
+        setLobbyName("");
+        setLobbyPassword("");
+      });
+    } else {
+      alert("Lobby was not joined successfully");
+    }
+  }
 
   return (
     <>
@@ -45,8 +78,21 @@ export default function JoinGame() {
           </div>
         )}
 
+        {successMsg && (
+          <div className="successContainerJoin">
+            {successMsg}
+            <div className="closeDiv">
+              <img
+                src={cross}
+                alt="closeImg"
+                onClick={handleCloseClickSuccess}
+              ></img>
+            </div>
+          </div>
+        )}
+
         <div className="lobbyInputButtonContainer">
-          <button>Submit</button>
+          <button onClick={(e) => handleSubmit(e)}>Submit</button>
         </div>
       </div>
     </>
