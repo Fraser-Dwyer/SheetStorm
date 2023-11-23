@@ -1,7 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../UserContext";
 import "../Styles/MyGames.css";
-
 import SingleGame from "../Components/SingleGame";
 
 export default function MyGames() {
@@ -9,6 +8,7 @@ export default function MyGames() {
   const username = userInfo.username;
   const [inLobbies, setInLobbies] = useState(null);
   const [allScores, setAllScores] = useState(null);
+  const [leave, setLeave] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:4000/check-lobby").then((response) => {
@@ -57,7 +57,27 @@ export default function MyGames() {
         setAllScores(tempArr);
       });
     });
-  }, []);
+  }, [leave]);
+
+  async function handleLeaveLobby(e, lobbyName) {
+    e.preventDefault();
+    const response = await fetch("http://localhost:4000/leave-lobby", {
+      method: "POST",
+      body: JSON.stringify({
+        lobbyName,
+        username,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      response.json().then(() => {
+        console.log("Successfully left lobby");
+        setLeave(!leave);
+      });
+    } else {
+      console.log("Failed to leave lobby");
+    }
+  }
 
   return (
     <div>
@@ -70,6 +90,7 @@ export default function MyGames() {
                 lobbyName={lobby.lobbyName}
                 allScores={allScores}
                 players={lobby.players}
+                handleLeaveLobby={(e) => handleLeaveLobby(e, lobby.lobbyName)}
               />
             ))}
         </>

@@ -3,7 +3,12 @@ import { useState, useEffect } from "react";
 import "../Styles/MyGames.css";
 import ScoreTable from "./ScoreTable";
 
-export default function SingleGame({ lobbyName, allScores, players }) {
+export default function SingleGame({
+  lobbyName,
+  allScores,
+  players,
+  handleLeaveLobby,
+}) {
   const [expanded, setExpanded] = useState(false);
   const rotate = expanded ? "rotate(90deg)" : "rotate(0)";
   const [filteredScores, setFilteredScores] = useState([]);
@@ -75,7 +80,9 @@ export default function SingleGame({ lobbyName, allScores, players }) {
         <div className="areYouSure">
           <p>Are you sure?</p>
           <div>
-            <button>Leave</button>
+            <button onClick={(e) => handleLeaveLobby(e, lobbyName)}>
+              Yes, Leave
+            </button>
             <button onClick={() => setSure(null)}>Cancel</button>
           </div>
         </div>

@@ -5,7 +5,7 @@ table, th, td {
 
 table {
     /*border-collapse: collapse;*/
-    margin: 2vw auto;
+    margin: 2vw auto 4vw auto;
     font-size: 4.5vw;
     text-align: center;
     border-radius: 10px;
