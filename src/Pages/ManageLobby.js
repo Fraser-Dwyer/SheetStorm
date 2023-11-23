@@ -1,4 +1,5 @@
 import "../Styles/ManageLobby.css";
+import cross from "../Images/close.png";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../UserContext";
 
@@ -9,6 +10,7 @@ export default function ManageLobby(props) {
   const username = userInfo.username;
   const [deleting, setDeleting] = useState(true);
   const [sure, setSure] = useState(null);
+  const [successMsg, setSuccessMsg] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:4000/check-lobby").then((response) => {
@@ -32,6 +34,10 @@ export default function ManageLobby(props) {
     setSure(lobbyName);
   }
 
+  const handleCloseClickSuccess = () => {
+    setSuccessMsg(null);
+  };
+
   async function handleDeleteLobby(e, lobbyName) {
     e.preventDefault();
     const response = await fetch("http://localhost:4000/delete-lobby", {
@@ -43,7 +49,12 @@ export default function ManageLobby(props) {
     });
     if (response.ok) {
       response.json().then(() => {
-        console.log("Deleted successfully");
+        var msg =
+          "Successfully deleted '" +
+          lobbyName.slice(0, 1).toUpperCase() +
+          lobbyName.slice(1) +
+          "'";
+        setSuccessMsg(msg);
         setDeleting(!deleting);
       });
     } else {
@@ -57,6 +68,20 @@ export default function ManageLobby(props) {
       {userCreatedLobbies.length === 0 && (
         <p>You have not yet created any lobbies.</p>
       )}
+
+      {successMsg && (
+        <div className="successContainerJoinDelete">
+          {successMsg}
+          <div className="closeDiv">
+            <img
+              src={cross}
+              alt="closeImg"
+              onClick={handleCloseClickSuccess}
+            ></img>
+          </div>
+        </div>
+      )}
+
       {userCreatedLobbies.length > 0 &&
         userCreatedLobbies.map((lobby) => (
           <>
@@ -89,23 +114,23 @@ export default function ManageLobby(props) {
                   </button>
                 </div>
               </div>
-            </div>
-            {sure && sure === lobby.lobbyName && (
-              <div className="areYouSure">
-                <p>
-                  Delete {lobby.lobbyName.slice(0, 1).toUpperCase()}
-                  {lobby.lobbyName.slice(1).toLowerCase()}?
-                </p>
-                <div>
-                  <button
-                    onClick={(e) => handleDeleteLobby(e, lobby.lobbyName)}
-                  >
-                    Delete
-                  </button>
-                  <button onClick={() => setSure(null)}>Cancel</button>
+              {sure && sure === lobby.lobbyName && (
+                <div className="areYouSure">
+                  <p>
+                    Delete {lobby.lobbyName.slice(0, 1).toUpperCase()}
+                    {lobby.lobbyName.slice(1).toLowerCase()}?
+                  </p>
+                  <div>
+                    <button
+                      onClick={(e) => handleDeleteLobby(e, lobby.lobbyName)}
+                    >
+                      Delete
+                    </button>
+                    <button onClick={() => setSure(null)}>Cancel</button>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </>
         ))}
     </div>

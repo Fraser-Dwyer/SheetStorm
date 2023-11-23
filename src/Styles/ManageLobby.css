@@ -18,6 +18,10 @@
     max-width: 60vw;
 }
 
+.infoContainer p {
+    font-size: 4vw;
+}
+
 .infoContainer:first-child {
     padding-top: 2vw;
 }
@@ -31,7 +35,7 @@
 }
 
 .rightContent button {
-    font-size: 4.5vw;
+    font-size: 4vw;
     color: black;
     border: 2px solid black;
     background-color: lightcoral;
@@ -40,9 +44,9 @@
 
 
 .areYouSure {
-    margin: 0vw 3vw 3vw 3vw;
-    border: 2px solid black;
-    border-radius: 10px;
+    margin: 0vw 0vw 3vw 0vw;
+    /*border: 2px solid black;
+    border-radius: 10px;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -51,10 +55,11 @@
 .areYouSure p {
     margin: 3vw 0vw 3vw 3vw;
     padding: 0vw;
+    font-size: 4vw;
 }
 
 .areYouSure button {
-    font-size: 4.5vw;
+    font-size: 4vw;
     padding: 2vw;
 }
 
@@ -67,4 +72,17 @@
 .areYouSure div :last-child {
     margin: 3vw 3vw 3vw 0vw;
     border: 2px solid black;
+}
+
+.successContainerJoinDelete {
+    width: 94vw;
+    background-color: lightgreen;
+    padding: 1vw;
+    font-size: 4vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 0vw 3vw 3vw 3vw;
 }

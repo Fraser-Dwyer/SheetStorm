@@ -23,17 +23,17 @@
 .createGameForm div button {
     font-size: 4.5vw;
     padding: 1vw;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
 }
 
 .notErrorLobbyDiv {
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
 }
 
 .errorLobbyDiv {
-    border: 1px solid red;
+    border: 2px solid red;
     border-radius: 5px;
 }
 

@@ -34,18 +34,20 @@ export default function JoinGame() {
     if (response.ok) {
       response.json().then(() => {
         var msg =
+          "'" +
           lobbyName.slice(0, 1).toUpperCase() +
-          lobbyName.slice(1).toLowerCase() +
-          " joined successfully!";
+          lobbyName.slice(1) +
+          "' joined successfully!";
         setSuccessMsg(msg);
         setLobbyName("");
         setLobbyPassword("");
       });
     } else {
       var msg =
-        "Failed to join " +
+        "Failed to join '" +
         lobbyName.slice(0, 1).toUpperCase() +
-        lobbyName.slice(1).toLowerCase();
+        lobbyName.slice(1).toLowerCase() +
+        "'";
       setErrorMsg(msg);
       setInputClass("errorDivJoin");
     }

@@ -48,9 +48,10 @@ export default function CreateGame() {
     if (response.ok) {
       response.json().then(() => {
         var msg =
+          "'" +
           lobbyName.slice(0, 1).toUpperCase() +
-          lobbyName.slice(1).toLowerCase() +
-          " created successfully!";
+          lobbyName.slice(1) +
+          "' created successfully!";
         setSuccessMsg(msg);
         setLobbyName("");
       });
