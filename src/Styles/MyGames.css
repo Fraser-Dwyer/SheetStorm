@@ -7,9 +7,19 @@
 }
 
 .myGamesContainer {
-    
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.myGamesContainer div {
+    display: flex;
+    align-items: center;
+    margin: 2vw 0vw 2vw 0vw;
+}
+
+.myGamesContainer div:first-child {
+    flex-grow: 1;
 }
 
 .myGamesContainer img {
@@ -21,4 +31,12 @@
 
 .myGamesContainer p {
     padding: 2vw;
+}
+
+.myGamesContainer button {
+    font-size: 4vw;
+    padding: 2vw;
+    background-color: lightcoral;
+    border: 2px solid black;
+    margin-right: 2vw;
 }

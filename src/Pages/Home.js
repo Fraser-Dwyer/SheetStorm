@@ -85,12 +85,8 @@ export default function Home() {
         <button onClick={() => navigate("/my-games")}>My Games</button>
         <button onClick={() => navigate("/manage-games")}>Manage Games</button>
         <div className="sideButtonDiv">
-          <button onClick={() => navigate("/create-game")}>
-            Create<br></br>Game
-          </button>
-          <button onClick={() => navigate("/join-game")}>
-            Join<br></br>Game
-          </button>
+          <button onClick={() => navigate("/create-game")}>Create Game</button>
+          <button onClick={() => navigate("/join-game")}>Join Game</button>
         </div>
       </div>
     </div>

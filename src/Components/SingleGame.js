@@ -7,6 +7,7 @@ export default function SingleGame({ lobbyName, allScores, players }) {
   const [expanded, setExpanded] = useState(false);
   const rotate = expanded ? "rotate(90deg)" : "rotate(0)";
   const [filteredScores, setFilteredScores] = useState([]);
+  const [sure, setSure] = useState(null);
 
   const DATE_OPTIONS = {
     weekday: "long",
@@ -44,16 +45,21 @@ export default function SingleGame({ lobbyName, allScores, players }) {
   return (
     <div className="outerContainer">
       <div className="myGamesContainer">
-        <img
-          src={arrow}
-          alt="arrowImg"
-          style={{ transform: rotate, transition: "all 0.2s linear" }}
-          onClick={handleImgClick}
-        />
-        <p>
-          {lobbyName.slice(0, 1).toUpperCase()}
-          {lobbyName.slice(1)}
-        </p>
+        <div onClick={handleImgClick}>
+          <img
+            src={arrow}
+            alt="arrowImg"
+            style={{ transform: rotate, transition: "all 0.2s linear" }}
+            onClick={handleImgClick}
+          />
+          <p>
+            {lobbyName.slice(0, 1).toUpperCase()}
+            {lobbyName.slice(1)}
+          </p>
+        </div>
+        <div>
+          <button onClick={() => setSure(!sure)}>Leave Game</button>
+        </div>
       </div>
       {expanded && (
         <>
@@ -63,6 +69,16 @@ export default function SingleGame({ lobbyName, allScores, players }) {
             name={true}
           />
         </>
+      )}
+
+      {sure && (
+        <div className="areYouSure">
+          <p>Are you sure?</p>
+          <div>
+            <button>Leave</button>
+            <button onClick={() => setSure(null)}>Cancel</button>
+          </div>
+        </div>
       )}
     </div>
   );
