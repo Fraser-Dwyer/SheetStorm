@@ -20,7 +20,7 @@ export default function MyGames() {
         if (lobbies.length > 0) {
           for (let i = 0; i < lobbies.length; i++) {
             for (let j = 0; j < lobbies[i].players.length; j++) {
-              if (lobbies[i].players[j] === username) {
+              if (lobbies[i].players[j].username === username) {
                 userInLobbies.push(lobbies[i]);
               }
             }
@@ -132,6 +132,7 @@ export default function MyGames() {
           {allScores &&
             inLobbies.map((lobby) => (
               <SingleGame
+                key={lobby.lobbyName}
                 lobbyName={lobby.lobbyName}
                 allScores={allScores}
                 players={lobby.players}

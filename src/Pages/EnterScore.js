@@ -74,7 +74,7 @@ export default function EnterScore() {
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
-              <option value="n/a">N/A - Didn't win today</option>
+              <option value="-">N/A - Didn't win today</option>
             </select>
             <button onClick={(e) => handleEnterScore(e)}>Submit</button>
           </div>

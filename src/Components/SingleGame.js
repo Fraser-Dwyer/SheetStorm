@@ -2,6 +2,9 @@ import arrow from "../Images/right-arrow.png";
 import { useState, useEffect } from "react";
 import "../Styles/MyGames.css";
 import ScoreTable from "./ScoreTable";
+import first from "../Images/first.png";
+import second from "../Images/second.png";
+import third from "../Images/third.png";
 
 export default function SingleGame({
   lobbyName,
@@ -13,6 +16,7 @@ export default function SingleGame({
   const rotate = expanded ? "rotate(90deg)" : "rotate(0)";
   const [filteredScores, setFilteredScores] = useState([]);
   const [sure, setSure] = useState(null);
+  const [sortedPlayers, setSortedPlayers] = useState(players);
 
   const DATE_OPTIONS = {
     weekday: "long",
@@ -36,7 +40,7 @@ export default function SingleGame({
       for (let i = 0; i < allScores.length; i++) {
         for (let j = 0; j < players.length; j++) {
           if (
-            allScores[i].username === players[j] &&
+            allScores[i].username === players[j].username &&
             allScores[i].weekStart === weekStart
           ) {
             newScores.push(allScores[i]);
@@ -45,6 +49,9 @@ export default function SingleGame({
       }
     }
     setFilteredScores(newScores);
+
+    var tempSortedPlayers = [...players].sort((a, b) => b.wins - a.wins);
+    setSortedPlayers(tempSortedPlayers);
   }, []);
 
   return (
@@ -73,6 +80,39 @@ export default function SingleGame({
             scores={filteredScores}
             name={true}
           />
+          <p style={{ textDecoration: "underline" }}>
+            Hall of fame - All time wins
+          </p>
+          {sortedPlayers && (
+            <div className="podiumOne">
+              <img src={first} alt="firstplace"></img>
+              <p>
+                1st - {sortedPlayers[0].username.slice(0, 1).toUpperCase()}
+                {sortedPlayers[0].username.slice(1)} [{sortedPlayers[0].wins}{" "}
+                Wins]
+              </p>
+            </div>
+          )}
+          {sortedPlayers && sortedPlayers.length > 1 && (
+            <div className="podiumTwo">
+              <img src={second} alt="secondPlace"></img>
+              <p>
+                2nd - {sortedPlayers[1].username.slice(0, 1).toUpperCase()}
+                {sortedPlayers[1].username.slice(1)} [{sortedPlayers[1].wins}{" "}
+                Wins]
+              </p>
+            </div>
+          )}
+          {sortedPlayers && sortedPlayers.length > 2 && (
+            <div className="podiumThree">
+              <img src={third} alt="thirdPlace"></img>
+              <p>
+                3rd - {sortedPlayers[2].username.slice(0, 1).toUpperCase()}
+                {sortedPlayers[2].username.slice(1)} [{sortedPlayers[2].wins}{" "}
+                Wins]
+              </p>
+            </div>
+          )}
         </>
       )}
 
