@@ -7,7 +7,7 @@ import ScoreTable from "../Components/ScoreTable";
 export default function Home() {
   const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
-  const [scores, setScores] = useState();
+  const [scores, setScores] = useState(null);
 
   const DATE_OPTIONS = {
     weekday: "long",
@@ -75,9 +75,11 @@ export default function Home() {
         </h2>
       )}
       {!userInfo && <h2>Welcome back!</h2>}
-      <div className="myScoreContainer">
-        <ScoreTable weekStart={weekStart} scores={scores} name={false} />
-      </div>
+      {scores && (
+        <div className="myScoreContainer">
+          <ScoreTable weekStart={weekStart} scores={scores} name={false} />
+        </div>
+      )}
       <div className="menuButtonContainer">
         <button onClick={() => navigate("/post-score")}>
           Enter {dayToday}'s Score

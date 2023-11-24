@@ -2,6 +2,10 @@ import "../Styles/ScoreTable.css";
 
 export default function ScoreTable({ weekStart, scores, name }) {
   var fail = "-";
+  var scoresSorted = scores;
+  if (scores && scoresSorted.length > 1) {
+    scoresSorted = [...scores].sort((a, b) => b.total - a.total);
+  }
 
   return (
     <>
@@ -20,7 +24,7 @@ export default function ScoreTable({ weekStart, scores, name }) {
             <td>Total</td>
           </tr>
           <tr className="scores">
-            {scores?.map((score) => (
+            {scoresSorted?.map((score) => (
               <div className="oneResult">
                 {name === false && <th>Score</th>}
                 {name === true && (
@@ -38,7 +42,7 @@ export default function ScoreTable({ weekStart, scores, name }) {
                 {score.Wed && <td>{score.Wed}</td>}
                 {!score.Wed && <td>{fail}</td>}
 
-                {score.Thu && <td>{scores.Thu}</td>}
+                {score.Thu && <td>{score.Thu}</td>}
                 {!score.Thu && <td>{fail}</td>}
 
                 {score.Fri && <td>{score.Fri}</td>}
