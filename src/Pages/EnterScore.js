@@ -50,30 +50,30 @@ export default function EnterScore() {
     <div>
       <h3>{today}</h3>
       <p>Enter the score you achieved today in Wordle</p>
-      <form className="scoreForm">
-        <div>
-          <select
-            value={score}
-            onChange={(e) => {
-              setScore(e.target.value);
-            }}
-          >
-            <option value="" disabled selected>
-              Select score
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="n/a">
-              N/A - Didn't correctly guess today's word
-            </option>
-          </select>
-          <button onClick={(e) => handleEnterScore(e)}>Submit</button>
-        </div>
-      </form>
+      <div className="scoreFormContainer">
+        <form className="scoreForm">
+          <div>
+            <select
+              value={score}
+              onChange={(e) => {
+                setScore(e.target.value);
+              }}
+            >
+              <option value="" disabled selected>
+                Select score
+              </option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="n/a">N/A - Didn't win today</option>
+            </select>
+            <button onClick={(e) => handleEnterScore(e)}>Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

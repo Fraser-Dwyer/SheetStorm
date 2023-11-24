@@ -21,12 +21,14 @@ p {
 .scoreForm div select {
     flex-grow: 1;
     margin-right: 2vw;
-    font-size: 4vw;
-    border: 1px solid black;
+    font-size: 4.5vw;
+    border: 2px solid black;
+    padding: 2vw 1vw;
 }
 
 .scoreForm div button {
-    font-size: 4vw;
-    border: 1px solid black;
+    font-size: 4.5vw;
+    border: 2px solid black;
     border-radius: 5px;
+    padding: 2vw;
 }
