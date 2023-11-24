@@ -11,6 +11,7 @@ export default function ManageLobby(props) {
   const [deleting, setDeleting] = useState(true);
   const [sure, setSure] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:4000/check-lobby").then((response) => {
@@ -38,6 +39,10 @@ export default function ManageLobby(props) {
     setSuccessMsg(null);
   };
 
+  const handleCloseClickFail = () => {
+    setErrorMsg(null);
+  };
+
   async function handleDeleteLobby(e, lobbyName) {
     e.preventDefault();
     const response = await fetch("http://localhost:4000/delete-lobby", {
@@ -58,7 +63,7 @@ export default function ManageLobby(props) {
         setDeleting(!deleting);
       });
     } else {
-      console.log("Failed to delete lobby");
+      setErrorMsg("Failed to delete game");
     }
   }
 
@@ -77,6 +82,19 @@ export default function ManageLobby(props) {
               src={cross}
               alt="closeImg"
               onClick={handleCloseClickSuccess}
+            ></img>
+          </div>
+        </div>
+      )}
+
+      {errorMsg && (
+        <div className="errorContainerDelete">
+          {errorMsg}
+          <div className="closeDiv">
+            <img
+              src={cross}
+              alt="closeImg"
+              onClick={handleCloseClickFail}
             ></img>
           </div>
         </div>

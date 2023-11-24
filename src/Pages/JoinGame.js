@@ -41,6 +41,7 @@ export default function JoinGame() {
         setSuccessMsg(msg);
         setLobbyName("");
         setLobbyPassword("");
+        handleCloseClick();
       });
     } else {
       var msg =

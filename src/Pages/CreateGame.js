@@ -15,7 +15,6 @@ export default function CreateGame() {
     fetch("http://localhost:4000/check-lobby").then((response) => {
       response.json().then((lobbies) => {
         setAllLobies(lobbies);
-        console.log(lobbies);
       });
     });
   }, []);
@@ -54,7 +53,11 @@ export default function CreateGame() {
           "' created successfully!";
         setSuccessMsg(msg);
         setLobbyName("");
+        handleCloseClick();
       });
+    } else {
+      setErrorMsg("Failed to create lobby");
+      setLobbyDiv("errorLobbyDiv");
     }
   }
 

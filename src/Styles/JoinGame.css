@@ -28,7 +28,7 @@
 
 .lobbyInputContainer div button {
     font-size: 4.5vw;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     padding: 1vw;
 }
@@ -40,11 +40,11 @@
 }
 
 .notErrorDivJoin {
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 .errorDivJoin {
-    border: 1px solid red;
+    border: 2px solid red;
 }
 
 .errorContainerJoin {

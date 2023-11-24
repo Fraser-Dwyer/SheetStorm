@@ -77,7 +77,20 @@
 .successContainerJoinDelete {
     width: 94vw;
     background-color: lightgreen;
-    padding: 1vw;
+    padding: 2vw;
+    font-size: 4vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 0vw 3vw 3vw 3vw;
+}
+
+.errorContainerDelete {
+    width: 94vw;
+    background-color: lightcoral;
+    padding: 2vw;
     font-size: 4vw;
     border: 2px solid black;
     border-radius: 5px;

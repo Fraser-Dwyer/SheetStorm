@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../UserContext";
 import "../Styles/MyGames.css";
 import SingleGame from "../Components/SingleGame";
+import cross from "../Images/close.png";
 
 export default function MyGames() {
   const { userInfo } = useContext(UserContext);
@@ -9,6 +10,8 @@ export default function MyGames() {
   const [inLobbies, setInLobbies] = useState(null);
   const [allScores, setAllScores] = useState(null);
   const [leave, setLeave] = useState(true);
+  const [successMsg, setSuccessMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:4000/check-lobby").then((response) => {
@@ -71,19 +74,61 @@ export default function MyGames() {
     });
     if (response.ok) {
       response.json().then(() => {
-        console.log("Successfully left lobby");
+        var msg =
+          "Successfully left '" +
+          lobbyName.slice(0, 1).toUpperCase() +
+          lobbyName.slice(1) +
+          "'";
+        setSuccessMsg(msg);
         setLeave(!leave);
       });
     } else {
-      console.log("Failed to leave lobby");
+      setErrorMsg("Failed to leave game");
     }
   }
 
+  const handleCloseClickSuccess = () => {
+    setSuccessMsg(null);
+  };
+
+  const handleCloseClickFail = () => {
+    setErrorMsg(null);
+  };
+
   return (
     <div>
+      <h3>My Games</h3>
+      {(!inLobbies || inLobbies?.length === 0) && (
+        <h4>You are not yet in any games</h4>
+      )}
       {inLobbies?.length > 0 && (
         <>
-          <h3>My Games</h3>
+          {successMsg && (
+            <div className="successContainerJoinDelete">
+              {successMsg}
+              <div className="closeDiv">
+                <img
+                  src={cross}
+                  alt="closeImg"
+                  onClick={handleCloseClickSuccess}
+                ></img>
+              </div>
+            </div>
+          )}
+
+          {errorMsg && (
+            <div className="errorContainerDelete">
+              {errorMsg}
+              <div className="closeDiv">
+                <img
+                  src={cross}
+                  alt="closeImg"
+                  onClick={handleCloseClickFail}
+                ></img>
+              </div>
+            </div>
+          )}
+
           {allScores &&
             inLobbies.map((lobby) => (
               <SingleGame

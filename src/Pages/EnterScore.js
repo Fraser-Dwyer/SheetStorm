@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import "../Styles/EnterScore.css";
 import { UserContext } from "../UserContext";
+import cross from "../Images/close.png";
 import { useNavigate } from "react-router-dom";
 
 export default function EnterScore() {
@@ -8,6 +9,7 @@ export default function EnterScore() {
   const { userInfo } = useContext(UserContext);
   const username = userInfo.username;
   const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const DATE_OPTIONS = {
     weekday: "long",
@@ -42,9 +44,13 @@ export default function EnterScore() {
         navigate("/");
       });
     } else {
-      alert("Score was not submitted successfully");
+      setErrorMsg("Failed to submit today's score.");
     }
   }
+
+  const handleCloseClickFail = () => {
+    setErrorMsg(null);
+  };
 
   return (
     <div>
@@ -74,6 +80,18 @@ export default function EnterScore() {
           </div>
         </form>
       </div>
+      {errorMsg && (
+        <div className="errorContainerDelete">
+          {errorMsg}
+          <div className="closeDiv">
+            <img
+              src={cross}
+              alt="closeImg"
+              onClick={handleCloseClickFail}
+            ></img>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
