@@ -81,7 +81,7 @@ export default function SingleGame({
             name={true}
           />
           <p style={{ textDecoration: "underline" }}>
-            Hall of fame - All time wins
+            Hall of fame [All time wins]
           </p>
           {sortedPlayers && (
             <div className="podiumOne">
