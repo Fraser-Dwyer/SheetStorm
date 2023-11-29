@@ -64,8 +64,6 @@ export default function Home() {
     });
   }, []);
 
-  var todayDay = new Date().toLocaleDateString("en-US", { weekday: "short" });
-
   return (
     <div className="homeContainer">
       {userInfo && (
