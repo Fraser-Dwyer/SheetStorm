@@ -14,7 +14,7 @@ export default function MyGames() {
   const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/check-lobby").then((response) => {
+    fetch("https://server.sheetstorm.co.uk/check-lobby").then((response) => {
       response.json().then((lobbies) => {
         var userInLobbies = [];
         if (lobbies.length > 0) {
@@ -30,7 +30,7 @@ export default function MyGames() {
       });
     });
 
-    fetch("http://localhost:4000/get-scores").then((response) => {
+    fetch("https://server.sheetstorm.co.uk/get-scores").then((response) => {
       response.json().then((allScores) => {
         let tempArr = allScores.map((item) => {
           var total = 0;
@@ -64,14 +64,17 @@ export default function MyGames() {
 
   async function handleLeaveLobby(e, lobbyName) {
     e.preventDefault();
-    const response = await fetch("http://localhost:4000/leave-lobby", {
-      method: "POST",
-      body: JSON.stringify({
-        lobbyName,
-        username,
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await fetch(
+      "https://server.sheetstorm.co.uk/leave-lobby",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          lobbyName,
+          username,
+        }),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     if (response.ok) {
       response.json().then(() => {
         var msg =

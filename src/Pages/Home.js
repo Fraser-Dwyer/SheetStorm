@@ -23,7 +23,7 @@ export default function Home() {
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   useEffect(() => {
-    fetch("http://localhost:4000/get-scores").then((response) => {
+    fetch("https://server.sheetstorm.co.uk/get-scores").then((response) => {
       response.json().then((score) => {
         if (score.length > 0) {
           const userScores = score.filter(
@@ -66,7 +66,7 @@ export default function Home() {
 
   return (
     <div className="homeContainer">
-      {userInfo && (
+      {userInfo && userInfo.name !== undefined && (
         <h2>
           Welcome {userInfo.name.slice(0, 1).toUpperCase()}
           {userInfo.name.slice(1).toLowerCase()}!
