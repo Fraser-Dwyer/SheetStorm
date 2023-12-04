@@ -31,6 +31,8 @@
     border: 2px solid black;
     border-radius: 5px;
     padding: 1vw;
+    background-color: #787c7fff;
+    color: white;
 }
 
 .lobbyInputButtonContainer {

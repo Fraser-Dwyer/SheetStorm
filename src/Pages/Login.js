@@ -48,18 +48,18 @@ export default function Login() {
         </div>
         <form>
           <div>
-            <label for="username">Username</label>
             <input
               className={loginClass}
+              placeholder="Username"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div>
-            <label for="password">Password</label>
             <input
               className={loginClass}
+              placeholder="Password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

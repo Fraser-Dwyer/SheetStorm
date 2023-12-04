@@ -29,8 +29,10 @@ button {
     width: 94vw;
     height: 15vw;
     margin: 2vw auto;
-    font-size: 6vw;
+    font-size: 5vw;
     border: 3px solid black;
+    background-color: #787c7fff;
+    color: white;
 }
 
 .menuButtonContainer div {
@@ -48,11 +50,11 @@ button {
 }
 
 .sideButtonDiv :last-child{
-    margin: 0 0 0 1.5vw;
+    margin: 0 0 0 1vw;
 }
 
 .sideButtonDiv :first-child {
-    margin: 0 1.5vw 0 0;
+    margin: 0 1vw 0 0;
 }
 
 .myScoreContainer {
@@ -60,10 +62,8 @@ button {
     margin-right: calc(3vw - 2px);
     display: block;
     width: 94vw;
-    margin: 0vw 3vw 3vw 3vw;
+    margin: 0vw 3vw 0vw 3vw;
     /*border: 3px solid black;
     border-radius: 10px;
     padding-top: 2vw;*/
-    padding-bottom: 1vw;
-    margin-bottom: 0px;
 }

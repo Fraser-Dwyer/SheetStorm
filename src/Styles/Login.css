@@ -6,7 +6,7 @@
 .logo img {
     width: 100%;
     display: block;
-    margin: 0% auto 8% auto;
+    margin: 6% auto 8% auto;
   }
   
   .loginContainer {
@@ -55,14 +55,13 @@
   }
   
   .buttonContainer button {
-    border: 1px solid rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 5px;
     font-size: 4vw;
     padding: 1.5vw;
-  }
-  
-  .buttonContainer button:active {
-    background-color: #ffdb0055
+    font-weight: bolder;
+    background-color: #787c7fff;
+    color: white;
   }
   
   .signupMessage {

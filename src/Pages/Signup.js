@@ -140,36 +140,36 @@ export default function Signup() {
         </div>
         <form>
           <div>
-            <label for="name">First Name</label>
             <input
               className={nameDiv}
+              placeholder="First Name"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div>
-            <label for="username">Username</label>
             <input
               className={usernameDiv}
+              placeholder="Username"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div>
-            <label for="password">Password</label>
             <input
               className={passwordDiv}
+              placeholder="Password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div>
-            <label for="repeatPassword">Repeat Password</label>
             <input
               className={repeatPasswordDiv}
+              placeholder="Repeat Password"
               type="password"
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}

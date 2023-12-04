@@ -1,5 +1,11 @@
 * {
-  font-family: 'Fira Sans Condensed', sans-serif;
+  /*font-family: 'Fira Sans Condensed', sans-serif;*/
+  font-family: 'Poppins', sans-serif;
   margin: 0px;
   box-sizing: border-box;
+}
+
+input:focus {
+  border: 2px solid #69a964ff;
+  outline: none;
 }

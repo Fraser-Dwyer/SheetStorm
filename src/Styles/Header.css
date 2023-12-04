@@ -1,12 +1,13 @@
 header {
-    background-color: white;
     font-size: 5vw;
     text-decoration: none;
-    padding: 2vw 2vw 0vw 2vw;
+    padding: 2vw;
     justify-content: space-between;
     border-bottom: 2px solid #787c7f;
     position: sticky;
     top: 0;
+    z-index: 999;
+    background-color: #ffffff;
   }
 
   header h1 {

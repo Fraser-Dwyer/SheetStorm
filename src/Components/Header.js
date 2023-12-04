@@ -61,13 +61,13 @@ export default function Header() {
         )}
       </nav>
 
-      <div className="leftHeaderDiv">
-        {userInfo?.username !== undefined && (
+      {userInfo?.username !== undefined && (
+        <div className="leftHeaderDiv">
           <div className="titleContainerLogos">
             <img src={sheetstormlogo} alt="lightening bolt"></img>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   );
 }

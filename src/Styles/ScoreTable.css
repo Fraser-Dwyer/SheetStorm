@@ -3,6 +3,11 @@ table, th, td {
     border-color: black;
   }
 
+th, td {
+  background-color: white;
+  color: black;
+}
+
 table {
     /*border-collapse: collapse;*/
     margin: 2vw auto 4vw auto;
@@ -10,12 +15,12 @@ table {
     text-align: center;
     border-radius: 10px;
     border-spacing: 0.5vw;
+    background-color: white;
 }
 
 table tr {
     display: block;
 }
-
 
 .days th {
     width: 19vw;
@@ -51,10 +56,13 @@ table tr {
     min-width: 14vw;
 }
 
+.days tr {
+  background-color: transparent;
+}
 
 @supports (-webkit-text-stroke: 3px black) {
     .scores td {
-      -webkit-text-fill-color: yellow;
+      -webkit-text-fill-color: black;
       -webkit-text-stroke: 1px black;
     }
   }

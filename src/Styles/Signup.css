@@ -45,9 +45,10 @@
   }
   
   .buttonContainer button {
-    border: 1px solid rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 5px;
     font-size: 4vw;
+    font-weight: bolder;
   }
   
   .buttonContainer button:active {
@@ -67,11 +68,11 @@
   }
 
   .errorDiv {
-    border: 1px solid red;
+    border: 2px solid red;
     border-radius: 5px;
   }
 
   .notErrorDiv {
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
   }
