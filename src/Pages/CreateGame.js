@@ -12,7 +12,7 @@ export default function CreateGame() {
   const { userInfo } = useContext(UserContext);
 
   useEffect(() => {
-    fetch("https://server.sheetstorm.co.uk/check-lobby").then((response) => {
+    fetch("http://localhost:8000/check-lobby").then((response) => {
       response.json().then((lobbies) => {
         setAllLobies(lobbies);
       });
@@ -35,18 +35,15 @@ export default function CreateGame() {
       }
     }
 
-    const response = await fetch(
-      "https://server.sheetstorm.co.uk/create-lobby",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          username,
-          lobbyName,
-          password,
-        }),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    const response = await fetch("http://localhost:8000/create-lobby", {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+        lobbyName,
+        password,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
     if (response.ok) {
       response.json().then(() => {
         var msg =

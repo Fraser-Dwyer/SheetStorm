@@ -1,5 +1,5 @@
 import "../Styles/Signup.css";
-import sheetStormLogo from "../Images/sheetStormLogo4.png";
+import sheetStormLogo from "../Images/sheetstorm-logo2.png";
 import Error from "../Components/Error";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -32,7 +32,7 @@ export default function Signup() {
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   useEffect(() => {
-    fetch("https://server.sheetstorm.co.uk/check-user").then((response) => {
+    fetch("http://localhost:8000/check-user").then((response) => {
       response.json().then((users) => {
         setAllUsers(users);
       });
@@ -108,7 +108,7 @@ export default function Signup() {
     const pascalName = name.charAt(0).toUpperCase() + name.slice(1);
 
     // If made it here, then make new user
-    const response = await fetch("https://server.sheetstorm.co.uk/signup", {
+    const response = await fetch("http://localhost:8000/signup", {
       method: "POST",
       body: JSON.stringify({ name: pascalName, username, password }),
       headers: { "Content-Type": "application/json" },

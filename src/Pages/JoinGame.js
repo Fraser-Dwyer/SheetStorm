@@ -22,7 +22,7 @@ export default function JoinGame() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await fetch("https://server.sheetstorm.co.uk/join-lobby", {
+    const response = await fetch("http://localhost:8000/join-lobby", {
       method: "POST",
       body: JSON.stringify({
         username: userInfo.username,

@@ -14,7 +14,7 @@ export default function ManageLobby(props) {
   const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
-    fetch("https://server.sheetstorm.co.uk/check-lobby").then((response) => {
+    fetch("http://localhost:8000/check-lobby").then((response) => {
       response.json().then((lobbies) => {
         setAllLobies(lobbies);
         var userMadeLobbies = [];
@@ -45,16 +45,13 @@ export default function ManageLobby(props) {
 
   async function handleDeleteLobby(e, lobbyName) {
     e.preventDefault();
-    const response = await fetch(
-      "https://server.sheetstorm.co.uk/delete-lobby",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          lobbyName,
-        }),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    const response = await fetch("http://localhost:8000/delete-lobby", {
+      method: "POST",
+      body: JSON.stringify({
+        lobbyName,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
     if (response.ok) {
       response.json().then(() => {
         var msg =

@@ -12,7 +12,7 @@ export default function Header() {
   const path = location.pathname;
 
   useEffect(() => {
-    fetch("https://server.sheetstorm.co.uk/profile", {
+    fetch("http://localhost:8000/profile", {
       credentials: "include",
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -23,7 +23,7 @@ export default function Header() {
 
   async function handleLogout(e) {
     e.preventDefault();
-    const response = await fetch("https://server.sheetstorm.co.uk/logout", {
+    const response = await fetch("http://localhost:8000/logout", {
       credentials: "include",
       method: "POST",
     });
@@ -33,7 +33,6 @@ export default function Header() {
     }
   }
 
-  const username = userInfo?.username;
   return (
     <header>
       <nav>
@@ -44,15 +43,17 @@ export default function Header() {
             path === "/manage-games" ||
             path === "/join-game") && <a onClick={() => navigate("/")}>Back</a>}
           {path === "/" && <a onClick={() => navigate("/")}></a>}
-          {userInfo && <a onClick={(e) => handleLogout(e)}>Logout</a>}
+          {userInfo?.username !== undefined && (
+            <a onClick={(e) => handleLogout(e)}>Logout</a>
+          )}
         </div>
-        {!userInfo && path === "/login" && (
+        {userInfo?.username === undefined && path === "/login" && (
           <div className="logRegButtonContainerLog">
             <Link to="/login">Log In</Link>
             <Link to="/signup">Sign Up</Link>
           </div>
         )}
-        {!userInfo && path === "/signup" && (
+        {userInfo?.username === undefined && path === "/signup" && (
           <div className="logRegButtonContainerReg">
             <Link to="/login">Log In</Link>
             <Link to="/signup">Sign Up</Link>
@@ -61,7 +62,7 @@ export default function Header() {
       </nav>
 
       <div className="leftHeaderDiv">
-        {userInfo && (
+        {userInfo?.username !== undefined && (
           <>
             <img src={bolt} alt="lightening bolt"></img>
             <h1>SHEET STORM</h1>

@@ -9,13 +9,21 @@ import CreateGame from "./Pages/CreateGame.js";
 import MyGames from "./Pages/MyGames.js";
 import ManageLobby from "./Pages/ManageLobby.js";
 import JoinGame from "./Pages/JoinGame.js";
+import PrivateRoute from "./Components/PrivateRoute.js";
 
 function App() {
   return (
     <UserContextProvider>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={
+              <PrivateRoute>
+                <Home />
+              </PrivateRoute>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/post-score" element={<EnterScore />} />

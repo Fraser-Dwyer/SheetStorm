@@ -1,5 +1,5 @@
 import "../Styles/Login.css";
-import sheetStormLogo from "../Images/sheetStormLogo4.png";
+import sheetStormLogo from "../Images/sheetstorm-logo2.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
@@ -15,7 +15,7 @@ export default function Login() {
 
   async function handleLogin(e) {
     e.preventDefault();
-    const response = await fetch("https://server.sheetstorm.co.uk/login", {
+    const response = await fetch("http://localhost:8000/login", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },

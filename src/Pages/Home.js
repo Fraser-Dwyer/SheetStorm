@@ -23,7 +23,7 @@ export default function Home() {
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   useEffect(() => {
-    fetch("https://server.sheetstorm.co.uk/get-scores").then((response) => {
+    fetch("http://localhost:8000/get-scores").then((response) => {
       response.json().then((score) => {
         if (score.length > 0) {
           const userScores = score.filter(
@@ -62,22 +62,22 @@ export default function Home() {
         }
       });
     });
-  }, []);
+  }, [scores]);
 
   return (
     <div className="homeContainer">
-      {userInfo && userInfo.name !== undefined && (
+      {userInfo?.username !== undefined && (
         <h2>
-          Welcome {userInfo.name.slice(0, 1).toUpperCase()}
-          {userInfo.name.slice(1).toLowerCase()}!
+          Welcome {userInfo.username.slice(0, 1).toUpperCase()}
+          {userInfo.username.slice(1).toLowerCase()}!
         </h2>
       )}
-      {!userInfo && <h2>Welcome back!</h2>}
       {scores && (
         <div className="myScoreContainer">
           <ScoreTable weekStart={weekStart} scores={scores} name={false} />
         </div>
       )}
+
       <div className="menuButtonContainer">
         <button onClick={() => navigate("/post-score")}>
           Enter {dayToday}'s Score
