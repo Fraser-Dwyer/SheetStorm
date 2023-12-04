@@ -4,6 +4,9 @@ header {
     text-decoration: none;
     padding: 2vw 2vw 0vw 2vw;
     justify-content: space-between;
+    border-bottom: 2px solid #787c7f;
+    position: sticky;
+    top: 0;
   }
 
   header h1 {
@@ -26,6 +29,7 @@ header {
     display: flex;
     justify-content: center;
     margin-top: 5vw;
+    margin-bottom: 2vw;
   }
 
   .navButtonContainer {
@@ -52,3 +56,10 @@ header {
     text-decoration: underline;
   }
 
+  .titleContainerLogos {
+    width: 65%;
+}
+
+.titleContainerLogos img {
+    width: 100%;
+}

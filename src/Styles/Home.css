@@ -16,7 +16,7 @@ h2 {
 }
 
 .menuButtonContainer {
-    margin: 0vw auto 4vw auto;
+    margin: 0vw auto 2vw auto;
     text-align: center;
 }
 
@@ -27,7 +27,7 @@ button {
 .menuButtonContainer button {
     display:block;
     width: 94vw;
-    height: 11vh;
+    height: 15vw;
     margin: 2vw auto;
     font-size: 6vw;
     border: 3px solid black;
@@ -37,6 +37,7 @@ button {
     width: 94vw;
     display: inline-flex;
     justify-content: space-between; 
+    margin: 0vw;
 }
 
 .menuButtonContainer div button {

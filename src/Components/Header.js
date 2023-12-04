@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../Styles/Header.css";
-import bolt from "../Images/bolt.png";
+import sheetstormlogo from "../Images/sheetstormwordle.png";
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
@@ -63,11 +63,9 @@ export default function Header() {
 
       <div className="leftHeaderDiv">
         {userInfo?.username !== undefined && (
-          <>
-            <img src={bolt} alt="lightening bolt"></img>
-            <h1>SHEET STORM</h1>
-            <img src={bolt} alt="lightening bolt"></img>
-          </>
+          <div className="titleContainerLogos">
+            <img src={sheetstormlogo} alt="lightening bolt"></img>
+          </div>
         )}
       </div>
     </header>
