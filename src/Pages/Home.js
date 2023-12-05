@@ -31,6 +31,11 @@ export default function Home() {
               score.username === userInfo.username &&
               score.weekStart === weekStart
           );
+
+          if (userScores.length === 0) {
+            userScores.push({ username: score.username, weekStart: weekStart });
+          }
+
           userScores.sort((a, b) => (a.weekStart < b.weekStart ? 1 : -1));
 
           let tempArr = userScores.map((item) => {

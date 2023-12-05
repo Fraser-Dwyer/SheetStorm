@@ -49,7 +49,7 @@ export default function SingleGame({
       }
     }
 
-    if (allScores.length < players.length) {
+    if (newScores.length < players.length) {
       for (let i = 0; i < players.length; i++) {
         var found = false;
         for (let j = 0; j < newScores.length; j++) {
