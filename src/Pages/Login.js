@@ -34,12 +34,14 @@ export default function Login() {
       credentials: "include",
     });
     if (response.ok) {
+      /*
       // Make an entry for the user's scores
       const secondResponse = await fetch("http://localhost:8000/make-scores", {
         method: "POST",
         body: JSON.stringify({ username, weekStart }),
         headers: { "Content-Type": "application/json" },
       });
+      */
       response.json().then((userInfo) => {
         setUserInfo(userInfo);
         navigate("/");

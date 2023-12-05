@@ -35,8 +35,8 @@ export default function SingleGame({
   };
 
   useEffect(() => {
+    var newScores = [];
     if (allScores?.length > 0) {
-      var newScores = [];
       for (let i = 0; i < allScores.length; i++) {
         for (let j = 0; j < players.length; j++) {
           if (
@@ -45,6 +45,20 @@ export default function SingleGame({
           ) {
             newScores.push(allScores[i]);
           }
+        }
+      }
+    }
+
+    if (allScores.length < players.length) {
+      for (let i = 0; i < players.length; i++) {
+        var found = false;
+        for (let j = 0; j < newScores.length; j++) {
+          if (newScores[j].username === players[i].username) {
+            found = true;
+          }
+        }
+        if (found === false) {
+          newScores.push({ username: players[i].username, total: 0 });
         }
       }
     }
