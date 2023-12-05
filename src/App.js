@@ -26,11 +26,46 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/post-score" element={<EnterScore />} />
-          <Route path="/create-game" element={<CreateGame />} />
-          <Route path="/my-games" element={<MyGames />} />
-          <Route path="/manage-games" element={<ManageLobby />} />
-          <Route path="/join-game" element={<JoinGame />} />
+          <Route
+            path="/post-score"
+            element={
+              <PrivateRoute>
+                <EnterScore />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/create-game"
+            element={
+              <PrivateRoute>
+                <CreateGame />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/my-games"
+            element={
+              <PrivateRoute>
+                <MyGames />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/manage-games"
+            element={
+              <PrivateRoute>
+                <ManageLobby />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/join-game"
+            element={
+              <PrivateRoute>
+                <JoinGame />
+              </PrivateRoute>
+            }
+          />
         </Route>
       </Routes>
     </UserContextProvider>
