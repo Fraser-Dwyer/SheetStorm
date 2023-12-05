@@ -35,11 +35,12 @@ export default function CreateGame() {
       }
     }
 
+    var lobbyNameLower = lobbyName.toLowerCase();
     const response = await fetch("http://localhost:8000/create-lobby", {
       method: "POST",
       body: JSON.stringify({
         username,
-        lobbyName,
+        lobbyName: lobbyNameLower,
         password,
       }),
       headers: { "Content-Type": "application/json" },

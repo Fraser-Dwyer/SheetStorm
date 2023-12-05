@@ -22,11 +22,12 @@ export default function JoinGame() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    var lobbyNameLower = lobbyName.toLowerCase();
     const response = await fetch("http://localhost:8000/join-lobby", {
       method: "POST",
       body: JSON.stringify({
         username: userInfo.username,
-        lobbyName,
+        lobbyName: lobbyNameLower,
         lobbyPassword,
       }),
       headers: { "Content-Type": "application/json" },
