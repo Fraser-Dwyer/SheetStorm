@@ -13,6 +13,18 @@ export default function Login() {
   const [loginClass, setLoginClass] = useState("notErrorDiv");
   const [errorMsg, setErrorMsg] = useState(null);
 
+  const DATE_OPTIONS = {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  var weekStart = new Date();
+  weekStart.setDate(
+    weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
+  );
+  weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
+
   async function handleLogin(e) {
     e.preventDefault();
     const response = await fetch("http://localhost:8000/login", {
@@ -22,6 +34,12 @@ export default function Login() {
       credentials: "include",
     });
     if (response.ok) {
+      // Make an entry for the user's scores
+      const secondResponse = await fetch("http://localhost:8000/make-scores", {
+        method: "POST",
+        body: JSON.stringify({ username, weekStart }),
+        headers: { "Content-Type": "application/json" },
+      });
       response.json().then((userInfo) => {
         setUserInfo(userInfo);
         navigate("/");

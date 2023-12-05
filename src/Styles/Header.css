@@ -29,8 +29,7 @@ header {
   .leftHeaderDiv {
     display: flex;
     justify-content: center;
-    margin-top: 5vw;
-    margin-bottom: 2vw;
+    margin-top: 3vw;
   }
 
   .navButtonContainer {
@@ -58,7 +57,7 @@ header {
   }
 
   .titleContainerLogos {
-    width: 65%;
+    width: 90%;
 }
 
 .titleContainerLogos img {

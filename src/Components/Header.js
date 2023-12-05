@@ -3,6 +3,7 @@ import { UserContext } from "../UserContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../Styles/Header.css";
 import sheetstormlogo from "../Images/sheetstormwordle.png";
+import sheetstormlogo2 from "../Images/sheetstormtitleoneline.png";
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
@@ -64,7 +65,7 @@ export default function Header() {
       {userInfo?.username !== undefined && (
         <div className="leftHeaderDiv">
           <div className="titleContainerLogos">
-            <img src={sheetstormlogo} alt="lightening bolt"></img>
+            <img src={sheetstormlogo2} alt="lightening bolt"></img>
           </div>
         </div>
       )}

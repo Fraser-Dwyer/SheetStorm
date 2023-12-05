@@ -41,12 +41,7 @@
   
   .loginContainer div h1 {
     font-size: 7vw;
-    margin: 3%;
-  }
-  
-  .loginContainer div label {
-    font-size: 4vw;
-    display: block;
+    margin: 2vw;
   }
   
   .buttonContainer {

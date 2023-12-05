@@ -7,7 +7,7 @@ import ScoreTable from "../Components/ScoreTable";
 export default function Home() {
   const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
-  const [scores, setScores] = useState(null);
+  const [scores, setScores] = useState([{ total: 0 }]);
 
   const DATE_OPTIONS = {
     weekday: "long",
