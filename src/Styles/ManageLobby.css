@@ -39,6 +39,7 @@
     border: 2px solid black;
     background-color: lightcoral;
     padding: 2vw;
+    color: black;
 }
 
 
@@ -60,6 +61,7 @@
 .areYouSure button {
     font-size: 4vw;
     padding: 2vw;
+    color: black;
 }
 
 .areYouSure div :first-child {

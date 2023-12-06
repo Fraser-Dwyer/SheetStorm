@@ -23,7 +23,7 @@ export default function Home() {
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   useEffect(() => {
-    fetch("http://localhost:8000/get-scores").then((response) => {
+    fetch("https://server.sheetstorm.co.uk/get-scores").then((response) => {
       response.json().then((score) => {
         if (score.length > 0) {
           const userScores = score.filter(

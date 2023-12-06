@@ -24,6 +24,7 @@ p {
     font-size: 4.5vw;
     border: 2px solid black;
     padding: 2vw 1vw;
+    color: black;
 }
 
 .scoreForm div button {

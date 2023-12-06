@@ -12,18 +12,22 @@ export default function Header() {
   const path = location.pathname;
 
   useEffect(() => {
-    fetch("http://localhost:8000/profile", {
+    fetch("https://server.sheetstorm.co.uk/profile", {
       credentials: "include",
     }).then((response) => {
-      response.json().then((userInfo) => {
-        setUserInfo(userInfo);
-      });
+      if (response.ok) {
+        response.json().then((userInfo) => {
+          setUserInfo(userInfo);
+        });
+      } else {
+        navigate("/login");
+      }
     });
-  }, [setUserInfo]);
+  }, []);
 
   async function handleLogout(e) {
     e.preventDefault();
-    const response = await fetch("http://localhost:8000/logout", {
+    const response = await fetch("https://server.sheetstorm.co.uk/logout", {
       credentials: "include",
       method: "POST",
     });

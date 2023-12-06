@@ -29,7 +29,7 @@ export default function EnterScore() {
 
   async function handleEnterScore(e) {
     e.preventDefault();
-    const response = await fetch("http://localhost:8000/post-score", {
+    const response = await fetch("https://server.sheetstorm.co.uk/post-score", {
       method: "POST",
       body: JSON.stringify({
         username,

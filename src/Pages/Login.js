@@ -28,7 +28,7 @@ export default function Login() {
   async function handleLogin(e) {
     e.preventDefault();
     var usernameLower = username.toLowerCase();
-    const response = await fetch("http://localhost:8000/login", {
+    const response = await fetch("https://server.sheetstorm.co.uk/login", {
       method: "POST",
       body: JSON.stringify({ username: usernameLower, password }),
       headers: { "Content-Type": "application/json" },

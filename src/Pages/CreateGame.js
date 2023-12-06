@@ -12,7 +12,7 @@ export default function CreateGame() {
   const { userInfo } = useContext(UserContext);
 
   useEffect(() => {
-    fetch("http://localhost:8000/check-lobby").then((response) => {
+    fetch("https://server.sheetstorm.co.uk/check-lobby").then((response) => {
       response.json().then((lobbies) => {
         setAllLobies(lobbies);
       });
@@ -36,15 +36,18 @@ export default function CreateGame() {
     }
 
     var lobbyNameLower = lobbyName.toLowerCase();
-    const response = await fetch("http://localhost:8000/create-lobby", {
-      method: "POST",
-      body: JSON.stringify({
-        username,
-        lobbyName: lobbyNameLower,
-        password,
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await fetch(
+      "https://server.sheetstorm.co.uk/create-lobby",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          username,
+          lobbyName: lobbyNameLower,
+          password,
+        }),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     if (response.ok) {
       response.json().then(() => {
         var msg =
@@ -97,9 +100,13 @@ export default function CreateGame() {
               value={lobbyName}
               onChange={(e) => setLobbyName(e.target.value)}
             ></input>
-            <button onClick={(e) => handleCreateLobby(e)}>Create</button>
           </div>
         </form>
+
+        <div className="brokenButContainer">
+          <button onClick={(e) => handleCreateLobby(e)}>Create</button>
+        </div>
+
         {errorMsg && (
           <div className="errorContainerInGame">
             {errorMsg}
