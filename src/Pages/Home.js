@@ -67,7 +67,7 @@ export default function Home() {
         }
       });
     });
-  }, [scores]);
+  }, [userInfo]);
 
   return (
     <div className="homeContainer">

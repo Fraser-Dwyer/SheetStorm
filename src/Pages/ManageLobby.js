@@ -4,7 +4,6 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../UserContext";
 
 export default function ManageLobby(props) {
-  const [allLobbies, setAllLobies] = useState(null);
   const [userCreatedLobbies, setUserCreatedLobbies] = useState([]);
   const { userInfo } = useContext(UserContext);
   const username = userInfo.username;
@@ -16,7 +15,6 @@ export default function ManageLobby(props) {
   useEffect(() => {
     fetch("http://localhost:8000/check-lobby").then((response) => {
       response.json().then((lobbies) => {
-        setAllLobies(lobbies);
         var userMadeLobbies = [];
         if (lobbies.length > 0) {
           for (let i = 0; i < lobbies.length; i++) {
@@ -28,7 +26,7 @@ export default function ManageLobby(props) {
         setUserCreatedLobbies(userMadeLobbies);
       });
     });
-  }, [deleting]);
+  }, [deleting, userInfo, username]);
 
   function handleConfirmDeleteLobby(e, lobbyName) {
     e.preventDefault();

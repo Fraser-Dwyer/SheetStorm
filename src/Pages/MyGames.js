@@ -60,7 +60,7 @@ export default function MyGames() {
         setAllScores(tempArr);
       });
     });
-  }, [leave]);
+  }, [leave, userInfo, username]);
 
   async function handleLeaveLobby(e, lobbyName) {
     e.preventDefault();

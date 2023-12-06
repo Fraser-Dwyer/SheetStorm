@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../Styles/Header.css";
-import sheetstormlogo from "../Images/sheetstormwordle.png";
 import sheetstormlogo2 from "../Images/sheetstormtitleoneline.png";
 
 export default function Header() {
@@ -20,7 +19,7 @@ export default function Header() {
         setUserInfo(userInfo);
       });
     });
-  }, []);
+  }, [setUserInfo]);
 
   async function handleLogout(e) {
     e.preventDefault();
@@ -42,9 +41,14 @@ export default function Header() {
             path === "/create-game" ||
             path === "/my-games" ||
             path === "/manage-games" ||
-            path === "/join-game") && <a onClick={() => navigate("/")}>Back</a>}
-          {path === "/" && <a onClick={() => navigate("/")}></a>}
+            path === "/join-game") && ( // eslint-disable-next-line
+            <a onClick={() => navigate("/")}>Back</a>
+          )}
+          {path === "/" && ( // eslint-disable-next-line
+            <a onClick={() => navigate("/")}></a>
+          )}
           {userInfo?.username !== undefined && (
+            // eslint-disable-next-line
             <a onClick={(e) => handleLogout(e)}>Logout</a>
           )}
         </div>

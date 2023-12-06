@@ -66,7 +66,7 @@ export default function SingleGame({
 
     var tempSortedPlayers = [...players].sort((a, b) => b.wins - a.wins);
     setSortedPlayers(tempSortedPlayers);
-  }, []);
+  }, [allScores, players]);
 
   return (
     <div className="outerContainer">
