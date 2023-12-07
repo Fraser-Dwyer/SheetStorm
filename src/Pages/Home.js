@@ -7,7 +7,7 @@ import ScoreTable from "../Components/ScoreTable";
 export default function Home() {
   const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
-  const [scores, setScores] = useState([{ total: 0 }]);
+  const [scores, setScores] = useState(null);
 
   const DATE_OPTIONS = {
     weekday: "long",
@@ -27,13 +27,14 @@ export default function Home() {
       response.json().then((score) => {
         if (score.length > 0) {
           const userScores = score.filter(
-            (score) =>
-              score.username === userInfo.username &&
-              score.weekStart === weekStart
+            (score) => score.username === userInfo.username
           );
 
           if (userScores.length === 0) {
-            userScores.push({ username: score.username, weekStart: weekStart });
+            userScores.push({
+              username: score.username,
+              weekStart: weekStart,
+            });
           }
 
           userScores.sort((a, b) => (a.weekStart < b.weekStart ? 1 : -1));
@@ -77,9 +78,14 @@ export default function Home() {
           {userInfo.username.slice(1).toLowerCase()}!
         </h2>
       )}
-      {scores && (
+      {userInfo?.username !== undefined && scores && (
         <div className="myScoreContainer">
-          <ScoreTable weekStart={weekStart} scores={scores} name={false} />
+          <ScoreTable
+            weekStart={weekStart}
+            scores={scores}
+            name={false}
+            players={[{ username: userInfo.username }]}
+          />
         </div>
       )}
 

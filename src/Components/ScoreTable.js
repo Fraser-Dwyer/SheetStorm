@@ -24,13 +24,13 @@ export default function ScoreTable({ weekStart, scores, name, players }) {
     );
 
     var newScores = [];
-    if (scores && players) {
+    if (allTheScores && players) {
       for (let i = 0; i < players.length; i++) {
         var found = false;
-        for (let j = 0; j < scores.length; j++) {
+        for (let j = 0; j < allTheScores.length; j++) {
           if (
-            scores[j].username === players[i].username &&
-            scores[j].weekStart ===
+            allTheScores[j].username === players[i].username &&
+            allTheScores[j].weekStart ===
               newDate.toLocaleDateString("en-US", DATE_OPTIONS)
           ) {
             found = true;
@@ -44,12 +44,12 @@ export default function ScoreTable({ weekStart, scores, name, players }) {
           });
         }
       }
-      setAllTheScores((allTheScores) => [...allTheScores, ...newScores]);
+      setAllTheScores([...allTheScores, ...newScores]);
       newScores.length = 0;
     }
 
     setGameWeek(newDate.toLocaleDateString("en-US", DATE_OPTIONS));
-  }, [change, gameWeek]);
+  }, [change]);
 
   return (
     <>

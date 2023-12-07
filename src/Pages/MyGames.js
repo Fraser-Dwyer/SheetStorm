@@ -99,7 +99,7 @@ export default function MyGames() {
     <div>
       <h3>My Games</h3>
       {(!inLobbies || inLobbies?.length === 0) && (
-        <h4>You are not yet in any games</h4>
+        <p>You are not yet in any games</p>
       )}
       {inLobbies?.length > 0 && (
         <>
