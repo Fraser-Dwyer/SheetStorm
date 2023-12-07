@@ -13,7 +13,6 @@ export default function SingleGame({
   const rotate = expanded ? "rotate(90deg)" : "rotate(0)";
   const [filteredScores, setFilteredScores] = useState([]);
   const [sure, setSure] = useState(null);
-  const [sortedPlayers, setSortedPlayers] = useState(players);
 
   const DATE_OPTIONS = {
     weekday: "long",
@@ -36,33 +35,13 @@ export default function SingleGame({
     if (allScores?.length > 0) {
       for (let i = 0; i < allScores.length; i++) {
         for (let j = 0; j < players.length; j++) {
-          if (
-            allScores[i].username === players[j].username &&
-            allScores[i].weekStart === weekStart
-          ) {
+          if (allScores[i].username === players[j].username) {
             newScores.push(allScores[i]);
           }
         }
       }
     }
-
-    if (newScores.length < players.length) {
-      for (let i = 0; i < players.length; i++) {
-        var found = false;
-        for (let j = 0; j < newScores.length; j++) {
-          if (newScores[j].username === players[i].username) {
-            found = true;
-          }
-        }
-        if (found === false) {
-          newScores.push({ username: players[i].username, total: 0 });
-        }
-      }
-    }
     setFilteredScores(newScores);
-
-    var tempSortedPlayers = [...players].sort((a, b) => b.wins - a.wins);
-    setSortedPlayers(tempSortedPlayers);
   }, [allScores, players]);
 
   return (
@@ -90,6 +69,7 @@ export default function SingleGame({
             weekStart={weekStart}
             scores={filteredScores}
             name={true}
+            players={players}
           />
         </>
       )}
