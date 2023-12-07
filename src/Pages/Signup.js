@@ -32,7 +32,7 @@ export default function Signup() {
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   useEffect(() => {
-    fetch("https://server.sheetstorm.co.uk/check-user").then((response) => {
+    fetch("http://localhost:4000/check-user").then((response) => {
       response.json().then((users) => {
         setAllUsers(users);
       });
@@ -109,7 +109,7 @@ export default function Signup() {
     const lowerUsername = username.toLowerCase();
 
     // If made it here, then make new user
-    const response = await fetch("https://server.sheetstorm.co.uk/signup", {
+    const response = await fetch("http://localhost:4000/signup", {
       method: "POST",
       body: JSON.stringify({
         name: pascalName,
@@ -120,14 +120,6 @@ export default function Signup() {
     });
 
     if (response.ok) {
-      /*
-      // Make an entry for the user's scores
-      const secondResponse = await fetch("http://localhost:8000/make-scores", {
-        method: "POST",
-        body: JSON.stringify({ username, weekStart }),
-        headers: { "Content-Type": "application/json" },
-      });
-      */
       navigate("/login");
     } else {
       console.log(response);

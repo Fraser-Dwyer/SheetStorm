@@ -12,7 +12,7 @@ export default function Header() {
   const path = location.pathname;
 
   useEffect(() => {
-    fetch("https://server.sheetstorm.co.uk/profile", {
+    fetch("http://localhost:4000/profile", {
       credentials: "include",
     }).then((response) => {
       if (response.ok) {
@@ -27,7 +27,7 @@ export default function Header() {
 
   async function handleLogout(e) {
     e.preventDefault();
-    const response = await fetch("https://server.sheetstorm.co.uk/logout", {
+    const response = await fetch("http://localhost:4000/logout", {
       credentials: "include",
       method: "POST",
     });

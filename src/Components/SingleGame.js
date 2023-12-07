@@ -2,9 +2,6 @@ import arrow from "../Images/right-arrow.png";
 import { useState, useEffect } from "react";
 import "../Styles/MyGames.css";
 import ScoreTable from "./ScoreTable";
-import first from "../Images/first.png";
-import second from "../Images/second.png";
-import third from "../Images/third.png";
 
 export default function SingleGame({
   lobbyName,
@@ -94,43 +91,6 @@ export default function SingleGame({
             scores={filteredScores}
             name={true}
           />
-          {false && (
-            <>
-              <p style={{ textDecoration: "underline" }}>
-                Hall of fame [All time wins]
-              </p>
-              {sortedPlayers && (
-                <div className="podiumOne">
-                  <img src={first} alt="firstplace"></img>
-                  <p>
-                    1st - {sortedPlayers[0].username.slice(0, 1).toUpperCase()}
-                    {sortedPlayers[0].username.slice(1)} [
-                    {sortedPlayers[0].wins} Wins]
-                  </p>
-                </div>
-              )}
-              {sortedPlayers && sortedPlayers.length > 1 && (
-                <div className="podiumTwo">
-                  <img src={second} alt="secondPlace"></img>
-                  <p>
-                    2nd - {sortedPlayers[1].username.slice(0, 1).toUpperCase()}
-                    {sortedPlayers[1].username.slice(1)} [
-                    {sortedPlayers[1].wins} Wins]
-                  </p>
-                </div>
-              )}
-              {sortedPlayers && sortedPlayers.length > 2 && (
-                <div className="podiumThree">
-                  <img src={third} alt="thirdPlace"></img>
-                  <p>
-                    3rd - {sortedPlayers[2].username.slice(0, 1).toUpperCase()}
-                    {sortedPlayers[2].username.slice(1)} [
-                    {sortedPlayers[2].wins} Wins]
-                  </p>
-                </div>
-              )}
-            </>
-          )}
         </>
       )}
 

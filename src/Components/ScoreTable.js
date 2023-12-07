@@ -1,4 +1,7 @@
 import "../Styles/ScoreTable.css";
+import rightArrow from "../Images/rightArrow.png";
+import leftArrow from "../Images/leftArrow.png";
+import greyRightArrow from "../Images/greyRightArrow.png";
 
 export default function ScoreTable({ weekStart, scores, name }) {
   var fail = "-";
@@ -9,7 +12,11 @@ export default function ScoreTable({ weekStart, scores, name }) {
 
   return (
     <>
-      <h4>W/C - {weekStart}</h4>
+      <div className="weekNavContainer">
+        <img src={leftArrow} alt="left arrow"></img>
+        <h4>W/C - {weekStart}</h4>
+        <img src={greyRightArrow} alt="right arrow"></img>
+      </div>
       <div className="tableContainer">
         <table>
           <tbody>

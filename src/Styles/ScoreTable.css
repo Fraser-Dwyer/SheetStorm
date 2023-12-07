@@ -93,3 +93,22 @@ h4 {
     margin-left: calc(3vw - 2px);
     margin-right: calc(3vw - 2px);
 }
+
+.weekNavContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weekNavContainer img {
+  width: 5vw;
+  height: 5vw;
+}
+
+.weekNavContainer img:first-child {
+  margin-left: 3vw;
+}
+
+.weekNavContainer img:last-child {
+  margin-right: 3vw;
+}

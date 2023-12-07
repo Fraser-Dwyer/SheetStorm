@@ -28,21 +28,13 @@ export default function Login() {
   async function handleLogin(e) {
     e.preventDefault();
     var usernameLower = username.toLowerCase();
-    const response = await fetch("https://server.sheetstorm.co.uk/login", {
+    const response = await fetch("http://localhost:4000/login", {
       method: "POST",
       body: JSON.stringify({ username: usernameLower, password }),
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     });
     if (response.ok) {
-      /*
-      // Make an entry for the user's scores
-      const secondResponse = await fetch("http://localhost:8000/make-scores", {
-        method: "POST",
-        body: JSON.stringify({ username, weekStart }),
-        headers: { "Content-Type": "application/json" },
-      });
-      */
       response.json().then((userInfo) => {
         setUserInfo(userInfo);
         navigate("/");
