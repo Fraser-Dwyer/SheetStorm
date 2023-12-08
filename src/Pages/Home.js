@@ -1,5 +1,5 @@
 import "../Styles/Home.css";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router-dom";
 import ScoreTable from "../Components/ScoreTable";
@@ -22,52 +22,55 @@ export default function Home() {
   );
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
-  useEffect(() => {
-    fetch("http://localhost:4000/get-scores").then((response) => {
-      response.json().then((score) => {
-        if (score.length > 0) {
-          const userScores = score.filter(
-            (score) => score.username === userInfo.username
-          );
+  const fetchScores = useCallback(async () => {
+    let response = await fetch("http://localhost:4000/get-scores");
+    response = await response.json();
+    if (userInfo.username !== undefined) {
+      const userScores = response.filter(
+        (score) => score.username === userInfo.username
+      );
 
-          if (userScores.length === 0) {
-            userScores.push({
-              username: score.username,
-              weekStart: weekStart,
-            });
-          }
+      if (userScores.length === 0) {
+        userScores.push({
+          username: userInfo.username,
+          weekStart: weekStart,
+          _id: Math.random().toString(20),
+        });
+      }
 
-          userScores.sort((a, b) => (a.weekStart < b.weekStart ? 1 : -1));
+      userScores.sort((a, b) => (a.weekStart < b.weekStart ? 1 : -1));
 
-          let tempArr = userScores.map((item) => {
-            var total = 0;
-            if (item.Mon && item.Mon !== "-") {
-              total = total + 7 - item.Mon;
-            }
-            if (item.Tue && item.Tue !== "-") {
-              total = total + 7 - item.Tue;
-            }
-            if (item.Wed && item.Wed !== "-") {
-              total = total + 7 - item.Wed;
-            }
-            if (item.Thu && item.Thu !== "-") {
-              total = total + 7 - item.Thu;
-            }
-            if (item.Fri && item.Fri !== "-") {
-              total = total + 7 - item.Fri;
-            }
-            if (item.Sat && item.Sat !== "-") {
-              total = total + 7 - item.Sat;
-            }
-            if (item.Sun && item.Sun !== "-") {
-              total = total + 7 - item.Sun;
-            }
-            return { ...item, total: total };
-          });
-          setScores(tempArr);
+      let tempArr = userScores.map((item) => {
+        var total = 0;
+        if (item.Mon && item.Mon !== "-") {
+          total = total + 7 - item.Mon;
         }
+        if (item.Tue && item.Tue !== "-") {
+          total = total + 7 - item.Tue;
+        }
+        if (item.Wed && item.Wed !== "-") {
+          total = total + 7 - item.Wed;
+        }
+        if (item.Thu && item.Thu !== "-") {
+          total = total + 7 - item.Thu;
+        }
+        if (item.Fri && item.Fri !== "-") {
+          total = total + 7 - item.Fri;
+        }
+        if (item.Sat && item.Sat !== "-") {
+          total = total + 7 - item.Sat;
+        }
+        if (item.Sun && item.Sun !== "-") {
+          total = total + 7 - item.Sun;
+        }
+        return { ...item, total: total };
       });
-    });
+      setScores(tempArr);
+    }
+  });
+
+  useEffect(() => {
+    fetchScores();
   }, [userInfo]);
 
   return (
@@ -78,7 +81,7 @@ export default function Home() {
           {userInfo.username.slice(1).toLowerCase()}!
         </h2>
       )}
-      {userInfo?.username !== undefined && scores && (
+      {scores !== null && userInfo?.username !== undefined && scores && (
         <div className="myScoreContainer">
           <ScoreTable
             weekStart={weekStart}
@@ -99,6 +102,9 @@ export default function Home() {
           <button onClick={() => navigate("/create-game")}>Create Game</button>
           <button onClick={() => navigate("/join-game")}>Join Game</button>
         </div>
+        <a href="https://www.nytimes.com/games/wordle/index.html">
+          <button>Play Wordle</button>
+        </a>
       </div>
     </div>
   );

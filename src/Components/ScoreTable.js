@@ -41,6 +41,7 @@ export default function ScoreTable({ weekStart, scores, name, players }) {
             username: players[i].username,
             total: 0,
             weekStart: newDate.toLocaleDateString("en-US", DATE_OPTIONS),
+            _id: Math.random().toString(20),
           });
         }
       }
