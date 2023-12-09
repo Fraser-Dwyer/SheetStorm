@@ -100,3 +100,7 @@ h4 {
     margin-left: 2vw;
     padding: 0;
 }
+
+p a {
+    text-decoration: underline;
+}

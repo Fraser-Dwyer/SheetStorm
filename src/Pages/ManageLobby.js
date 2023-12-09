@@ -2,18 +2,21 @@ import "../Styles/ManageLobby.css";
 import cross from "../Images/close.png";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../UserContext";
+import { useNavigate } from "react-router-dom";
 
-export default function ManageLobby(props) {
+export default function ManageLobby({ baseURL }) {
   const [userCreatedLobbies, setUserCreatedLobbies] = useState([]);
-  const { userInfo } = useContext(UserContext);
+  const { userInfo, createLobbyMsg, setCreateLobbyMsg } =
+    useContext(UserContext);
   const username = userInfo.username;
   const [deleting, setDeleting] = useState(true);
   const [sure, setSure] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:4000/check-lobby").then((response) => {
+    fetch(baseURL + "/check-lobby").then((response) => {
       response.json().then((lobbies) => {
         var userMadeLobbies = [];
         if (lobbies.length > 0) {
@@ -23,10 +26,15 @@ export default function ManageLobby(props) {
             }
           }
         }
-        setUserCreatedLobbies(userMadeLobbies);
+        const reversedUserMadeLobbies = userMadeLobbies.reverse();
+        setUserCreatedLobbies(reversedUserMadeLobbies);
+
+        if (createLobbyMsg !== "") {
+          setSuccessMsg(createLobbyMsg);
+        }
       });
     });
-  }, [deleting, userInfo, username]);
+  }, [deleting, userInfo, username, createLobbyMsg]);
 
   function handleConfirmDeleteLobby(e, lobbyName) {
     e.preventDefault();
@@ -35,6 +43,7 @@ export default function ManageLobby(props) {
 
   const handleCloseClickSuccess = () => {
     setSuccessMsg(null);
+    setCreateLobbyMsg("");
   };
 
   const handleCloseClickFail = () => {
@@ -43,7 +52,7 @@ export default function ManageLobby(props) {
 
   async function handleDeleteLobby(e, lobbyName) {
     e.preventDefault();
-    const response = await fetch("http://localhost:4000/delete-lobby", {
+    const response = await fetch(baseURL + "/delete-lobby", {
       method: "POST",
       body: JSON.stringify({
         lobbyName,
@@ -58,6 +67,7 @@ export default function ManageLobby(props) {
           lobbyName.slice(1) +
           "'";
         setSuccessMsg(msg);
+        setCreateLobbyMsg("");
         setDeleting(!deleting);
       });
     } else {
@@ -69,7 +79,13 @@ export default function ManageLobby(props) {
     <div>
       <h3>Manage Games</h3>
       {userCreatedLobbies.length === 0 && (
-        <p>You have not yet created any lobbies.</p>
+        <>
+          <p>You have not yet created any games.</p>
+          <p>
+            To create a game, go to{" "}
+            <a onClick={() => navigate("/create-game")}>Create Game</a>
+          </p>
+        </>
       )}
 
       {successMsg && (
@@ -132,10 +148,7 @@ export default function ManageLobby(props) {
               </div>
               {sure && sure === lobby.lobbyName && (
                 <div className="areYouSure">
-                  <p>
-                    Delete {lobby.lobbyName.slice(0, 1).toUpperCase()}
-                    {lobby.lobbyName.slice(1).toLowerCase()}?
-                  </p>
+                  <p>Delete {lobby.lobbyName}?</p>
                   <div>
                     <button
                       onClick={(e) => handleDeleteLobby(e, lobby.lobbyName)}

@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
 import Error from "../Components/Error";
 
-export default function Login() {
+export default function Login({ baseURL }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { setUserInfo } = useContext(UserContext);
@@ -28,7 +28,7 @@ export default function Login() {
   async function handleLogin(e) {
     e.preventDefault();
     var usernameLower = username.toLowerCase();
-    const response = await fetch("http://localhost:4000/login", {
+    const response = await fetch(baseURL + "/login", {
       method: "POST",
       body: JSON.stringify({ username: usernameLower, password }),
       headers: { "Content-Type": "application/json" },

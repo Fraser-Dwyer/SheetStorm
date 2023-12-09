@@ -3,18 +3,20 @@ import { UserContext } from "../UserContext";
 import "../Styles/MyGames.css";
 import SingleGame from "../Components/SingleGame";
 import cross from "../Images/close.png";
+import { useNavigate } from "react-router-dom";
 
-export default function MyGames() {
-  const { userInfo } = useContext(UserContext);
+export default function MyGames({ baseURL }) {
+  const { userInfo, joinLobbyMsg, setJoinLobbyMsg } = useContext(UserContext);
   const username = userInfo.username;
   const [inLobbies, setInLobbies] = useState(null);
   const [allScores, setAllScores] = useState(null);
   const [leave, setLeave] = useState(true);
   const [successMsg, setSuccessMsg] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:4000/check-lobby").then((response) => {
+    fetch(baseURL + "/check-lobby").then((response) => {
       response.json().then((lobbies) => {
         var userInLobbies = [];
         if (lobbies.length > 0) {
@@ -25,12 +27,17 @@ export default function MyGames() {
               }
             }
           }
-          setInLobbies(userInLobbies);
+          const reversedUserInLobbies = userInLobbies.reverse();
+          setInLobbies(reversedUserInLobbies);
+
+          if (joinLobbyMsg !== "") {
+            setSuccessMsg(joinLobbyMsg);
+          }
         }
       });
     });
 
-    fetch("http://localhost:4000/get-scores").then((response) => {
+    fetch(baseURL + "/get-scores").then((response) => {
       response.json().then((allScores) => {
         let tempArr = allScores.map((item) => {
           var total = 0;
@@ -60,11 +67,11 @@ export default function MyGames() {
         setAllScores(tempArr);
       });
     });
-  }, [leave, userInfo, username]);
+  }, [leave, userInfo, username, joinLobbyMsg]);
 
   async function handleLeaveLobby(e, lobbyName) {
     e.preventDefault();
-    const response = await fetch("http://localhost:4000/leave-lobby", {
+    const response = await fetch(baseURL + "/leave-lobby", {
       method: "POST",
       body: JSON.stringify({
         lobbyName,
@@ -80,6 +87,7 @@ export default function MyGames() {
           lobbyName.slice(1) +
           "'";
         setSuccessMsg(msg);
+        setJoinLobbyMsg("");
         setLeave(!leave);
       });
     } else {
@@ -89,6 +97,7 @@ export default function MyGames() {
 
   const handleCloseClickSuccess = () => {
     setSuccessMsg(null);
+    setJoinLobbyMsg("");
   };
 
   const handleCloseClickFail = () => {
@@ -99,36 +108,43 @@ export default function MyGames() {
     <div>
       <h3>My Games</h3>
       {(!inLobbies || inLobbies?.length === 0) && (
-        <p>You are not yet in any games</p>
+        <>
+          <p>You are not yet in any games.</p>
+          <p>
+            To join a game, go to{" "}
+            <a onClick={() => navigate("/join-game")}>Join Game</a>
+          </p>
+        </>
       )}
+
+      {successMsg && (
+        <div className="successContainerJoinDelete">
+          {successMsg}
+          <div className="closeDiv">
+            <img
+              src={cross}
+              alt="closeImg"
+              onClick={handleCloseClickSuccess}
+            ></img>
+          </div>
+        </div>
+      )}
+
+      {errorMsg && (
+        <div className="errorContainerDelete">
+          {errorMsg}
+          <div className="closeDiv">
+            <img
+              src={cross}
+              alt="closeImg"
+              onClick={handleCloseClickFail}
+            ></img>
+          </div>
+        </div>
+      )}
+
       {inLobbies?.length > 0 && (
         <>
-          {successMsg && (
-            <div className="successContainerJoinDelete">
-              {successMsg}
-              <div className="closeDiv">
-                <img
-                  src={cross}
-                  alt="closeImg"
-                  onClick={handleCloseClickSuccess}
-                ></img>
-              </div>
-            </div>
-          )}
-
-          {errorMsg && (
-            <div className="errorContainerDelete">
-              {errorMsg}
-              <div className="closeDiv">
-                <img
-                  src={cross}
-                  alt="closeImg"
-                  onClick={handleCloseClickFail}
-                ></img>
-              </div>
-            </div>
-          )}
-
           {allScores &&
             inLobbies.map((lobby) => (
               <SingleGame

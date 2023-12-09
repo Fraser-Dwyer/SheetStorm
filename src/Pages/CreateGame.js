@@ -2,17 +2,19 @@ import "../Styles/CreateGame.css";
 import { useContext, useState, useEffect } from "react";
 import cross from "../Images/close.png";
 import { UserContext } from "../UserContext";
+import { useNavigate } from "react-router-dom";
 
-export default function CreateGame() {
+export default function CreateGame({ baseURL }) {
   const [lobbyName, setLobbyName] = useState("");
   const [errorMsg, setErrorMsg] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
   const [lobbyDiv, setLobbyDiv] = useState("notErrorLobbyDiv");
   const [allLobbies, setAllLobies] = useState(null);
-  const { userInfo } = useContext(UserContext);
+  const { userInfo, setCreateLobbyMsg } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:4000/check-lobby").then((response) => {
+    fetch(baseURL + "/check-lobby").then((response) => {
       response.json().then((lobbies) => {
         setAllLobies(lobbies);
       });
@@ -35,12 +37,26 @@ export default function CreateGame() {
       }
     }
 
+    // Check if lobbyName empty
+    if (lobbyName.length === 0) {
+      setErrorMsg("Lobby name cannot be empty");
+      setLobbyDiv("errorLobbyDiv");
+      return;
+    }
+
+    // Check length of lobbyname (MAX 10 chars)
+    if (lobbyName.length > 10) {
+      setErrorMsg("Lobby name too long \n(10 characters maximum)");
+      setLobbyDiv("errorLobbyDiv");
+      return;
+    }
+
     var lobbyNameLower = lobbyName.toLowerCase();
-    const response = await fetch("http://localhost:4000/create-lobby", {
+    const response = await fetch(baseURL + "/create-lobby", {
       method: "POST",
       body: JSON.stringify({
         username,
-        lobbyName: lobbyNameLower,
+        lobbyName,
         password,
       }),
       headers: { "Content-Type": "application/json" },
@@ -52,9 +68,8 @@ export default function CreateGame() {
           lobbyName.slice(0, 1).toUpperCase() +
           lobbyName.slice(1) +
           "' created successfully!";
-        setSuccessMsg(msg);
-        setLobbyName("");
-        handleCloseClick();
+        navigate("/manage-games");
+        setCreateLobbyMsg(msg);
       });
     } else {
       setErrorMsg("Failed to create lobby");
@@ -114,7 +129,7 @@ export default function CreateGame() {
         )}
         {successMsg && (
           <div className="successContainerCreate">
-            {successMsg}
+            <p>{successMsg}</p>
             <div className="closeDiv">
               <img
                 src={cross}

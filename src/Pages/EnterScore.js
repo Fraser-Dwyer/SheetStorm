@@ -4,7 +4,7 @@ import { UserContext } from "../UserContext";
 import cross from "../Images/close.png";
 import { useNavigate } from "react-router-dom";
 
-export default function EnterScore() {
+export default function EnterScore({ baseURL }) {
   const [score, setScore] = useState("");
   const { userInfo } = useContext(UserContext);
   const username = userInfo.username;
@@ -29,7 +29,7 @@ export default function EnterScore() {
 
   async function handleEnterScore(e) {
     e.preventDefault();
-    const response = await fetch("http://localhost:4000/post-score", {
+    const response = await fetch(baseURL + "/post-score", {
       method: "POST",
       body: JSON.stringify({
         username,

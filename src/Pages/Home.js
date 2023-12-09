@@ -4,7 +4,7 @@ import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router-dom";
 import ScoreTable from "../Components/ScoreTable";
 
-export default function Home() {
+export default function Home({ baseURL }) {
   const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
   const [scores, setScores] = useState(null);
@@ -23,7 +23,7 @@ export default function Home() {
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   const fetchScores = useCallback(async () => {
-    let response = await fetch("http://localhost:4000/get-scores");
+    let response = await fetch(baseURL + "/get-scores");
     response = await response.json();
     if (userInfo.username !== undefined) {
       const userScores = response.filter(

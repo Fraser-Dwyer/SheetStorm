@@ -10,9 +10,12 @@
     color: black;
     display: flex;
     justify-content: space-between;
+    white-space: pre-wrap;
   }
 
   .closeDiv {
+    display: flex;
+    justify-content: center;
     align-items: center;
   }
 

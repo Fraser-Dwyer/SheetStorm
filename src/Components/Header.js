@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../Styles/Header.css";
 import sheetstormlogo2 from "../Images/sheetstormtitleoneline.png";
 
-export default function Header() {
+export default function Header({ baseURL }) {
   const { setUserInfo, userInfo } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ export default function Header() {
   const path = location.pathname;
 
   useEffect(() => {
-    fetch("http://localhost:4000/profile", {
+    fetch(baseURL + "/profile", {
       credentials: "include",
     }).then((response) => {
       if (response.ok) {
@@ -27,7 +27,7 @@ export default function Header() {
 
   async function handleLogout(e) {
     e.preventDefault();
-    const response = await fetch("http://localhost:4000/logout", {
+    const response = await fetch(baseURL + "/logout", {
       credentials: "include",
       method: "POST",
     });

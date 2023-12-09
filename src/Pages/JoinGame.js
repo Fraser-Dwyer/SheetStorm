@@ -2,14 +2,16 @@ import "../Styles/JoinGame.css";
 import cross from "../Images/close.png";
 import { useState, useContext } from "react";
 import { UserContext } from "../UserContext";
+import { useNavigate } from "react-router-dom";
 
-export default function JoinGame() {
+export default function JoinGame({ baseURL }) {
   const [lobbyName, setLobbyName] = useState("");
   const [lobbyPassword, setLobbyPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
   const [inputClass, setInputClass] = useState("notErrorDivJoin");
-  const { userInfo } = useContext(UserContext);
+  const { userInfo, setJoinLobbyMsg } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleCloseClick = () => {
     setErrorMsg(null);
@@ -22,12 +24,12 @@ export default function JoinGame() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    var lobbyNameLower = lobbyName.toLowerCase();
-    const response = await fetch("http://localhost:4000/join-lobby", {
+    //var lobbyNameLower = lobbyName.toLowerCase();
+    const response = await fetch(baseURL + "/join-lobby", {
       method: "POST",
       body: JSON.stringify({
         username: userInfo.username,
-        lobbyName: lobbyNameLower,
+        lobbyName,
         lobbyPassword,
       }),
       headers: { "Content-Type": "application/json" },
@@ -39,16 +41,14 @@ export default function JoinGame() {
           lobbyName.slice(0, 1).toUpperCase() +
           lobbyName.slice(1) +
           "' joined successfully!";
-        setSuccessMsg(msg);
-        setLobbyName("");
-        setLobbyPassword("");
-        handleCloseClick();
+        setJoinLobbyMsg(msg);
+        navigate("/my-games");
       });
     } else {
       var msg =
         "Failed to join '" +
         lobbyName.slice(0, 1).toUpperCase() +
-        lobbyName.slice(1).toLowerCase() +
+        lobbyName.slice(1) +
         "'";
       setErrorMsg(msg);
       setInputClass("errorDivJoin");

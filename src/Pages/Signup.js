@@ -4,7 +4,7 @@ import Error from "../Components/Error";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export default function Signup() {
+export default function Signup({ baseURL }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -32,7 +32,7 @@ export default function Signup() {
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   useEffect(() => {
-    fetch("http://localhost:4000/check-user").then((response) => {
+    fetch(baseURL + "/check-user").then((response) => {
       response.json().then((users) => {
         setAllUsers(users);
       });
@@ -79,6 +79,13 @@ export default function Signup() {
       return;
     }
 
+    // Check length of username
+    if (username.length > 6) {
+      setUserNameDiv("errorDiv");
+      setErrorMsg("Username too long \n6 characters maximum");
+      return;
+    }
+
     // Check length of name
     if (name.length < 2) {
       setNameDiv("errorDiv");
@@ -109,7 +116,7 @@ export default function Signup() {
     const lowerUsername = username.toLowerCase();
 
     // If made it here, then make new user
-    const response = await fetch("http://localhost:4000/signup", {
+    const response = await fetch(baseURL + "/signup", {
       method: "POST",
       body: JSON.stringify({
         name: pascalName,

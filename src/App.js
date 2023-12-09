@@ -12,25 +12,28 @@ import JoinGame from "./Pages/JoinGame.js";
 import PrivateRoute from "./Components/PrivateRoute.js";
 
 function App() {
+  // Production:  "https://server.sheetstorm.co.uk"
+  // Development: "http://localhost:8000"
+  const baseURL = "https://server.sheetstorm.co.uk";
   return (
     <UserContextProvider>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout baseURL={baseURL} />}>
           <Route
             index
             element={
               <PrivateRoute>
-                <Home />
+                <Home baseURL={baseURL} />
               </PrivateRoute>
             }
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login baseURL={baseURL} />} />
+          <Route path="/signup" element={<Signup baseURL={baseURL} />} />
           <Route
             path="/post-score"
             element={
               <PrivateRoute>
-                <EnterScore />
+                <EnterScore baseURL={baseURL} />
               </PrivateRoute>
             }
           />
@@ -38,7 +41,7 @@ function App() {
             path="/create-game"
             element={
               <PrivateRoute>
-                <CreateGame />
+                <CreateGame baseURL={baseURL} />
               </PrivateRoute>
             }
           />
@@ -46,7 +49,7 @@ function App() {
             path="/my-games"
             element={
               <PrivateRoute>
-                <MyGames />
+                <MyGames baseURL={baseURL} />
               </PrivateRoute>
             }
           />
@@ -54,7 +57,7 @@ function App() {
             path="/manage-games"
             element={
               <PrivateRoute>
-                <ManageLobby />
+                <ManageLobby baseURL={baseURL} />
               </PrivateRoute>
             }
           />
@@ -62,7 +65,7 @@ function App() {
             path="/join-game"
             element={
               <PrivateRoute>
-                <JoinGame />
+                <JoinGame baseURL={baseURL} />
               </PrivateRoute>
             }
           />
