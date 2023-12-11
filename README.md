@@ -4,7 +4,7 @@ Sheet Storm is a mobile website which allows friends to keep track of their own 
 
 Users can create lobbies and then share the password with friends so that they can join. Don't forget to enter your score every day to give yourself the best chance at being crowned Wordler of the Week!
 
-Sheet Storm can be accessed at <a href="sheetstorm.co.uk">sheetstorm.co.uk</a>. Don't forget it is a mobile only website so may appear stretched in desktop browsers.
+Sheet Storm can be accessed at [sheetstorm.co.uk]("sheetstorm.co.uk"). Don't forget it is a mobile only website so may appear stretched in desktop browsers.
 
 <table width="100%">
   <tr>
