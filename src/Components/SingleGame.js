@@ -21,9 +21,11 @@ export default function SingleGame({
     day: "numeric",
   };
   var weekStart = new Date();
-  weekStart.setDate(
-    weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
-  );
+  if (weekStart.getDay() !== 1) {
+    weekStart.setDate(
+      weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
+    );
+  }
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   const handleImgClick = () => {

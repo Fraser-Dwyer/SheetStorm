@@ -17,9 +17,11 @@ export default function Home({ baseURL }) {
   };
   var dayToday = new Date().toLocaleDateString("en-US", { weekday: "long" });
   var weekStart = new Date();
-  weekStart.setDate(
-    weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
-  );
+  if (weekStart.getDay() !== 1) {
+    weekStart.setDate(
+      weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
+    );
+  }
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   const fetchScores = useCallback(async () => {
@@ -74,7 +76,7 @@ export default function Home({ baseURL }) {
   }, [userInfo]);
 
   return (
-    <div className="homeContainer">
+    <div className="homeContainer" style={{ marginBottom: "10vw" }}>
       {userInfo?.username !== undefined && (
         <h2>
           Welcome {userInfo.username.slice(0, 1).toUpperCase()}

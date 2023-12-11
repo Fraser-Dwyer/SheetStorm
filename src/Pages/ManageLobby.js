@@ -76,7 +76,7 @@ export default function ManageLobby({ baseURL }) {
   }
 
   return (
-    <div>
+    <div style={{ marginBottom: "10vw" }}>
       <h3>Manage Games</h3>
       {userCreatedLobbies.length === 0 && (
         <>

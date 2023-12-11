@@ -41,13 +41,22 @@ export default function Header({ baseURL }) {
     <header>
       <nav>
         <div className="navButtonContainer">
-          {(path === "/post-score" ||
-            path === "/create-game" ||
-            path === "/my-games" ||
-            path === "/manage-games" ||
-            path === "/join-game") && ( // eslint-disable-next-line
-            <a onClick={() => navigate("/")}>Back</a>
-          )}
+          {userInfo?.username !== undefined &&
+            (path === "/post-score" ||
+              path === "/create-game" ||
+              path === "/my-games" ||
+              path === "/manage-games" ||
+              path === "/about" ||
+              path === "/FAQs" ||
+              path === "/about" ||
+              path === "/FAQs" ||
+              path === "/join-game") && ( // eslint-disable-next-line
+              <a onClick={() => navigate("/")}>Back</a>
+            )}
+          {userInfo?.username === undefined &&
+            (path === "/about" || path === "/FAQs") && ( // eslint-disable-next-line
+              <a onClick={() => navigate("/login")}>Back</a>
+            )}
           {path === "/" && ( // eslint-disable-next-line
             <a onClick={() => navigate("/")}></a>
           )}
@@ -77,6 +86,15 @@ export default function Header({ baseURL }) {
           </div>
         </div>
       )}
+
+      {userInfo?.username === undefined &&
+        (path === "/about" || path === "/FAQs") && (
+          <div className="leftHeaderDiv">
+            <div className="titleContainerLogos">
+              <img src={sheetstormlogo2} alt="lightening bolt"></img>
+            </div>
+          </div>
+        )}
     </header>
   );
 }

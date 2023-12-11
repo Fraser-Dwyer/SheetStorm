@@ -1,0 +1,9 @@
+.QuestionContainer h4 {
+    text-align: left;
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+.QuestionContainer p {
+    font-size: 3.5vw;
+}

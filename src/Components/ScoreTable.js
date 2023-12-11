@@ -19,9 +19,13 @@ export default function ScoreTable({ weekStart, scores, name, players }) {
 
   useEffect(() => {
     var newDate = new Date();
-    newDate.setDate(
-      newDate.getDate() + ((1 + 7 - newDate.getDay()) % 7) - 7 + change
-    );
+    if (newDate.getDay() !== 1) {
+      newDate.setDate(
+        newDate.getDate() + ((1 + 7 - newDate.getDay()) % 7) - 7 + change
+      );
+    } else {
+      newDate.setDate(newDate.getDate() + change);
+    }
 
     var newScores = [];
     if (allTheScores && players) {

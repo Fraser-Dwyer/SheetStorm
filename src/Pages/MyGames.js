@@ -105,7 +105,7 @@ export default function MyGames({ baseURL }) {
   };
 
   return (
-    <div>
+    <div style={{ marginBottom: "10vw" }}>
       <h3>My Games</h3>
       {(!inLobbies || inLobbies?.length === 0) && (
         <>

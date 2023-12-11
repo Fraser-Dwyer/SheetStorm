@@ -10,6 +10,8 @@ import MyGames from "./Pages/MyGames.js";
 import ManageLobby from "./Pages/ManageLobby.js";
 import JoinGame from "./Pages/JoinGame.js";
 import PrivateRoute from "./Components/PrivateRoute.js";
+import About from "./Pages/About.js";
+import FAQs from "./Pages/FAQs.js";
 
 function App() {
   // Production:  "https://server.sheetstorm.co.uk"
@@ -29,6 +31,8 @@ function App() {
           />
           <Route path="/login" element={<Login baseURL={baseURL} />} />
           <Route path="/signup" element={<Signup baseURL={baseURL} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/FAQs" element={<FAQs />} />
           <Route
             path="/post-score"
             element={

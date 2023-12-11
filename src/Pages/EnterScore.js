@@ -20,9 +20,11 @@ export default function EnterScore({ baseURL }) {
   const today = new Date().toLocaleDateString("en-US", DATE_OPTIONS);
   var todayDay = new Date().toLocaleDateString("en-US", { weekday: "short" });
   var weekStart = new Date();
-  weekStart.setDate(
-    weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
-  );
+  if (weekStart.getDay() !== 1) {
+    weekStart.setDate(
+      weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
+    );
+  }
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   //todayDay = "Fri";

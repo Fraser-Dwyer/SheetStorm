@@ -1,0 +1,40 @@
+.footerContainer {
+    display: flex;
+    background-color: white;
+    border-top: 1px solid #787c7fff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.footerContainer div:first-child {
+    margin-left: 2vw;
+}
+
+.footerContainer img {
+    width: 4vw;
+    height: 4vw;
+}
+
+.footerContainer div:first-child p {
+    font-weight: bolder;
+}
+
+.footerContainer p {
+    font-size: 3.5vw;
+    padding: 0.5vw;
+}
+
+.footerContainer div div {
+    align-items: center;
+}
+
+.footerContainer div {
+    display: flex;
+}
+
+.footerContainer div p:last-child {
+    margin: 0vw 2vw 0vw 2vw;
+}

@@ -20,13 +20,22 @@ export default function Login({ baseURL }) {
     day: "numeric",
   };
   var weekStart = new Date();
-  weekStart.setDate(
-    weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
-  );
+  if (weekStart.getDay() !== 1) {
+    weekStart.setDate(
+      weekStart.getDate() + ((1 + 7 - weekStart.getDay()) % 7) - 7
+    );
+  }
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
 
   async function handleLogin(e) {
     e.preventDefault();
+
+    if (username.length === 0 || password.length === 0) {
+      setLoginClass("errorDiv");
+      setErrorMsg("Invalid login credentials");
+      return;
+    }
+
     var usernameLower = username.toLowerCase();
     const response = await fetch(baseURL + "/login", {
       method: "POST",
