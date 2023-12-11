@@ -6,21 +6,27 @@ Users can create lobbies and then share the password with friends so that they c
 
 Sheet Storm can be accessed at <a href="sheetstorm.co.uk">sheetstorm.co.uk</a>. Don't forget it is a mobile only website so may appear stretched in desktop browsers.
 
-## Login Page
+<table width="100%">
+  <tr>
+    <td><h2 align="center" width="33%">Login Page</h2></td>
+    <td><h2 align="center" width="33%">Main Menu</h2></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="readme_images/login-page.jpg" alt="Login Page" width="350"/></td>
+    <td width="50%"><img src="readme_images/main-menu.jpg" alt="Main Menu" width="350"/></td>
+  </tr> 
+</table>
 
-<img src="readme_images/login.jpg" alt="Login Page" width="512"/>
-
-## Main Menu
-
-<img src="readme_images/main-menu.jpg" alt="Main Menu" width="512"/>
-
-## Manage Games Page
-
-<img src="readme_images/manage-games.jpg" alt="Manage Games Page" width="512"/>
-
-## My Games Page
-
-<img src="readme_images/my-games.jpg" alt="My Games Page" width="512"/>
+<table width="100%">
+  <tr>
+    <td><h2 align="center" width="33%">Manage Games Page</h2></td>
+    <td><h2 align="center" width="33%">Main Menu</h2></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="readme_images/manage-games.jpg" alt="Manage Games Page" width="350"/></td>
+    <td width="50%"><img src="readme_images/my-games.jpg" alt="My Games Page" width="350"/></td>
+  </tr> 
+</table>
 
 ## Tech Stack
 
