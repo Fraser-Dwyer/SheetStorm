@@ -55,7 +55,7 @@ export default function EnterScore({ baseURL }) {
   };
 
   return (
-    <div>
+    <div className="enterScoreContainer">
       <h3>{today}</h3>
       <p>Enter the score you achieved today in Wordle</p>
       <div className="scoreFormContainer">

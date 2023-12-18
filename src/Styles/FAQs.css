@@ -7,3 +7,18 @@
 .QuestionContainer p {
     font-size: 3.5vw;
 }
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
+    .QuestionContainer p {
+        font-size: 25px;
+        margin-bottom: 15px;
+    }
+
+    .QuestionContainer h4 {
+        font-size: 30px;
+        padding-bottom: 5px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}

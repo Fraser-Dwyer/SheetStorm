@@ -1,9 +1,9 @@
-h3 {
+.enterScoreContainer h3 {
     padding: 3vw;
     font-size: 5.5vw;
 }
 
-p {
+.enterScoreContainer p {
     padding: 0vw 3vw 3vw 3vw;
     font-size: 4.5vw;
 }

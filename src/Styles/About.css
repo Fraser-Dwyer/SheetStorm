@@ -2,3 +2,26 @@
     font-size: 3.5vw;
     margin-bottom: 10vw;
 }
+
+.aboutUsContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.aboutUsContainer div {
+    max-width: 1200px;
+}
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
+    .aboutmep {
+        font-size: 25px;
+        margin-bottom: 50px;
+    }
+
+    .aboutUsContainer h3 {
+        margin-top: 30px;
+        font-size: 40px;
+        padding-bottom: 15px;
+    }
+}
