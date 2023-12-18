@@ -1,3 +1,7 @@
+.manageLobbyContainerContainer {
+    margin-bottom: 10vw;
+}
+
 .manageLobbyContainer {
     width: 94vw;
     margin-left: 3vw;
@@ -99,4 +103,50 @@
     display: flex;
     justify-content: space-between;
     margin: 0vw 3vw 3vw 3vw;
+}
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
+    .manageLobbyContainerContainer {
+        margin-bottom: 50px;
+    }
+
+    .areYouSure p {
+        width: 440px;
+        font-size: 30px;
+        margin: 30px;
+    }
+
+    .areYouSure button {
+        font-size: 25px;
+        padding: 10px 20px;
+    }
+
+    .areYouSure {
+        margin-bottom: 0px;
+    }
+
+    .areYouSure div {
+        width: 500px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .areYouSure div :first-child {
+        margin: 30px;
+    }
+
+    .areYouSure div :last-child {
+        margin: 30px 30px 30px 0px;
+    }
+
+    .areYouSure div :first-child:hover {
+        cursor: pointer;
+        background-color: rgb(238, 75, 75);
+    }
+
+    .areYouSure div :last-child:hover {
+        cursor: pointer;
+        background-color: rgb(141, 141, 141);
+    }
 }

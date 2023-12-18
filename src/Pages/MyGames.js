@@ -105,58 +105,60 @@ export default function MyGames({ baseURL }) {
   };
 
   return (
-    <div style={{ marginBottom: "10vw" }}>
-      <h3>My Games</h3>
-      {(!inLobbies || inLobbies?.length === 0) && (
-        <>
-          <p>You are not yet in any games.</p>
-          <p>
-            To join a game, go to{" "}
-            <a onClick={() => navigate("/join-game")}>Join Game</a>
-          </p>
-        </>
-      )}
+    <div className="myGamesContainerContainer">
+      <div>
+        <h3>My Games</h3>
+        {(!inLobbies || inLobbies?.length === 0) && (
+          <>
+            <p>You are not yet in any games.</p>
+            <p>
+              To join a game, go to{" "}
+              <a onClick={() => navigate("/join-game")}>Join Game</a>
+            </p>
+          </>
+        )}
 
-      {successMsg && (
-        <div className="successContainerJoinDelete">
-          {successMsg}
-          <div className="closeDiv">
-            <img
-              src={cross}
-              alt="closeImg"
-              onClick={handleCloseClickSuccess}
-            ></img>
+        {successMsg && (
+          <div className="successContainerJoinDelete">
+            {successMsg}
+            <div className="closeDiv">
+              <img
+                src={cross}
+                alt="closeImg"
+                onClick={handleCloseClickSuccess}
+              ></img>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {errorMsg && (
-        <div className="errorContainerDelete">
-          {errorMsg}
-          <div className="closeDiv">
-            <img
-              src={cross}
-              alt="closeImg"
-              onClick={handleCloseClickFail}
-            ></img>
+        {errorMsg && (
+          <div className="errorContainerDelete">
+            {errorMsg}
+            <div className="closeDiv">
+              <img
+                src={cross}
+                alt="closeImg"
+                onClick={handleCloseClickFail}
+              ></img>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {inLobbies?.length > 0 && (
-        <>
-          {allScores &&
-            inLobbies.map((lobby) => (
-              <SingleGame
-                key={lobby.lobbyName}
-                lobbyName={lobby.lobbyName}
-                allScores={allScores}
-                players={lobby.players}
-                handleLeaveLobby={(e) => handleLeaveLobby(e, lobby.lobbyName)}
-              />
-            ))}
-        </>
-      )}
+        {inLobbies?.length > 0 && (
+          <div className="myGamesScoreTableContainer">
+            {allScores &&
+              inLobbies.map((lobby) => (
+                <SingleGame
+                  key={lobby.lobbyName}
+                  lobbyName={lobby.lobbyName}
+                  allScores={allScores}
+                  players={lobby.players}
+                  handleLeaveLobby={(e) => handleLeaveLobby(e, lobby.lobbyName)}
+                />
+              ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

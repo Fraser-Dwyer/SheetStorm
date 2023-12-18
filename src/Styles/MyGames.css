@@ -1,3 +1,7 @@
+.myGamesContainerContainer {
+    margin-bottom: 10vw;
+}
+
 .outerContainer {
     display: block;
     width: 94vw;
@@ -16,10 +20,6 @@
     display: flex;
     align-items: center;
     margin: 4vw 0vw 4vw 0vw;
-}
-
-.myGamesContainer div:first-child {
-    flex-grow: 1;
 }
 
 .myGamesContainer img {
@@ -107,7 +107,90 @@ p a {
 
 /* For larger than phone screen size (Desktops or iPads) */
 @media only screen and (min-width: 601px) {
+    .outerContainer:hover {
+        background-color: rgb(245, 245, 245);
+        transform: scale(1.01);
+    }
+
     h4 {
         font-size: 30px;
+    }
+
+    h3 {
+        margin: 0px;
+    }
+
+    .myGamesContainerContainer {
+        margin-bottom: 80px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .myGamesContainer img {
+        width: 40px;
+        height: 50px;
+        margin-left: 40px;
+        margin-right: 30px;
+    }
+
+    .imageDivContainer {
+        width: 650px;
+        max-width: 650px;
+    }
+
+    .imageDivContainer div:first-child {
+        width: 100px;
+        max-width: 100px;
+    }
+
+    .imageDivContainer div:hover {
+        transform: scale(1.01);
+    }
+
+    .myGamesContainer button {
+        font-size: 30px;
+        padding: 10px 20px;
+        margin-right: 30px;
+    }
+
+    .myGamesContainer button:hover {
+        background-color: rgb(238, 75, 75);
+        cursor: pointer;
+    }
+
+    .myGamesContainerContainer div h3 {
+        padding: 30px 20px 20px 20px;
+        font-size: 30px;
+    }
+
+    .outerContainer {
+        width: 1000px;
+        margin: 0px 20px 20px 20px;
+    }
+
+    .myGamesContainer div {
+        margin: 20px 0px 20px 0px;
+    }
+
+    .myGamesContainer div:first-of-type:hover {
+        cursor: pointer;
+    }
+
+    .myGamesScoreTableContainer {
+        margin: auto;
+    }
+
+    .oneResult {
+        max-width: 910px;
+    }
+
+    .myGamesLeaveButtonContainer {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .myGamesContainer p {
+        font-size: 35px;
+        padding: 5px;
     }
 }

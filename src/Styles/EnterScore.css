@@ -35,3 +35,65 @@
     background-color: #787c7fff;
     color: white;
 }
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
+    .enterScoreContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .enterScoreContainer h3 {
+        padding: 30px 20px 20px 20px;
+        font-size: 30px;
+    }
+
+    .enterScoreContainer p {
+        padding: 0px 20px 20px 20px;
+        font-size: 30px;
+    }
+
+    .scoreForm {
+        padding: 0px 20px 20px 20px;
+        width: 960px;
+    }
+
+    .scoreForm div select {
+        margin-right: 20px;
+        font-size: 30px;
+        padding: 10px 20px;
+        overflow: hidden;
+        width: 960px;
+    }
+
+    .scoreForm div button {
+        font-size: 30px;
+        padding: 10px 20px;
+    }
+
+    .scoreForm div button:hover {
+        cursor: pointer;
+        background-color: #69a964;
+    }
+
+    .enterScoreContainer div .errorContainerDelete {
+        font-size: 30px;
+        margin-left: 20px;
+        width: 960px;
+        padding: 10px 20px;
+    }
+
+    .enterScoreContainer div .errorContainerDelete .closeDiv img {
+        width: 30px;
+    }
+
+    .enterScoreContainer div .errorContainerDelete .closeDiv img:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+    .enterScoreContainer div .errorContainerDelete .closeDiv {
+        justify-content: flex-end;
+    }
+}

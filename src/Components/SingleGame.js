@@ -49,19 +49,22 @@ export default function SingleGame({
   return (
     <div className="outerContainer">
       <div className="myGamesContainer">
-        <div onClick={handleImgClick}>
-          <img
-            src={arrow}
-            alt="arrowImg"
-            style={{ transform: rotate, transition: "all 0.2s linear" }}
-            onClick={handleImgClick}
-          />
+        <div onClick={handleImgClick} className="imageDivContainer">
+          <div>
+            <img
+              src={arrow}
+              alt="arrowImg"
+              className="arrowImg"
+              style={{ transform: rotate, transition: "all 0.2s linear" }}
+              onClick={handleImgClick}
+            />
+          </div>
           <p>
             {lobbyName.slice(0, 1).toUpperCase()}
             {lobbyName.slice(1)}
           </p>
         </div>
-        <div>
+        <div className="myGamesLeaveButtonContainer">
           <button onClick={() => setSure(!sure)}>Leave Game</button>
         </div>
       </div>
