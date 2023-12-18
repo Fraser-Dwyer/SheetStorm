@@ -76,37 +76,43 @@ export default function Home({ baseURL }) {
   }, [userInfo]);
 
   return (
-    <div className="homeContainer" style={{ marginBottom: "10vw" }}>
-      {userInfo?.username !== undefined && (
-        <h2>
-          Welcome {userInfo.username.slice(0, 1).toUpperCase()}
-          {userInfo.username.slice(1).toLowerCase()}!
-        </h2>
-      )}
-      {scores !== null && userInfo?.username !== undefined && scores && (
-        <div className="myScoreContainer">
-          <ScoreTable
-            weekStart={weekStart}
-            scores={scores}
-            name={false}
-            players={[{ username: userInfo.username }]}
-          />
-        </div>
-      )}
+    <div className="homeContainerContainer">
+      <div className="homeContainer">
+        {userInfo?.username !== undefined && (
+          <h2>
+            Welcome {userInfo.username.slice(0, 1).toUpperCase()}
+            {userInfo.username.slice(1).toLowerCase()}!
+          </h2>
+        )}
+        {scores !== null && userInfo?.username !== undefined && scores && (
+          <div className="myScoreContainer">
+            <ScoreTable
+              weekStart={weekStart}
+              scores={scores}
+              name={false}
+              players={[{ username: userInfo.username }]}
+            />
+          </div>
+        )}
 
-      <div className="menuButtonContainer">
-        <button onClick={() => navigate("/post-score")}>
-          Enter {dayToday}'s Score
-        </button>
-        <button onClick={() => navigate("/my-games")}>My Games</button>
-        <button onClick={() => navigate("/manage-games")}>Manage Games</button>
-        <div className="sideButtonDiv">
-          <button onClick={() => navigate("/create-game")}>Create Game</button>
-          <button onClick={() => navigate("/join-game")}>Join Game</button>
+        <div className="menuButtonContainer">
+          <button onClick={() => navigate("/post-score")}>
+            Enter {dayToday}'s Score
+          </button>
+          <button onClick={() => navigate("/my-games")}>My Games</button>
+          <button onClick={() => navigate("/manage-games")}>
+            Manage Games
+          </button>
+          <div className="sideButtonDiv">
+            <button onClick={() => navigate("/create-game")}>
+              Create Game
+            </button>
+            <button onClick={() => navigate("/join-game")}>Join Game</button>
+          </div>
+          <a href="https://www.nytimes.com/games/wordle/index.html">
+            <button>Play Wordle</button>
+          </a>
         </div>
-        <a href="https://www.nytimes.com/games/wordle/index.html">
-          <button>Play Wordle</button>
-        </a>
       </div>
     </div>
   );

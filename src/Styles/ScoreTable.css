@@ -1,7 +1,7 @@
 table, th, td {
-    border: 1px solid;
-    border-color: black;
-  }
+  border: 1px solid;
+  border-color: black;
+}
 
 th, td {
   background-color: white;
@@ -9,53 +9,53 @@ th, td {
 }
 
 table {
-    /*border-collapse: collapse;*/
-    margin: 2vw auto 4vw auto;
-    font-size: 4.5vw;
-    text-align: center;
-    border-radius: 10px;
-    border-spacing: 0.5vw;
-    background-color: white;
+  /*border-collapse: collapse;*/
+  margin: 2vw auto 4vw auto;
+  font-size: 4.5vw;
+  text-align: center;
+  border-radius: 10px;
+  border-spacing: 0.5vw;
+  background-color: white;
 }
 
 table tr {
-    display: block;
+  display: block;
 }
 
 .days th {
-    width: 19vw;
-    min-width: 19vw;
-    text-align: left;
-    padding-left: 1vw;
+  width: 19vw;
+  min-width: 19vw;
+  text-align: left;
+  padding-left: 1vw;
 }
 
 .scores div th {
-    width: 19vw;
-    min-width: 19vw;
-    max-width: 19vw;
-    text-align: left;
-    padding-left: 1vw;
-    overflow: auto;
+  width: 19vw;
+  min-width: 19vw;
+  max-width: 19vw;
+  text-align: left;
+  padding-left: 1vw;
+  overflow: auto;
 }
 
 .days td {
-    width: 7vw;
-    min-width: 7vw;
+  width: 7vw;
+  min-width: 7vw;
 }
 
 .scores div td {
-    width: 7vw;
-    min-width: 7vw;
+  width: 7vw;
+  min-width: 7vw;
 }
 
 .days td:last-child {
-    width: 14vw;
-    min-width: 14vw;
+  width: 14vw;
+  min-width: 14vw;
 }
 
 .scores div td:last-child {
-    width: 14vw;
-    min-width: 14vw;
+  width: 14vw;
+  min-width: 14vw;
 }
 
 .days tr {
@@ -63,37 +63,37 @@ table tr {
 }
 
 @supports (-webkit-text-stroke: 3px black) {
-    .scores td {
-      -webkit-text-fill-color: black;
-      -webkit-text-stroke: 1px black;
-    }
+  .scores td {
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: 1px black;
   }
+}
 
-  table tr:first-child th:first-child {
-    border-top-left-radius: 10px;
-  }
+table tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
 
-  table tr:first-child td:last-child {
-    border-top-right-radius: 10px;
-  }
+table tr:first-child td:last-child {
+  border-top-right-radius: 10px;
+}
 
-  table tr:last-child div:last-child th:first-child {
-    border-bottom-left-radius: 10px;
-  }
+table tr:last-child div:last-child th:first-child {
+  border-bottom-left-radius: 10px;
+}
 
-  table tr:last-child div:last-child td:last-child {
-    border-bottom-right-radius: 10px;
-  }
+table tr:last-child div:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
 
 h4 {
-    margin-left: 3vw;
-    font-size: 4vw;
+  margin-left: 3vw;
+  font-size: 4vw;
 }
 
 .tableContainer {
-    width: 88vw;
-    margin-left: calc(3vw - 2px);
-    margin-right: calc(3vw - 2px);
+  width: 88vw;
+  margin-left: calc(3vw - 2px);
+  margin-right: calc(3vw - 2px);
 }
 
 .weekNavContainer {
@@ -113,4 +113,64 @@ h4 {
 
 .weekNavContainer img:last-child {
   margin-right: 3vw;
+}
+
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
+  .weekNavContainer img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .weekNavContainer img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  table {
+    margin: 20px auto;
+    font-size: 25px;
+    border-radius: 10px;
+    border-spacing: 5px;
+  }
+
+  .days th {
+    width: 210px;
+    min-width: 210px;
+    padding-left: 10px;
+  }
+
+  .scores div th {
+    width: 210px;
+    min-width: 210px;
+    max-width: 210px;
+    padding-left: 10px;
+  }
+
+  .days td {
+    width: 85px;
+    min-width: 85px;
+  }
+
+  .scores div td {
+    width: 85px;
+    min-width: 85px;
+  }
+
+  .days td:last-child {
+    width: 85px;
+    min-width: 85px;
+  }
+
+  .scores div td:last-child {
+    width: 85px;
+    min-width: 85px;
+  }
+
+  .tableContainer {
+    width: calc(100% - 40px);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }

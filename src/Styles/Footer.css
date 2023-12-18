@@ -50,13 +50,14 @@
         margin: 0px 20px 0px 40px;
     }
 
+    .footerContainer div:last-child p:hover {
+        cursor: pointer;
+        color: #69a964;
+    }
+
     .footerContainer p {
         font-size: 30px;
         padding: 5px;
-    }
-
-    .footerContainer p:hover {
-        cursor: pointer;
     }
 
     .footerContainer img {

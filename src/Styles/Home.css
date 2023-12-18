@@ -1,13 +1,13 @@
-.homeContainer {
-    width: 1fr;
-}
-
 .homeContainer h3 {
     font-size: 5vw;
     margin-top: 0px;
     margin-bottom: 0px;
     padding-bottom: 0px;
     padding-top: 0px;
+}
+
+.homeContainer {
+    margin-bottom: 10vw;
 }
 
 h2 {
@@ -25,7 +25,7 @@ button {
 }
 
 .menuButtonContainer button {
-    display:block;
+    display: block;
     width: 94vw;
     height: 15vw;
     margin: 2vw auto;
@@ -38,7 +38,7 @@ button {
 .menuButtonContainer div {
     width: 94vw;
     display: inline-flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     margin: 0vw;
 }
 
@@ -49,7 +49,7 @@ button {
     align-items: center;
 }
 
-.sideButtonDiv :last-child{
+.sideButtonDiv :last-child {
     margin: 0 0 0 1vw;
 }
 
@@ -71,4 +71,68 @@ button {
 .menuButtonContainer a {
     text-decoration: none;
     color: white;
+}
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
+    .homeContainerContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    .homeContainer {
+        max-width: 1000px;
+        margin-bottom: 50px;
+    }
+
+    h2 {
+        margin: 30px 30px 30px 15px;
+        font-size: 36px;
+    }
+
+    .myScoreContainer {
+        display: block;
+        width: calc(100% - 40px);
+        margin: 0px 20px;
+    }
+
+    .menuButtonContainer {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    .menuButtonContainer div {
+        display: block;
+        grid-row: span 2;
+    }
+
+    .menuButtonContainer div button {
+        width: 480px;
+    }
+
+    .sideButtonDiv :last-child {
+        margin: 10px auto;
+    }
+
+    .sideButtonDiv :first-child {
+        margin: 10px auto;
+    }
+
+    .menuButtonContainer button {
+        width: 480px;
+        height: 8vh;
+        margin: 10px auto;
+        font-size: 30px;
+    }
+
+    .menuButtonContainer button:hover {
+        cursor: pointer;
+        background-color: #69a964;
+    }
+
+    .menuButtonContainer div {
+        width: 100%;
+    }
+
+
 }

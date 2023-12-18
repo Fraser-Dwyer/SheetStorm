@@ -16,10 +16,6 @@ header h1 {
   text-decoration: underline;
 }
 
-header img {
-  width: 10vw;
-}
-
 header a {
   text-decoration: none;
   color: black;
@@ -81,9 +77,18 @@ header a {
 
   header a:hover {
     cursor: pointer;
+    color: #69a964;
   }
 
   .leftHeaderDiv {
     margin-top: 15px;
+  }
+
+  .titleContainerLogos {
+    width: 800px;
+  }
+
+  .titleContainerLogos img {
+    width: 100%;
   }
 }
