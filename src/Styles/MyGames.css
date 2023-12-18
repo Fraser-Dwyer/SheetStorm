@@ -116,10 +116,6 @@ p a {
         font-size: 30px;
     }
 
-    h3 {
-        margin: 0px;
-    }
-
     .myGamesContainerContainer {
         margin-bottom: 80px;
         display: flex;
@@ -160,6 +156,7 @@ p a {
 
     .myGamesContainerContainer div h3 {
         padding: 30px 20px 20px 20px;
+        margin: 0px;
         font-size: 30px;
     }
 

@@ -25,10 +25,6 @@
     font-size: 4vw;
 }
 
-.infoContainer:first-child {
-    padding-top: 2vw;
-}
-
 .infoContainer p:first-child {
     width: 22vw;
 }
@@ -105,9 +101,26 @@
     margin: 0vw 3vw 3vw 3vw;
 }
 
+.leftContent {
+    margin: 3vw 2vw 3vw 5vw;
+}
+
 /* For larger than phone screen size (Desktops or iPads) */
 @media only screen and (min-width: 601px) {
+
+    h3 {
+        margin: 30px;
+        font-size: 30px;
+    }
+
+    .manageLobbyContainerContainerContainer {
+        display: flex;
+        justify-content: center;
+    }
+
     .manageLobbyContainerContainer {
+        width: 1000px;
+        max-width: 1000px;
         margin-bottom: 50px;
     }
 
@@ -148,5 +161,48 @@
     .areYouSure div :last-child:hover {
         cursor: pointer;
         background-color: rgb(141, 141, 141);
+    }
+
+    .infoContainer p {
+        font-size: 30px;
+    }
+
+    .infoContainer:first-child {
+        padding-top: 0px;
+    }
+
+    .infoContainer p:first-child {
+        width: 200px;
+    }
+
+    .rightContent {
+        margin-right: 80px;
+    }
+
+    .rightContent button {
+        font-size: 30px;
+        padding: 10px 20px;
+    }
+
+    .rightContent button:hover {
+        background-color: rgb(238, 75, 75);
+        cursor: pointer;
+    }
+
+    .manageLobbyContainer {
+        width: 970px;
+        margin-left: 30px;
+        margin-bottom: 30px;
+    }
+
+    .flexLobbyContainer {
+        width: 1000px;
+    }
+
+    .leftContent {
+        padding: 30px;
+        width: 600px;
+        max-width: 600px;
+        margin: 0px;
     }
 }
