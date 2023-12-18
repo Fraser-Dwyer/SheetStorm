@@ -1,65 +1,89 @@
 header {
-    font-size: 5vw;
-    text-decoration: none;
-    padding: 2vw;
-    justify-content: space-between;
-    border-bottom: 2px solid #787c7f;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    background-color: #ffffff;
-  }
+  text-decoration: none;
+  padding: 2vw;
+  justify-content: space-between;
+  border-bottom: 2px solid #787c7f;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #ffffff;
+  width: 100%;
+}
 
-  header h1 {
-    font-style: italic;
-    margin: 0vw 3vw 0vw 0vw;
-    text-decoration: underline;
-  }
+header h1 {
+  font-style: italic;
+  margin: 0vw 3vw 0vw 0vw;
+  text-decoration: underline;
+}
 
-  header img {
-    width: 10vw;
-  }
+header img {
+  width: 10vw;
+}
 
-  header a {
-    text-decoration: none;
-    color: black;
-    padding: 0% 2%;
-  }
+header a {
+  text-decoration: none;
+  color: black;
+  padding: 0% 2%;
+  font-size: 5vw;
+}
 
-  .leftHeaderDiv {
-    display: flex;
-    justify-content: center;
-    margin-top: 3vw;
-  }
+.leftHeaderDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 3vw;
+}
 
-  .navButtonContainer {
-    display: flex;
-    justify-content: space-between;
-  }
+.navButtonContainer {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .logRegButtonContainerLog {
-    display: flex;
-    justify-content: flex-end;
-  }
+.logRegButtonContainerLog {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .logRegButtonContainerReg {
-    display: flex;
-    justify-content: flex-end;
-  }
+.logRegButtonContainerReg {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .logRegButtonContainerLog a:first-child {
-    text-decoration: underline;
-  }
+.logRegButtonContainerLog a:first-child {
+  text-decoration: underline;
+}
 
-  .logRegButtonContainerReg a:last-child {
-    
-    text-decoration: underline;
-  }
+.logRegButtonContainerReg a:last-child {
 
-  .titleContainerLogos {
-    width: 95%;
+  text-decoration: underline;
+}
+
+.titleContainerLogos {
+  width: 95%;
 }
 
 .titleContainerLogos img {
+  width: 100%;
+}
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
+
+
+  header {
     width: 100%;
+    padding: 10px;
+  }
+
+  header a {
+    font-size: 30px;
+    padding: 0px 20px;
+  }
+
+  header a:hover {
+    cursor: pointer;
+  }
+
+  .leftHeaderDiv {
+    margin-top: 15px;
+  }
 }

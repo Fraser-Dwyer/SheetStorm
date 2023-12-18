@@ -6,7 +6,7 @@ export default function Footer() {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div className="footerContainerContainer">
       <div className="footerContainer">
         <div>
           <p>Redundancy Productions Ltd.</p>
@@ -19,6 +19,6 @@ export default function Footer() {
           <p onClick={() => navigate("/FAQs")}>FAQs</p>
         </div>
       </div>
-    </>
+    </div>
   );
 }

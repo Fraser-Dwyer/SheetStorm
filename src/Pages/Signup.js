@@ -136,61 +136,63 @@ export default function Signup({ baseURL }) {
   }
 
   return (
-    <div className="main">
+    <div className="mainContainer">
       <div className="logo">
         <img src={sheetStormLogo} alt="SheetStormLogo"></img>
       </div>
-      <div className="signupContainer">
-        <div className="inputTitle">
-          <h1>Sign Up</h1>
-        </div>
-        <form>
-          <div>
-            <input
-              className={nameDiv}
-              placeholder="First Name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+      <div className="main">
+        <div className="signupContainer">
+          <div className="inputTitle">
+            <h1>Sign Up</h1>
           </div>
-          <div>
-            <input
-              className={usernameDiv}
-              placeholder="Username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              className={passwordDiv}
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              className={repeatPasswordDiv}
-              placeholder="Repeat Password"
-              type="password"
-              value={repeatPassword}
-              onChange={(e) => setRepeatPassword(e.target.value)}
-            />
-          </div>
-        </form>
+          <form>
+            <div>
+              <input
+                className={nameDiv}
+                placeholder="First Name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                className={usernameDiv}
+                placeholder="Username"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                className={passwordDiv}
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                className={repeatPasswordDiv}
+                placeholder="Repeat Password"
+                type="password"
+                value={repeatPassword}
+                onChange={(e) => setRepeatPassword(e.target.value)}
+              />
+            </div>
+          </form>
 
-        <Error errorMsg={errorMsg} handleCloseClick={handleCloseClick} />
+          <Error errorMsg={errorMsg} handleCloseClick={handleCloseClick} />
 
-        <div className="buttonContainer">
-          <button onClick={handleSignup}>Submit</button>
+          <div className="buttonContainer">
+            <button onClick={handleSignup}>Submit</button>
+          </div>
         </div>
-      </div>
-      <div className="signupMessage">
-        Already have an account? <Link to="/login">Click here</Link>
+        <div className="signupMessage">
+          Already have an account? <Link to="/login">Click here</Link>
+        </div>
       </div>
     </div>
   );

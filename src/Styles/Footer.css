@@ -38,3 +38,29 @@
 .footerContainer div p:last-child {
     margin: 0vw 2vw 0vw 2vw;
 }
+
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
+    .footerContainer div:first-child {
+        margin-left: 5px;
+    }
+
+    .footerContainer div p:last-child {
+        margin: 0px 20px 0px 40px;
+    }
+
+    .footerContainer p {
+        font-size: 30px;
+        padding: 5px;
+    }
+
+    .footerContainer p:hover {
+        cursor: pointer;
+    }
+
+    .footerContainer img {
+        width: 25px;
+        height: 25px;
+    }
+}

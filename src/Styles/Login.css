@@ -4,69 +4,93 @@
 }
 
 .logo img {
-    width: 100%;
-    display: block;
-    margin: 6% auto 8% auto;
-  }
-  
+  width: 100%;
+  display: block;
+  margin: 6% auto 8% auto;
+  max-width: none;
+}
+
+.loginContainer {
+  width: 80%;
+  top: 40%;
+  left: 10%;
+  border: 4px solid black;
+  border-radius: 15px;
+  margin: auto;
+}
+
+.loginContainer .inputTitle {
+  width: 100%;
+  text-align: center;
+}
+
+.loginContainer form div {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 4%;
+}
+
+.loginContainer form div:first-child {
+  margin-bottom: 3%;
+}
+
+.loginContainer form input {
+  width: 100%;
+  font-size: 4vw;
+  padding: 1.5vw;
+}
+
+.loginContainer div h1 {
+  font-size: 7vw;
+  margin: 2vw;
+}
+
+.buttonContainer {
+  text-align: end;
+  margin: 4% 5%;
+}
+
+.buttonContainer button {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  font-size: 4vw;
+  padding: 1.5vw;
+  font-weight: bolder;
+  background-color: #787c7fff;
+  color: white;
+}
+
+.signupMessage {
+  text-align: center;
+  font-size: 4vw;
+  width: 100%;
+  margin-top: 1%;
+  margin-bottom: 5%;
+}
+
+.signupMessage span {
+  text-decoration: underline;
+}
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
   .loginContainer {
-    width: 80%;
-    top: 40%;
-    left: 10%;
-    border: 4px solid black;
-    border-radius: 15px;
-    margin: auto;
+    margin: 0px 0px 0px 50px;
   }
-  
-  .loginContainer .inputTitle {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .loginContainer form div {
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 4%;
-  }
-  
-  .loginContainer form div:first-child {
-    margin-bottom: 3%;
-  }
-  
+
   .loginContainer form input {
-    width: 100%;
-    font-size: 4vw;
-    padding: 1.5vw;
+    font-size: 25px;
+    padding: 10px;
   }
-  
+
+  .loginContainer form div {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
   .loginContainer div h1 {
-    font-size: 7vw;
-    margin: 2vw;
+    font-size: 45px;
+    margin: 12px;
   }
-  
-  .buttonContainer {
-    text-align: end;
-    margin: 4% 5%;
-  }
-  
-  .buttonContainer button {
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 5px;
-    font-size: 4vw;
-    padding: 1.5vw;
-    font-weight: bolder;
-    background-color: #787c7fff;
-    color: white;
-  }
-  
-  .signupMessage {
-    text-align: center;
-    font-size: 4vw;
-    width: 100%;
-    margin-top: 1%;
-    margin-bottom: 5%;
-  }
-  
-  .signupMessage span {
-    text-decoration: underline;
-  }
+}

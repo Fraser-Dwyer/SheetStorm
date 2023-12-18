@@ -60,43 +60,45 @@ export default function Login({ baseURL }) {
   };
 
   return (
-    <div className="main">
+    <div className="mainContainer">
       <div className="logo">
         <img src={sheetStormLogo} alt="SheetStormLogo"></img>
       </div>
-      <div className="loginContainer">
-        <div className="inputTitle">
-          <h1>Login</h1>
-        </div>
-        <form>
-          <div>
-            <input
-              className={loginClass}
-              placeholder="Username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
+      <div className="main">
+        <div className="loginContainer">
+          <div className="inputTitle">
+            <h1>Login</h1>
           </div>
-          <div>
-            <input
-              className={loginClass}
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+          <form>
+            <div>
+              <input
+                className={loginClass}
+                placeholder="Username"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                className={loginClass}
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </form>
+
+          <Error errorMsg={errorMsg} handleCloseClick={handleCloseClick} />
+
+          <div className="buttonContainer">
+            <button onClick={(e) => handleLogin(e)}>Submit</button>
           </div>
-        </form>
-
-        <Error errorMsg={errorMsg} handleCloseClick={handleCloseClick} />
-
-        <div className="buttonContainer">
-          <button onClick={(e) => handleLogin(e)}>Submit</button>
         </div>
-      </div>
-      <div className="signupMessage">
-        Don't have an account? <Link to="/signup">Click here</Link>
+        <div className="signupMessage">
+          Don't have an account? <Link to="/signup">Click here</Link>
+        </div>
       </div>
     </div>
   );
