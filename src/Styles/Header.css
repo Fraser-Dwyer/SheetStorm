@@ -83,6 +83,10 @@ header a {
     height: 80px;
   }
 
+  .headerContainer {
+    height: 80px;
+  }
+
   header a {
     font-size: 25px;
     padding: 0px 20px;
