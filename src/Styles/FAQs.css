@@ -1,4 +1,5 @@
 .QuestionContainer h4 {
+    font-size: 3.5vw;
     text-align: left;
     margin-left: 3vw;
     margin-right: 3vw;
@@ -6,7 +7,7 @@
 
 .QuestionContainer p {
     font-size: 3.5vw;
-    margin: 0vw 3vw 0vw 3vw;
+    margin: 0vw 3vw 5vw 3vw;
 }
 
 /* For larger than phone screen size (Desktops or iPads) */

@@ -10,10 +10,8 @@ export default function FAQs() {
           <p>
             No, unfortunately you cannot currently enter scores from previous
             days.
-            <br />
-            <br />
-            If you do forget to enter a score for a day, you can email me at
-            fraserd1413@gmail.com and I will enter it into the database
+            <br /> If you do forget to enter a score for a day, you can email me
+            at fraserd1413@gmail.com and I will enter it into the database
             manually. There are currently no plans to implement this
             functionality, but should there be a demand for it, then this will
             be reconsidered.
