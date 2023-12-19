@@ -61,6 +61,7 @@ export default function ScoreTable({ weekStart, scores, name, players }) {
       <div className="weekNavContainer">
         <img
           onClick={() => setChange(change - 7)}
+          className="clickable"
           src={leftArrow}
           alt="left arrow"
         ></img>
@@ -71,6 +72,7 @@ export default function ScoreTable({ weekStart, scores, name, players }) {
         {Date.parse(gameWeek) < Date.parse(weekStart) && (
           <img
             onClick={() => setChange(change + 7)}
+            className="clickable"
             src={rightArrow}
             alt="right arrow"
           ></img>

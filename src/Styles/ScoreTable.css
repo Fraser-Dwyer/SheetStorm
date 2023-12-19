@@ -128,7 +128,7 @@ h3 {
     height: 30px;
   }
 
-  .weekNavContainer img:hover {
+  .clickable:hover {
     cursor: pointer;
     transform: scale(1.1);
   }

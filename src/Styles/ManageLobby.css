@@ -129,6 +129,10 @@
         margin-bottom: 50px;
     }
 
+    .manageLobbyContainerContainer a:hover {
+        cursor: pointer;
+    }
+
     .areYouSure p {
         width: 440px;
         font-size: 20px;

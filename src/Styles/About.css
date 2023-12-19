@@ -9,13 +9,13 @@
 }
 
 .aboutUsContainer div {
-    max-width: 1200px;
+    max-width: 1000px;
 }
 
 /* For larger than phone screen size (Desktops or iPads) */
 @media only screen and (min-width: 601px) {
     .aboutmep {
-        font-size: 25px;
+        font-size: 20px;
         margin: 0px 0px 50px 0px;
     }
 
@@ -26,7 +26,7 @@
 
     .aboutUsContainer h3 {
         margin: 30px 0px 0px 0px;
-        font-size: 40px;
+        font-size: 35px;
         padding-bottom: 15px;
     }
 }

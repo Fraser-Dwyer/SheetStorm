@@ -79,7 +79,7 @@
   }
 
   .loginContainer form input {
-    font-size: 25px;
+    font-size: 20px;
     padding: 10px;
   }
 
@@ -90,7 +90,7 @@
   }
 
   .loginContainer div h1 {
-    font-size: 45px;
+    font-size: 35px;
     margin: 12px;
   }
 }

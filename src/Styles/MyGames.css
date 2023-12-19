@@ -127,6 +127,10 @@ p a {
         margin-top: 110px;
     }
 
+    .myGamesContainerContainer a:hover {
+        cursor: pointer;
+    }
+
     .myGamesContainer img {
         width: 30px;
         height: 40px;
