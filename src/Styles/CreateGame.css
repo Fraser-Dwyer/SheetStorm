@@ -104,17 +104,18 @@
         width: 800px;
         margin-left: 0;
         margin-right: 0;
-        padding: 30px;
+        padding: 15px;
     }
 
     .labelCreateGame {
         font-size: 25px;
+        padding: 0px 0px 5px 0px;
     }
 
     .createGameForm div input {
         font-size: 25px;
         padding: 10px;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
     }
 
     .brokenButContainer button {

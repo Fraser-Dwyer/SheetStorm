@@ -12,7 +12,7 @@ export default function ManageLobby({ baseURL }) {
   const [deleting, setDeleting] = useState(true);
   const [sure, setSure] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
-  const [errorMsg, setErrorMsg] = useState("null");
+  const [errorMsg, setErrorMsg] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {

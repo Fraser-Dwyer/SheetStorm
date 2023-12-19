@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function JoinGame({ baseURL }) {
   const [lobbyName, setLobbyName] = useState("");
   const [lobbyPassword, setLobbyPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("null");
   const [inputClass, setInputClass] = useState("notErrorDivJoin");
   const { userInfo, setJoinLobbyMsg } = useContext(UserContext);
   const navigate = useNavigate();
