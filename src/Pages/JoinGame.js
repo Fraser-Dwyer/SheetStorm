@@ -24,6 +24,25 @@ export default function JoinGame({ baseURL }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    // Check fields aren't empty
+    if (lobbyName.length === 0 && lobbyPassword.length === 0) {
+      setErrorMsg("Fields cannot be blank");
+      setInputClass("errorDivJoin");
+      return;
+    }
+
+    if (lobbyName.length === 0) {
+      setErrorMsg("Lobby name cannot be empty");
+      setInputClass("errorDivJoin");
+      return;
+    }
+
+    if (lobbyPassword.length === 0) {
+      setErrorMsg("Lobby password cannot be empty");
+      setInputClass("errorDivJoin");
+      return;
+    }
+
     //var lobbyNameLower = lobbyName.toLowerCase();
     const response = await fetch(baseURL + "/join-lobby", {
       method: "POST",
@@ -56,54 +75,60 @@ export default function JoinGame({ baseURL }) {
   }
 
   return (
-    <>
-      <h3>Join Game</h3>
-      <div className="lobbyInputContainer">
-        <form>
-          <div>
-            <label>Lobby name</label>
-            <input
-              className={inputClass}
-              value={lobbyName}
-              onChange={(e) => setLobbyName(e.target.value)}
-            ></input>
-          </div>
-          <div>
-            <label>Lobby password</label>
-            <input
-              className={inputClass}
-              value={lobbyPassword}
-              onChange={(e) => setLobbyPassword(e.target.value)}
-            ></input>
-          </div>
-        </form>
-
-        {errorMsg && (
-          <div className="errorContainerJoin">
-            {errorMsg}
-            <div className="closeDiv">
-              <img src={cross} alt="closeImg" onClick={handleCloseClick}></img>
+    <div className="joinGameContainerContainer">
+      <div className="joinGaimeContainer">
+        <h3>Join Game</h3>
+        <div className="lobbyInputContainer">
+          <form>
+            <div>
+              <label>Lobby name</label>
+              <input
+                className={inputClass}
+                value={lobbyName}
+                onChange={(e) => setLobbyName(e.target.value)}
+              ></input>
             </div>
-          </div>
-        )}
-
-        {successMsg && (
-          <div className="successContainerJoin">
-            {successMsg}
-            <div className="closeDiv">
-              <img
-                src={cross}
-                alt="closeImg"
-                onClick={handleCloseClickSuccess}
-              ></img>
+            <div>
+              <label>Lobby password</label>
+              <input
+                className={inputClass}
+                value={lobbyPassword}
+                onChange={(e) => setLobbyPassword(e.target.value)}
+              ></input>
             </div>
-          </div>
-        )}
+          </form>
 
-        <div className="lobbyInputButtonContainer">
-          <button onClick={(e) => handleSubmit(e)}>Submit</button>
+          {errorMsg && (
+            <div className="errorContainerJoin">
+              {errorMsg}
+              <div className="closeDiv">
+                <img
+                  src={cross}
+                  alt="closeImg"
+                  onClick={handleCloseClick}
+                ></img>
+              </div>
+            </div>
+          )}
+
+          {successMsg && (
+            <div className="successContainerJoin">
+              {successMsg}
+              <div className="closeDiv">
+                <img
+                  src={cross}
+                  alt="closeImg"
+                  onClick={handleCloseClickSuccess}
+                ></img>
+              </div>
+            </div>
+          )}
+
+          <div className="lobbyInputButtonContainer">
+            <button onClick={(e) => handleSubmit(e)}>Submit</button>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

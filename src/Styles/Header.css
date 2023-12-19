@@ -68,6 +68,8 @@ header a {
   header {
     width: 100%;
     padding: 10px;
+    position: fixed;
+    height: 110px;
   }
 
   header a {
@@ -82,6 +84,9 @@ header a {
 
   .leftHeaderDiv {
     margin-top: 15px;
+    transform: translate(0px, -42px);
+    width: fit-content;
+    margin: auto;
   }
 
   .titleContainerLogos {

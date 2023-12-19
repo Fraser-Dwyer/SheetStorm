@@ -5,7 +5,6 @@
     margin-left: 3vw;
     margin-right: 3vw;
     padding: 3vw;
-    
 }
 
 .lobbyInputContainer form div label {
@@ -73,4 +72,57 @@
     display: flex;
     justify-content: space-between;
     margin: 3vw 0vw 3vw 0vw;
+}
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
+    .joinGameContainerContainer {
+        margin-top: 110px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .joinGaimeContainer {
+        width: 800px;
+        max-width: 800px;
+    }
+
+    .joinGaimeContainer h3 {
+        font-size: 30px;
+        margin: 30px 0px 30px 0px;
+    }
+
+    .lobbyInputContainer {
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 30px;
+    }
+
+    .lobbyInputContainer form div {
+        margin-bottom: 30px;
+        font-size: 30px;
+    }
+
+    .lobbyInputContainer form div input {
+        font-size: 30px;
+        padding: 10px;
+    }
+
+    .lobbyInputContainer div button {
+        font-size: 30px;
+        padding: 10px;
+    }
+
+    .lobbyInputContainer div button:hover {
+        cursor: pointer;
+        background-color: #69a964;
+    }
+
+    .errorContainerJoin {
+        width: 100%;
+        padding: 10px;
+        font-size: 30px;
+        margin: 30px 0px 30px 0px;
+    }
 }

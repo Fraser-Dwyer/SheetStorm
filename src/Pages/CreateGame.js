@@ -101,44 +101,50 @@ export default function CreateGame({ baseURL }) {
   }
 
   return (
-    <div>
-      <h3>Create Game</h3>
-      <div className="createGameContainer">
-        <p className="labelCreateGame">Name of the lobby:</p>
-        <form className="createGameForm">
-          <div>
-            <input
-              className={lobbyDiv}
-              value={lobbyName}
-              onChange={(e) => setLobbyName(e.target.value)}
-            ></input>
-          </div>
-        </form>
+    <div className="createGameContainerContainer">
+      <div>
+        <h3>Create Game</h3>
+        <div className="createGameContainer">
+          <p className="labelCreateGame">Name of the lobby:</p>
+          <form className="createGameForm">
+            <div>
+              <input
+                className={lobbyDiv}
+                value={lobbyName}
+                onChange={(e) => setLobbyName(e.target.value)}
+              ></input>
+            </div>
+          </form>
 
-        <div className="brokenButContainer">
-          <button onClick={(e) => handleCreateLobby(e)}>Create</button>
+          <div className="brokenButContainer">
+            <button onClick={(e) => handleCreateLobby(e)}>Create</button>
+          </div>
+
+          {errorMsg && (
+            <div className="errorContainerInGame">
+              {errorMsg}
+              <div className="closeDiv">
+                <img
+                  src={cross}
+                  alt="closeImg"
+                  onClick={handleCloseClick}
+                ></img>
+              </div>
+            </div>
+          )}
+          {successMsg && (
+            <div className="successContainerCreate">
+              <p>{successMsg}</p>
+              <div className="closeDiv">
+                <img
+                  src={cross}
+                  alt="closeImg"
+                  onClick={handleCloseClickSuccess}
+                ></img>
+              </div>
+            </div>
+          )}
         </div>
-
-        {errorMsg && (
-          <div className="errorContainerInGame">
-            {errorMsg}
-            <div className="closeDiv">
-              <img src={cross} alt="closeImg" onClick={handleCloseClick}></img>
-            </div>
-          </div>
-        )}
-        {successMsg && (
-          <div className="successContainerCreate">
-            <p>{successMsg}</p>
-            <div className="closeDiv">
-              <img
-                src={cross}
-                alt="closeImg"
-                onClick={handleCloseClickSuccess}
-              ></img>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

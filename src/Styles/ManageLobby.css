@@ -108,14 +108,15 @@
 /* For larger than phone screen size (Desktops or iPads) */
 @media only screen and (min-width: 601px) {
 
-    h3 {
-        margin: 30px;
+    .manageLobbyContainerContainer h3 {
         font-size: 30px;
+        margin: 30px 0px 30px 0px;
     }
 
     .manageLobbyContainerContainerContainer {
         display: flex;
         justify-content: center;
+        margin-top: 110px;
     }
 
     .manageLobbyContainerContainer {
@@ -176,7 +177,7 @@
     }
 
     .rightContent {
-        margin-right: 80px;
+        margin-right: 50px;
     }
 
     .rightContent button {
@@ -190,8 +191,8 @@
     }
 
     .manageLobbyContainer {
-        width: 970px;
-        margin-left: 30px;
+        width: 1000px;
+        margin-left: 0px;
         margin-bottom: 30px;
     }
 
@@ -204,5 +205,19 @@
         width: 600px;
         max-width: 600px;
         margin: 0px;
+    }
+
+    .successContainerJoinDelete {
+        width: 100%;
+        padding: 15px;
+        font-size: 30px;
+        margin: 0px 0px 30px 0px;
+    }
+
+    .errorContainerDelete {
+        width: 100%;
+        padding: 15px;
+        font-size: 30px;
+        margin: 0px 0px 30px 0px;
     }
 }
