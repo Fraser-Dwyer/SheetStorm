@@ -32,7 +32,7 @@ export default function Login({ baseURL }) {
 
     if (username.length === 0 || password.length === 0) {
       setLoginClass("errorDiv");
-      setErrorMsg("Invalid login credentials");
+      setErrorMsg("Please fill in all fields");
       return;
     }
 

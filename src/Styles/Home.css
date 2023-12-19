@@ -82,18 +82,18 @@ button {
     }
 
     .homeContainer {
-        max-width: 1000px;
+        max-width: 800px;
         margin-bottom: 50px;
     }
 
     h2 {
         margin: 30px 30px 30px 15px;
-        font-size: 36px;
+        font-size: 30px;
     }
 
     .myScoreContainer {
         display: block;
-        width: calc(100% - 40px);
+        width: 760px;
         margin: 0px 20px;
     }
 
@@ -108,7 +108,7 @@ button {
     }
 
     .menuButtonContainer div button {
-        width: 480px;
+        width: 380px;
     }
 
     .sideButtonDiv :last-child {
@@ -120,10 +120,10 @@ button {
     }
 
     .menuButtonContainer button {
-        width: 480px;
+        width: 380px;
         height: 8vh;
         margin: 10px auto;
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .menuButtonContainer button:hover {

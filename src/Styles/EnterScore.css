@@ -1,11 +1,12 @@
 .enterScoreContainer h3 {
     padding: 3vw;
-    font-size: 5.5vw;
+    font-size: 4.5vw;
+    margin: 0;
 }
 
 .enterScoreContainer p {
     padding: 0vw 3vw 3vw 3vw;
-    font-size: 4.5vw;
+    font-size: 4vw;
 }
 
 .scoreForm {
@@ -21,14 +22,14 @@
 .scoreForm div select {
     flex-grow: 1;
     margin-right: 2vw;
-    font-size: 4.5vw;
+    font-size: 4vw;
     border: 2px solid black;
     padding: 2vw 1vw;
     color: black;
 }
 
 .scoreForm div button {
-    font-size: 4.5vw;
+    font-size: 4vw;
     border: 2px solid black;
     border-radius: 5px;
     padding: 2vw;
@@ -47,26 +48,27 @@
 
     .enterScoreContainer h3 {
         padding: 30px 20px 20px 20px;
-        font-size: 30px;
+        font-size: 25px;
         margin: 0px;
     }
 
     .enterScoreContainer p {
         padding: 0px 20px 20px 20px;
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .scoreForm {
         padding: 0px 20px 20px 20px;
-        width: 960px;
+        width: 800px;
+        max-width: 800px;
     }
 
     .scoreForm div select {
         margin-right: 20px;
-        font-size: 30px;
-        padding: 10px 20px;
+        font-size: 25px;
+        padding: 10px;
         overflow: hidden;
-        width: 960px;
+        width: 800px;
     }
 
     .scoreForm div select:hover {
@@ -74,7 +76,7 @@
     }
 
     .scoreForm div button {
-        font-size: 30px;
+        font-size: 25px;
         padding: 10px 20px;
     }
 
@@ -84,9 +86,9 @@
     }
 
     .enterScoreContainer div .errorContainerDelete {
-        font-size: 30px;
+        font-size: 25px;
         margin-left: 20px;
-        width: 960px;
+        width: 760px;
         padding: 10px 20px;
     }
 

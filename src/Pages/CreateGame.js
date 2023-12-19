@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 export default function CreateGame({ baseURL }) {
   const [lobbyName, setLobbyName] = useState("");
   const [errorMsg, setErrorMsg] = useState(null);
-  const [successMsg, setSuccessMsg] = useState(null);
   const [lobbyDiv, setLobbyDiv] = useState("notErrorLobbyDiv");
   const [allLobbies, setAllLobies] = useState(null);
   const { userInfo, setCreateLobbyMsg } = useContext(UserContext);
@@ -83,10 +82,6 @@ export default function CreateGame({ baseURL }) {
     setLobbyDiv("notErrorLobbyDiv");
   };
 
-  const handleCloseClickSuccess = () => {
-    setSuccessMsg(null);
-  };
-
   function makeid(length) {
     let result = "";
     const characters =
@@ -116,10 +111,6 @@ export default function CreateGame({ baseURL }) {
             </div>
           </form>
 
-          <div className="brokenButContainer">
-            <button onClick={(e) => handleCreateLobby(e)}>Create</button>
-          </div>
-
           {errorMsg && (
             <div className="errorContainerInGame">
               {errorMsg}
@@ -132,18 +123,10 @@ export default function CreateGame({ baseURL }) {
               </div>
             </div>
           )}
-          {successMsg && (
-            <div className="successContainerCreate">
-              <p>{successMsg}</p>
-              <div className="closeDiv">
-                <img
-                  src={cross}
-                  alt="closeImg"
-                  onClick={handleCloseClickSuccess}
-                ></img>
-              </div>
-            </div>
-          )}
+
+          <div className="brokenButContainer">
+            <button onClick={(e) => handleCreateLobby(e)}>Create</button>
+          </div>
         </div>
       </div>
     </div>

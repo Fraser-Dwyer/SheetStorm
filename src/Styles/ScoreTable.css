@@ -124,8 +124,8 @@ h3 {
 /* For larger than phone screen size (Desktops or iPads) */
 @media only screen and (min-width: 601px) {
   .weekNavContainer img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 
   .weekNavContainer img:hover {
@@ -141,36 +141,36 @@ h3 {
   }
 
   .days th {
-    width: 210px;
-    min-width: 210px;
+    width: 120px;
+    min-width: 120px;
     padding-left: 10px;
   }
 
   .scores div th {
-    width: 210px;
-    min-width: 210px;
-    max-width: 210px;
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
     padding-left: 10px;
   }
 
   .days td {
-    width: 85px;
-    min-width: 85px;
+    width: 65px;
+    min-width: 65px;
   }
 
   .scores div td {
-    width: 85px;
-    min-width: 85px;
+    width: 65px;
+    min-width: 65px;
   }
 
   .days td:last-child {
-    width: 85px;
-    min-width: 85px;
+    width: 80px;
+    min-width: 80px;
   }
 
   .scores div td:last-child {
-    width: 85px;
-    min-width: 85px;
+    width: 80px;
+    min-width: 80px;
   }
 
   .tableContainer {

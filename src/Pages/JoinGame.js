@@ -8,7 +8,6 @@ export default function JoinGame({ baseURL }) {
   const [lobbyName, setLobbyName] = useState("");
   const [lobbyPassword, setLobbyPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState(null);
-  const [successMsg, setSuccessMsg] = useState(null);
   const [inputClass, setInputClass] = useState("notErrorDivJoin");
   const { userInfo, setJoinLobbyMsg } = useContext(UserContext);
   const navigate = useNavigate();
@@ -16,10 +15,6 @@ export default function JoinGame({ baseURL }) {
   const handleCloseClick = () => {
     setErrorMsg(null);
     setInputClass("notErrorDivJoin");
-  };
-
-  const handleCloseClickSuccess = () => {
-    setSuccessMsg(null);
   };
 
   async function handleSubmit(e) {
@@ -110,20 +105,6 @@ export default function JoinGame({ baseURL }) {
               </div>
             </div>
           )}
-
-          {successMsg && (
-            <div className="successContainerJoin">
-              {successMsg}
-              <div className="closeDiv">
-                <img
-                  src={cross}
-                  alt="closeImg"
-                  onClick={handleCloseClickSuccess}
-                ></img>
-              </div>
-            </div>
-          )}
-
           <div className="lobbyInputButtonContainer">
             <button onClick={(e) => handleSubmit(e)}>Submit</button>
           </div>

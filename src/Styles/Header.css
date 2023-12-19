@@ -64,6 +64,17 @@ header a {
 /* For larger than phone screen size (Desktops or iPads) */
 @media only screen and (min-width: 601px) {
 
+  .logRegButtonContainerLog {
+    height: 90px;
+    display: flex;
+    align-items: center;
+  }
+
+  .logRegButtonContainerReg {
+    height: 90px;
+    display: flex;
+    align-items: center;
+  }
 
   header {
     width: 100%;

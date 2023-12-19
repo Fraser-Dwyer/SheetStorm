@@ -6,13 +6,14 @@
 
 .QuestionContainer p {
     font-size: 3.5vw;
+    margin: 0vw 3vw 0vw 3vw;
 }
 
 /* For larger than phone screen size (Desktops or iPads) */
 @media only screen and (min-width: 601px) {
     .QuestionContainer p {
         font-size: 25px;
-        margin-bottom: 15px;
+        margin: 0px 0px 15px 0px;
     }
 
     .QuestionContainer h4 {

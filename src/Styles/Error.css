@@ -1,25 +1,36 @@
 .errorContainer {
-    margin-left: 4vw;
-    margin-right: 4vw;
-    width: 90%;
-    background-color: lightcoral;
-    padding: 1vw 1vw;
-    font-size: 4vw;
-    border: 2px solid black;
-    border-radius: 5px;
-    color: black;
-    display: flex;
-    justify-content: space-between;
-    white-space: pre-wrap;
-  }
+  margin-left: 4vw;
+  margin-right: 4vw;
+  width: 90%;
+  background-color: lightcoral;
+  padding: 1vw 1vw;
+  font-size: 4vw;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  white-space: pre-wrap;
+}
 
-  .closeDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.closeDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .closeDiv img {
-    width: 3vw;
-    padding-right: 0.5vw;
+.closeDiv img {
+  width: 3vw;
+  padding-right: 0.5vw;
+}
+
+/* For larger than phone screen size (Desktops or iPads) */
+@media only screen and (min-width: 601px) {
+  .errorContainer {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 432px;
+    padding: 10px;
+    font-size: 25px;
   }
+}
