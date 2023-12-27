@@ -80,13 +80,13 @@ export default function ManageLobby({ baseURL }) {
       <div className="manageLobbyContainerContainer">
         <h3>Manage Games</h3>
         {userCreatedLobbies.length === 0 && (
-          <>
+          <div className="msgThingy">
             <p>You have not yet created any games.</p>
             <p>
               To create a game, go to{" "}
               <a onClick={() => navigate("/create-game")}>Create Game</a>
             </p>
-          </>
+          </div>
         )}
 
         {successMsg && (

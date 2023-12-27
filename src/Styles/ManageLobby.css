@@ -105,6 +105,11 @@
     margin: 0vw 3vw 3vw 3vw;
 }
 
+.msgThingy {
+    margin-left: 3vw;
+    margin-bottom: 3vw;
+}
+
 .leftContent {
     margin: 3vw 2vw 3vw 3vw;
 }
@@ -126,6 +131,11 @@
         width: 800px;
         max-width: 800px;
         margin-bottom: 50px;
+    }
+
+    .msgThingy {
+        margin-bottom: 15px;
+        margin-left: 0px;
     }
 
     .manageLobbyContainerContainer a:hover {

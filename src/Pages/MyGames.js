@@ -106,16 +106,16 @@ export default function MyGames({ baseURL }) {
 
   return (
     <div className="myGamesContainerContainer">
-      <div>
+      <div className="smallThingy">
         <h3>My Games</h3>
         {(!inLobbies || inLobbies?.length === 0) && (
-          <>
+          <div className="msgThingy">
             <p>You are not yet in any games.</p>
             <p>
               To join a game, go to{" "}
               <a onClick={() => navigate("/join-game")}>Join Game</a>
             </p>
-          </>
+          </div>
         )}
 
         {successMsg && (

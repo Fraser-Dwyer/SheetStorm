@@ -38,6 +38,10 @@
     font-size: 4vw;
 }
 
+.imageDivContainer {
+    flex-grow: 1;
+}
+
 .myGamesContainer button {
     font-size: 3.5vw;
     padding: 2vw;
@@ -121,13 +125,19 @@ p a {
     }
 
     .myGamesContainerContainer {
-        margin-bottom: 80px;
+        margin: 0px auto 80px auto;
         display: flex;
         justify-content: center;
+        width: 800px;
     }
+
 
     .myGamesContainerContainer a:hover {
         cursor: pointer;
+    }
+
+    .smallThingy {
+        width: 800px;
     }
 
     .myGamesContainer img {
