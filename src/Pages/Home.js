@@ -109,6 +109,9 @@ export default function Home({ baseURL }) {
             </button>
             <button onClick={() => navigate("/join-game")}>Join Game</button>
           </div>
+          <button onClick={() => navigate("/leaderboards")}>
+            Leaderboards
+          </button>
           <a href="https://www.nytimes.com/games/wordle/index.html">
             <button>Play Wordle</button>
           </a>

@@ -12,11 +12,12 @@ import JoinGame from "./Pages/JoinGame.js";
 import PrivateRoute from "./Components/PrivateRoute.js";
 import About from "./Pages/About.js";
 import FAQs from "./Pages/FAQs.js";
+import Leaderboards from "./Pages/Leaderboards.js";
 
 function App() {
   // Production:  "https://server.sheetstorm.co.uk"
   // Development: "http://localhost:8000"
-  const baseURL = "https://server.sheetstorm.co.uk";
+  const baseURL = "http://localhost:8000";
   return (
     <UserContextProvider>
       <Routes>
@@ -62,6 +63,14 @@ function App() {
             element={
               <PrivateRoute>
                 <ManageLobby baseURL={baseURL} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/leaderboards"
+            element={
+              <PrivateRoute>
+                <Leaderboards baseURL={baseURL} />
               </PrivateRoute>
             }
           />

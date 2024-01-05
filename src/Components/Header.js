@@ -51,6 +51,7 @@ export default function Header({ baseURL }) {
                 path === "/FAQs" ||
                 path === "/about" ||
                 path === "/FAQs" ||
+                path === "/leaderboards" ||
                 path === "/join-game") && ( // eslint-disable-next-line
                 <a onClick={() => navigate("/")}>Back</a>
               )}
