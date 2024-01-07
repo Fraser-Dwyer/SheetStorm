@@ -9,9 +9,9 @@ export default function SingleGame({
   players,
   handleLeaveLobby,
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   const rotate = expanded ? "rotate(90deg)" : "rotate(0)";
-  const [filteredScores, setFilteredScores] = useState([]);
+  const [filteredScores, setFilteredScores] = useState(null);
   const [sure, setSure] = useState(null);
 
   const DATE_OPTIONS = {
@@ -68,7 +68,7 @@ export default function SingleGame({
           <button onClick={() => setSure(!sure)}>Leave Game</button>
         </div>
       </div>
-      {expanded && (
+      {expanded && filteredScores && (
         <>
           <ScoreTable
             weekStart={weekStart}

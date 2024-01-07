@@ -8,6 +8,7 @@ export default function Leaderboards({ baseURL }) {
   const [avgDaily, setAvgDaily] = useState(null);
   const [loading, setLoading] = useState(true);
   const [timeFrame, setTimeFrame] = useState("thisWeek");
+  const [yearlyScores, setYearlyScores] = useState(null);
 
   const DATE_OPTIONS = {
     weekday: "long",
@@ -15,7 +16,7 @@ export default function Leaderboards({ baseURL }) {
     month: "short",
     day: "numeric",
   };
-  const today = new Date().toLocaleDateString("en-US", DATE_OPTIONS);
+  const today = new Date();
   const todayNum = new Date().getDay();
   const daysGone = todayNum > 1 ? todayNum : todayNum === 0 ? 7 : 1;
   var todayDay = new Date().toLocaleDateString("en-US", { weekday: "short" });
@@ -26,6 +27,15 @@ export default function Leaderboards({ baseURL }) {
     );
   }
   weekStart = weekStart.toLocaleDateString("en-US", DATE_OPTIONS);
+
+  let date1 = today;
+  let date2 = new Date("01/01/2024");
+
+  // To calculate the time difference of two dates
+  let Difference_In_Time = date1.getTime() - date2.getTime();
+
+  // To calculate the no. of days between two dates
+  let Difference_In_Days = Math.round(Difference_In_Time / (1000 * 3600 * 24));
 
   const avgDailyFunction = () => {
     if (allScores !== null) {
@@ -68,9 +78,21 @@ export default function Leaderboards({ baseURL }) {
         let uArr = uniqueArray(tempArr, ["username"], true);
         var uniqueUsers = [];
         for (let i = 0; i < uArr.length; i++) {
-          uniqueUsers.push(uArr[i].username);
+          uniqueUsers.push({ name: uArr[i].username, score: 0 });
         }
         let tempArrRanked2 = rankDuplicatesTotal(tempArr);
+        // Add cumulative total for 2024 to the users from UniqueUsers array
+        for (let i = 0; i < uniqueUsers.length; i++) {
+          tempArrRanked2
+            .filter((el) => el.weekStart.slice(-4) === "2024")
+            .map((week) => {
+              if (week.username === uniqueUsers[i].name) {
+                uniqueUsers[i].score += week.total;
+              }
+            });
+        }
+        let uniqueUsersRanked = rankYearly(uniqueUsers);
+        setYearlyScores(uniqueUsersRanked);
         setAllScores(tempArrRanked2);
         avgDailyFunction();
         setLoading(false);
@@ -131,6 +153,23 @@ export default function Leaderboards({ baseURL }) {
     });
   }
 
+  function rankYearly(arr) {
+    const sorted = [...new Set(arr)].sort((a, b) =>
+      a.score > b.score ? -1 : 1
+    );
+
+    let rank = 1;
+    return sorted.map((item, index) => {
+      if (index > 0 && item.score < sorted[index - 1].score) {
+        rank = index + 1;
+      }
+      return {
+        yearRank: rank,
+        ...item,
+      };
+    });
+  }
+
   return (
     <div className="lbWrapper">
       <h3>Leaderboards</h3>
@@ -159,7 +198,6 @@ export default function Leaderboards({ baseURL }) {
             >
               <option value="today">Today</option>
               <option value="thisWeek">This Week</option>
-              <option value="thisMonth">Monthly</option>
               <option value="thisYear">2024</option>
             </select>
           </div>
@@ -226,7 +264,53 @@ export default function Leaderboards({ baseURL }) {
                         {l.username[0].toUpperCase()}
                         {l.username.slice(1)}
                       </p>
-                      <p>{(l.total / daysGone).toFixed(2)}</p>
+                      <p>
+                        {((daysGone * 6 - l.total) / daysGone + 1).toFixed(2)}
+                      </p>
+                    </div>
+                  );
+                })}
+            </div>
+          )}
+          {!loading && yearlyScores && !isAvg && timeFrame === "thisYear" && (
+            <div className="peopleLbLoaded">
+              {yearlyScores
+                .filter((week) => week.score > 0)
+                .sort((a, b) => (a.score > b.score ? -1 : 1))
+                .map((l) => {
+                  return (
+                    <div className="personLbLoaded">
+                      <p>{l.yearRank}</p>
+                      <p>
+                        {l.name[0].toUpperCase()}
+                        {l.name.slice(1)}
+                      </p>
+                      <p>{l.score}</p>
+                    </div>
+                  );
+                })}
+            </div>
+          )}
+          {!loading && yearlyScores && isAvg && timeFrame === "thisYear" && (
+            <div className="peopleLbLoaded">
+              {yearlyScores
+                .filter((week) => week.score > 0)
+                .sort((a, b) => (a.score > b.score ? -1 : 1))
+                .map((l) => {
+                  return (
+                    <div className="personLbLoaded">
+                      <p>{l.yearRank}</p>
+                      <p>
+                        {l.name[0].toUpperCase()}
+                        {l.name.slice(1)}
+                      </p>
+                      <p>
+                        {(
+                          (Difference_In_Days * 6 - l.score) /
+                            Difference_In_Days +
+                          1
+                        ).toFixed(2)}
+                      </p>
                     </div>
                   );
                 })}
