@@ -9,6 +9,7 @@ export default function Leaderboards({ baseURL }) {
   const [loading, setLoading] = useState(true);
   const [timeFrame, setTimeFrame] = useState("thisWeek");
   const [yearlyScores, setYearlyScores] = useState(null);
+  const [weeklyScores, setWeeklyScores] = useState(null);
 
   const DATE_OPTIONS = {
     weekday: "long",
@@ -83,7 +84,7 @@ export default function Leaderboards({ baseURL }) {
         let tempArrRanked2 = rankDuplicatesTotal(tempArr);
         // Add cumulative total for 2024 to the users from UniqueUsers array
         for (let i = 0; i < uniqueUsers.length; i++) {
-          tempArrRanked2
+          tempArr
             .filter((el) => el.weekStart.slice(-4) === "2024")
             .map((week) => {
               if (week.username === uniqueUsers[i].name) {
@@ -93,7 +94,8 @@ export default function Leaderboards({ baseURL }) {
         }
         let uniqueUsersRanked = rankYearly(uniqueUsers);
         setYearlyScores(uniqueUsersRanked);
-        setAllScores(tempArrRanked2);
+        setAllScores(tempArr);
+        setWeeklyScores(tempArrRanked2);
         avgDailyFunction();
         setLoading(false);
       });
@@ -178,16 +180,16 @@ export default function Leaderboards({ baseURL }) {
           <div className="leftLbButtons">
             {isAvg ? (
               <button onClick={() => setIsAvg(false)} className="toggleOff">
-                Total
+                Total Pts
               </button>
             ) : (
-              <button className="toggleOn">Total</button>
+              <button className="toggleOn">Total Pts</button>
             )}
             {isAvg ? (
-              <button className="toggleOn">Avg</button>
+              <button className="toggleOn">Avg Guesses</button>
             ) : (
               <button onClick={() => setIsAvg(true)} className="toggleOff">
-                Avg
+                Avg Guesses
               </button>
             )}
           </div>
@@ -232,9 +234,9 @@ export default function Leaderboards({ baseURL }) {
                 })}
             </div>
           )}
-          {!loading && allScores && !isAvg && timeFrame === "thisWeek" && (
+          {!loading && weeklyScores && !isAvg && timeFrame === "thisWeek" && (
             <div className="peopleLbLoaded">
-              {allScores
+              {weeklyScores
                 .filter((week) => week.weekStart === weekStart)
                 .sort((a, b) => (a.total > b.total ? -1 : 1))
                 .map((l) => {
@@ -251,9 +253,9 @@ export default function Leaderboards({ baseURL }) {
                 })}
             </div>
           )}
-          {!loading && allScores && isAvg && timeFrame === "thisWeek" && (
+          {!loading && weeklyScores && isAvg && timeFrame === "thisWeek" && (
             <div className="peopleLbLoaded">
-              {allScores
+              {weeklyScores
                 .filter((week) => week.weekStart === weekStart)
                 .sort((a, b) => (a.total > b.total ? -1 : 1))
                 .map((l) => {
