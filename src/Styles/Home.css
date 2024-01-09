@@ -134,5 +134,13 @@ button {
         width: 100%;
     }
 
+    .menuButtonContainer a {
+        grid-column: span 2;
+    }
+
+    .menuButtonContainer a button {
+        width: 780px;
+    }
+
 
 }

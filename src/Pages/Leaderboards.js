@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../Styles/Leaderboards.css";
 import SkeletonComponent from "../Components/SkeletonComponent.js";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 export default function Leaderboards({ baseURL }) {
   const [allScores, setAllScores] = useState(null);
@@ -128,7 +129,7 @@ export default function Leaderboards({ baseURL }) {
         index > 0 &&
         parseInt(item[todayDay]) > parseInt(sorted[index - 1][todayDay])
       ) {
-        rank = index + 1;
+        rank = rank + 1;
       }
       return {
         rank: rank,
@@ -146,7 +147,7 @@ export default function Leaderboards({ baseURL }) {
     let rank = 1;
     return sorted.map((item, index) => {
       if (index > 0 && item.total < sorted[index - 1].total) {
-        rank = index + 1;
+        rank = rank + 1;
       }
       return {
         weekRank: rank,
@@ -163,7 +164,7 @@ export default function Leaderboards({ baseURL }) {
     let rank = 1;
     return sorted.map((item, index) => {
       if (index > 0 && item.score < sorted[index - 1].score) {
-        rank = index + 1;
+        rank = rank + 1;
       }
       return {
         yearRank: rank,
@@ -171,6 +172,8 @@ export default function Leaderboards({ baseURL }) {
       };
     });
   }
+
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
 
   return (
     <div className="lbWrapper">
@@ -206,10 +209,19 @@ export default function Leaderboards({ baseURL }) {
         </div>
         <div className="scoresGoHere">
           {loading &&
+            isSmallDevice &&
             Array.apply(null, { length: 5 }).map((e, i) => (
               <div className="personLb" key={i}>
                 <div>{i + 1}</div>
                 <SkeletonComponent width={"81vw"} height={"35px"} />
+              </div>
+            ))}
+          {loading &&
+            !isSmallDevice &&
+            Array.apply(null, { length: 5 }).map((e, i) => (
+              <div className="personLb" key={i}>
+                <div>{i + 1}</div>
+                <SkeletonComponent width={"700px"} height={"35px"} />
               </div>
             ))}
           {!loading && avgDaily && timeFrame === "today" && (
