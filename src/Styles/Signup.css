@@ -76,6 +76,10 @@
    border-radius: 5px;
  }
 
+ .iconDiv {
+   visibility: hidden;
+ }
+
  /* For larger than phone screen size (Desktops or iPads) */
  @media only screen and (min-width: 601px) {
    .mainContainer {
@@ -150,5 +154,17 @@
      display: block;
      margin: auto;
      max-width: none;
+   }
+
+   .iconDiv {
+     visibility: visible;
+     position: absolute;
+     left: 385px;
+     top: 10px;
+     transform: scale(1, -1) rotate(180deg);
+   }
+
+   .iconDiv:hover {
+     cursor: pointer;
    }
  }

@@ -1,8 +1,11 @@
 import "../Styles/Signup.css";
 import sheetStormLogo from "../Images/sheetstorm-logo2.png";
+import sheetStormLogoNoRoll from "../Images/logoNoRoll.png";
 import Error from "../Components/Error";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Icon from "../Components/Icon";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 export default function Signup({ baseURL }) {
   const [username, setUsername] = useState("");
@@ -135,11 +138,20 @@ export default function Signup({ baseURL }) {
     }
   }
 
+  const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
+
   return (
     <div className="mainContainer">
       <div className="logo">
-        <img src={sheetStormLogo} alt="SheetStormLogo"></img>
+        {isSmallDevice && <img src={sheetStormLogo} alt="SheetStormLogo"></img>}
+        {!isSmallDevice && (
+          <>
+            <img src={sheetStormLogoNoRoll} alt="SheetStormLogo"></img>
+            <Icon />
+          </>
+        )}
       </div>
+
       <div className="main">
         <div className="signupContainer">
           <div className="inputTitle">
