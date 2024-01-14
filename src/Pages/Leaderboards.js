@@ -80,7 +80,15 @@ export default function Leaderboards({ baseURL }) {
         let uArr = uniqueArray(tempArr, ["username"], true);
         var uniqueUsers = [];
         for (let i = 0; i < uArr.length; i++) {
-          uniqueUsers.push({ name: uArr[i].username, score: 0 });
+          if (
+            uArr[i].username === "sarah" ||
+            uArr[i].username === "charle" ||
+            uArr[i].username === "helly"
+          ) {
+            uniqueUsers.push({ name: uArr[i].username, score: 30 });
+          } else {
+            uniqueUsers.push({ name: uArr[i].username, score: 0 });
+          }
         }
         let tempArrRanked2 = rankDuplicatesTotal(tempArr);
         // Add cumulative total for 2024 to the users from UniqueUsers array
