@@ -72,7 +72,7 @@ export default function JoinGame({ baseURL }) {
   return (
     <div className="joinGameContainerContainer">
       <div className="joinGaimeContainer">
-        <h3>Join Game</h3>
+        <h3 className="creatGamehthree">Join Game</h3>
         <div className="lobbyInputContainer">
           <form>
             <div>

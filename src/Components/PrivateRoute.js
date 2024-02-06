@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
   const { userInfo } = useContext(UserContext);
-  return userInfo.name !== null ? children : <Navigate to="/login" />;
+  return userInfo?.username !== null ? children : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

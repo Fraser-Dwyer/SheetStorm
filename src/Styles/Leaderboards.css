@@ -16,6 +16,8 @@
 
 .leftLbButtons {
     margin: 2vw 2vw 2vw 0vw;
+    clear: both;
+    display: inline-block;
 }
 
 .rightLbButtons {
@@ -26,6 +28,10 @@
     font-size: 3vw;
     padding: 1vw 2vw;
     color: rgb(0, 0, 0);
+}
+
+.leftLbButtons button:nth-child(2) {
+    margin-right: 2vw;
 }
 
 .leftLbButtons button:first-child {
@@ -95,6 +101,15 @@
     margin-bottom: 5vw;
 }
 
+.noScoresMsg {
+    margin-left: 3vw;
+    font-size: 4.5vw;
+}
+
+.lbWrapper h3 {
+    font-size: 4.5vw;
+}
+
 /* For larger than phone screen size (Desktops or iPads) */
 @media only screen and (min-width: 601px) {
     .lbWrapper {
@@ -139,6 +154,10 @@
         margin-right: 10px;
     }
 
+    .leftLbButtons button:nth-child(2) {
+        margin-right: 10px;
+    }
+
     .rightLbButtons select {
         font-size: 15px;
         padding: 5px 10px;
@@ -177,5 +196,10 @@
 
     .scoresGoHere {
         margin-bottom: 20px;
+    }
+
+    .noScoresMsg {
+        margin-left: 20px;
+        font-size: 26px;
     }
 }

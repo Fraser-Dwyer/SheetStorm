@@ -5,7 +5,7 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 
 export default function Leaderboards({ baseURL }) {
   const [allScores, setAllScores] = useState(null);
-  const [isAvg, setIsAvg] = useState(false);
+  const [isAvg, setIsAvg] = useState("points");
   const [avgDaily, setAvgDaily] = useState(null);
   const [loading, setLoading] = useState(true);
   const [timeFrame, setTimeFrame] = useState("thisWeek");
@@ -102,7 +102,8 @@ export default function Leaderboards({ baseURL }) {
             });
         }
         let uniqueUsersRanked = rankYearly(uniqueUsers);
-        setYearlyScores(uniqueUsersRanked);
+        let alphaArr = alpha(uniqueUsersRanked);
+        setYearlyScores(alphaArr);
         setAllScores(tempArr);
         setWeeklyScores(tempArrRanked2);
         avgDailyFunction();
@@ -181,6 +182,21 @@ export default function Leaderboards({ baseURL }) {
     });
   }
 
+  function alpha(arr) {
+    const sorted = [...new Set(arr)].sort((a, b) => (a.name > b.name ? 1 : -1));
+
+    let rank = 1;
+    return sorted.map((item, index) => {
+      if (index > 0 && item.name > sorted[index - 1].name) {
+        rank = rank + 1;
+      }
+      return {
+        alphaRank: rank,
+        ...item,
+      };
+    });
+  }
+
   const isSmallDevice = useMediaQuery("only screen and (max-width : 768px)");
 
   return (
@@ -189,25 +205,41 @@ export default function Leaderboards({ baseURL }) {
       <div className="lbContainer">
         <div className="lbScoreContainer">
           <div className="leftLbButtons">
-            {isAvg ? (
-              <button onClick={() => setIsAvg(false)} className="toggleOff">
-                Total Pts
+            {isAvg !== "points" ? (
+              <button onClick={() => setIsAvg("points")} className="toggleOff">
+                Pts
               </button>
             ) : (
-              <button className="toggleOn">Total Pts</button>
+              <button className="toggleOn">Pts</button>
             )}
-            {isAvg ? (
+            {isAvg === "avgGuess" ? (
               <button className="toggleOn">Avg Guesses</button>
             ) : (
-              <button onClick={() => setIsAvg(true)} className="toggleOff">
+              <button
+                onClick={() => setIsAvg("avgGuess")}
+                className="toggleOff"
+              >
                 Avg Guesses
+              </button>
+            )}
+            {isAvg === "abc" ? (
+              <button className="toggleOn">ABC</button>
+            ) : (
+              <button onClick={() => setIsAvg("abc")} className="toggleOff">
+                ABC
               </button>
             )}
           </div>
           <div className="rightLbButtons">
             <select
               value={timeFrame}
-              onChange={(e) => setTimeFrame(e.target.value)}
+              onChange={(e) => {
+                setTimeFrame(e.target.value);
+                if (e.target.value === "today") {
+                  setIsAvg("avgGuess");
+                }
+              }}
+              disabled={isAvg === "abc"}
             >
               <option value="today">Today</option>
               <option value="thisWeek">This Week</option>
@@ -232,112 +264,182 @@ export default function Leaderboards({ baseURL }) {
                 <SkeletonComponent width={"700px"} height={"35px"} />
               </div>
             ))}
-          {!loading && avgDaily && timeFrame === "today" && (
+          {!loading &&
+            avgDaily &&
+            timeFrame === "today" &&
+            isAvg !== "abc" &&
+            avgDaily.length === 0 && (
+              <div className="noScoresMsg">
+                <p>No scores to display.</p>
+                <p>Be the first to log their score today!</p>
+              </div>
+            )}
+          {!loading &&
+            avgDaily &&
+            isAvg === "avgGuess" &&
+            timeFrame === "today" && (
+              <div className="peopleLbLoaded">
+                {avgDaily
+                  .sort((a, b) => (a[todayDay] > b[todayDay] ? 1 : -1))
+                  .map((l) => {
+                    return (
+                      <>
+                        {l[todayDay] !== undefined && (
+                          <div className="personLbLoaded">
+                            <p>{l.rank}</p>
+                            <p>
+                              {l.username[0].toUpperCase()}
+                              {l.username.slice(1)}
+                            </p>
+                            <p>{l[todayDay]}.00</p>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })}
+              </div>
+            )}
+          {!loading && yearlyScores && isAvg === "abc" && (
             <div className="peopleLbLoaded">
-              {avgDaily
-                .sort((a, b) => (a[todayDay] > b[todayDay] ? 1 : -1))
+              {yearlyScores
+                .sort((a, b) => (a.name > b.name ? 1 : -1))
                 .map((l) => {
                   return (
                     <>
-                      {l[todayDay] !== undefined && (
-                        <div className="personLbLoaded">
-                          <p>{l.rank}</p>
-                          <p>
-                            {l.username[0].toUpperCase()}
-                            {l.username.slice(1)}
-                          </p>
-                          <p>{l[todayDay]}</p>
-                        </div>
-                      )}
+                      <div className="personLbLoaded">
+                        <p>{l.alphaRank}</p>
+                        <p>
+                          {l.name[0].toUpperCase()}
+                          {l.name.slice(1)}
+                        </p>
+                        <p style={{ color: "white" }}>{l.alphaRank}</p>
+                      </div>
                     </>
                   );
                 })}
             </div>
           )}
-          {!loading && weeklyScores && !isAvg && timeFrame === "thisWeek" && (
-            <div className="peopleLbLoaded">
-              {weeklyScores
-                .filter((week) => week.weekStart === weekStart)
-                .sort((a, b) => (a.total > b.total ? -1 : 1))
-                .map((l) => {
-                  return (
-                    <div className="personLbLoaded">
-                      <p>{l.weekRank}</p>
-                      <p>
-                        {l.username[0].toUpperCase()}
-                        {l.username.slice(1)}
-                      </p>
-                      <p>{l.total}</p>
-                    </div>
-                  );
-                })}
-            </div>
-          )}
-          {!loading && weeklyScores && isAvg && timeFrame === "thisWeek" && (
-            <div className="peopleLbLoaded">
-              {weeklyScores
-                .filter((week) => week.weekStart === weekStart)
-                .sort((a, b) => (a.total > b.total ? -1 : 1))
-                .map((l) => {
-                  return (
-                    <div className="personLbLoaded">
-                      <p>{l.weekRank}</p>
-                      <p>
-                        {l.username[0].toUpperCase()}
-                        {l.username.slice(1)}
-                      </p>
-                      <p>
-                        {((daysGone * 6 - l.total) / daysGone + 1).toFixed(2)}
-                      </p>
-                    </div>
-                  );
-                })}
-            </div>
-          )}
-          {!loading && yearlyScores && !isAvg && timeFrame === "thisYear" && (
-            <div className="peopleLbLoaded">
-              {yearlyScores
-                .filter((week) => week.score > 0)
-                .sort((a, b) => (a.score > b.score ? -1 : 1))
-                .map((l) => {
-                  return (
-                    <div className="personLbLoaded">
-                      <p>{l.yearRank}</p>
-                      <p>
-                        {l.name[0].toUpperCase()}
-                        {l.name.slice(1)}
-                      </p>
-                      <p>{l.score}</p>
-                    </div>
-                  );
-                })}
-            </div>
-          )}
-          {!loading && yearlyScores && isAvg && timeFrame === "thisYear" && (
-            <div className="peopleLbLoaded">
-              {yearlyScores
-                .filter((week) => week.score > 0)
-                .sort((a, b) => (a.score > b.score ? -1 : 1))
-                .map((l) => {
-                  return (
-                    <div className="personLbLoaded">
-                      <p>{l.yearRank}</p>
-                      <p>
-                        {l.name[0].toUpperCase()}
-                        {l.name.slice(1)}
-                      </p>
-                      <p>
-                        {(
-                          (Difference_In_Days * 6 - l.score) /
-                            Difference_In_Days +
-                          1
-                        ).toFixed(2)}
-                      </p>
-                    </div>
-                  );
-                })}
-            </div>
-          )}
+          {!loading &&
+            avgDaily &&
+            isAvg === "points" &&
+            timeFrame === "today" && (
+              <div className="peopleLbLoaded">
+                {avgDaily
+                  .sort((a, b) => (7 - a[todayDay] > 7 - b[todayDay] ? -1 : 1))
+                  .map((l) => {
+                    return (
+                      <>
+                        {l[todayDay] !== undefined && (
+                          <div className="personLbLoaded">
+                            <p>{l.rank}</p>
+                            <p>
+                              {l.username[0].toUpperCase()}
+                              {l.username.slice(1)}
+                            </p>
+                            <p>{7 - l[todayDay]}</p>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })}
+              </div>
+            )}
+          {!loading &&
+            weeklyScores &&
+            isAvg === "points" &&
+            timeFrame === "thisWeek" && (
+              <div className="peopleLbLoaded">
+                {weeklyScores
+                  .filter((week) => week.weekStart === weekStart)
+                  .sort((a, b) => (a.total > b.total ? -1 : 1))
+                  .map((l) => {
+                    return (
+                      <div className="personLbLoaded">
+                        <p>{l.weekRank}</p>
+                        <p>
+                          {l.username[0].toUpperCase()}
+                          {l.username.slice(1)}
+                        </p>
+                        <p>{l.total}</p>
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
+          {!loading &&
+            weeklyScores &&
+            isAvg === "avgGuess" &&
+            timeFrame === "thisWeek" && (
+              <div className="peopleLbLoaded">
+                {weeklyScores
+                  .filter((week) => week.weekStart === weekStart)
+                  .sort((a, b) => (a.total > b.total ? -1 : 1))
+                  .map((l) => {
+                    return (
+                      <div className="personLbLoaded">
+                        <p>{l.weekRank}</p>
+                        <p>
+                          {l.username[0].toUpperCase()}
+                          {l.username.slice(1)}
+                        </p>
+                        <p>
+                          {((daysGone * 6 - l.total) / daysGone + 1).toFixed(2)}
+                        </p>
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
+          {!loading &&
+            yearlyScores &&
+            isAvg === "points" &&
+            timeFrame === "thisYear" && (
+              <div className="peopleLbLoaded">
+                {yearlyScores
+                  .filter((week) => week.score > 0)
+                  .sort((a, b) => (a.score > b.score ? -1 : 1))
+                  .map((l) => {
+                    return (
+                      <div className="personLbLoaded">
+                        <p>{l.yearRank}</p>
+                        <p>
+                          {l.name[0].toUpperCase()}
+                          {l.name.slice(1)}
+                        </p>
+                        <p>{l.score}</p>
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
+          {!loading &&
+            yearlyScores &&
+            isAvg === "avgGuess" &&
+            timeFrame === "thisYear" && (
+              <div className="peopleLbLoaded">
+                {yearlyScores
+                  .filter((week) => week.score > 0)
+                  .sort((a, b) => (a.score > b.score ? -1 : 1))
+                  .map((l) => {
+                    return (
+                      <div className="personLbLoaded">
+                        <p>{l.yearRank}</p>
+                        <p>
+                          {l.name[0].toUpperCase()}
+                          {l.name.slice(1)}
+                        </p>
+                        <p>
+                          {(
+                            (Difference_In_Days * 6 - l.score) /
+                              Difference_In_Days +
+                            1
+                          ).toFixed(2)}
+                        </p>
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
         </div>
       </div>
     </div>

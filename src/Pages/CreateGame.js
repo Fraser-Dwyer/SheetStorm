@@ -98,7 +98,7 @@ export default function CreateGame({ baseURL }) {
   return (
     <div className="createGameContainerContainer">
       <div>
-        <h3>Create Game</h3>
+        <h3 className="creatGamehthree">Create Game</h3>
         <div className="createGameContainer">
           <p className="labelCreateGame">Name of the lobby:</p>
           <form className="createGameForm">

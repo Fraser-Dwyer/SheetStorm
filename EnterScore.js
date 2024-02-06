@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function EnterScore({ baseURL }) {
   const [score, setScore] = useState("");
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -36,9 +36,8 @@ export default function EnterScore({ baseURL }) {
 
   async function handleEnterScore(e) {
     e.preventDefault();
-    if (userInfo?.username === null) {
-      setUserInfo(null);
-      navigate("/login");
+    if (userInfo.username === null) {
+      setErrorMsg("Please refresh the page and try again.");
       return;
     }
     const response = await fetch(baseURL + "/post-score", {
